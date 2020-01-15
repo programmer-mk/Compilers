@@ -1,0 +1,143 @@
+INFO  01:28:02,552 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  01:28:02,664 - #2 program
+INFO  01:28:02,664 - #22 MJProgram
+INFO  01:28:02,664 - #22 int
+INFO  01:28:02,668 - #22 x
+INFO  01:28:02,669 - #10 ,
+INFO  01:28:02,669 - #22 y
+INFO  01:28:02,669 - #10 ,
+INFO  01:28:02,669 - #22 z
+INFO  01:28:02,670 - #25 [
+INFO  01:28:02,670 - #26 ]
+INFO  01:28:02,670 - #5 ;
+INFO  01:28:02,670 - #22 double
+INFO  01:28:02,670 - #22 array
+INFO  01:28:02,670 - #25 [
+INFO  01:28:02,670 - #26 ]
+INFO  01:28:02,670 - #5 ;
+INFO  01:28:02,670 - #3 {
+INFO  01:28:02,670 - #22 int
+INFO  01:28:02,674 - #22 main
+INFO  01:28:02,674 - #6 (
+INFO  01:28:02,674 - #7 )
+INFO  01:28:02,674 - #3 {
+INFO  01:28:02,688 - #11 print
+INFO  01:28:02,688 - #6 (
+INFO  01:28:02,688 - #19 1
+INFO  01:28:02,688 - #7 )
+INFO  01:28:02,692 - #5 ;
+INFO  01:28:02,692 - #22 int
+INFO  01:28:02,692 - #22 l
+ERROR 01:28:02,692 - 
+Sintaksna greska na liniji 9
+INFO  01:28:02,692 - #5 ;
+INFO  01:28:02,692 - #22 x
+INFO  01:28:02,696 - #27 =
+INFO  01:28:02,696 - #22 y
+INFO  01:28:02,696 - #16 *
+INFO  01:28:02,697 - #19 5
+INFO  01:28:02,697 - #17 /
+INFO  01:28:02,697 - #22 z
+INFO  01:28:02,697 - #5 ;
+INFO  01:28:02,697 - #11 print
+INFO  01:28:02,697 - #6 (
+INFO  01:28:02,697 - #19 2
+ERROR 01:28:02,697 - Izvrsen oporavak do ; u liniji 9
+INFO  01:28:02,697 - #7 )
+INFO  01:28:02,697 - #5 ;
+INFO  01:28:02,697 - #4 }
+INFO  01:28:02,697 - #4 }
+INFO  01:28:02,705 - Program(
+ MJProgram
+  GlobalDeclListFull(
+    GlobalDeclListFull(
+      GlobalDeclListNone(
+      ) [GlobalDeclListNone]
+      GlobalVariableDecl(
+        VarDecl(
+          Type(
+           int
+          ) [Type]
+          VariableIdentList(
+            VariableIdentList(
+              OneVariableIdent(
+                VariableIdentSingle(
+                 x
+                ) [VariableIdentSingle]
+              ) [OneVariableIdent]
+              VariableIdentSingle(
+               y
+              ) [VariableIdentSingle]
+            ) [VariableIdentList]
+            ArrayVariableIdent(
+             z
+            ) [ArrayVariableIdent]
+          ) [VariableIdentList]
+        ) [VarDecl]
+      ) [GlobalVariableDecl]
+    ) [GlobalDeclListFull]
+    GlobalVariableDecl(
+      VarDecl(
+        Type(
+         double
+        ) [Type]
+        OneVariableIdent(
+          ArrayVariableIdent(
+           array
+          ) [ArrayVariableIdent]
+        ) [OneVariableIdent]
+      ) [VarDecl]
+    ) [GlobalVariableDecl]
+  ) [GlobalDeclListFull]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            MatchedStmt(
+              PrintStmt(
+                TermExpr(
+                  Term(
+                    Const(
+                     1
+                    ) [Const]
+                  ) [Term]
+                ) [TermExpr]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            ErrorStmt(
+            ) [ErrorStmt]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:28:02,705 - ===================================
+INFO  01:28:02,709 -  Print count calls = 2
+INFO  01:28:02,709 -  Deklarisanih promenljivih ima = 2

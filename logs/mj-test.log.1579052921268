@@ -1,0 +1,160 @@
+INFO  02:47:51,297 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  02:47:51,375 - #2 program
+INFO  02:47:51,376 - #22 MJProgram
+INFO  02:47:51,376 - #22 int
+INFO  02:47:51,377 - #22 x
+INFO  02:47:51,379 - #10 ,
+INFO  02:47:51,380 - #22 y
+INFO  02:47:51,380 - #10 ,
+INFO  02:47:51,381 - #22 z
+INFO  02:47:51,381 - #23 [
+INFO  02:47:51,381 - #24 ]
+INFO  02:47:51,381 - #5 ;
+INFO  02:47:51,381 - #13 const
+INFO  02:47:51,383 - #22 int
+INFO  02:47:51,384 - #22 pi
+INFO  02:47:51,384 - #25 =
+INFO  02:47:51,384 - #19 3
+INFO  02:47:51,384 - #5 ;
+INFO  02:47:51,387 - #22 double
+INFO  02:47:51,387 - #22 array
+INFO  02:47:51,388 - #23 [
+INFO  02:47:51,388 - #24 ]
+INFO  02:47:51,388 - #5 ;
+INFO  02:47:51,405 - #3 {
+INFO  02:47:51,405 - #22 int
+INFO  02:47:51,407 - #22 main
+INFO  02:47:51,407 - #6 (
+INFO  02:47:51,407 - #7 )
+INFO  02:47:51,408 - #3 {
+INFO  02:47:51,409 - #11 print
+INFO  02:47:51,410 - #6 (
+INFO  02:47:51,410 - #19 1
+INFO  02:47:51,410 - #7 )
+INFO  02:47:51,411 - #5 ;
+INFO  02:47:51,411 - #22 int
+INFO  02:47:51,412 - #22 l
+ERROR 02:47:51,412 - 
+Sintaksna greska na liniji 10
+INFO  02:47:51,413 - #5 ;
+INFO  02:47:51,413 - #22 x
+INFO  02:47:51,413 - #25 =
+INFO  02:47:51,419 - #22 y
+INFO  02:47:51,419 - #16 *
+INFO  02:47:51,419 - #19 5
+INFO  02:47:51,419 - #17 /
+INFO  02:47:51,419 - #22 z
+INFO  02:47:51,420 - #5 ;
+INFO  02:47:51,421 - #11 print
+INFO  02:47:51,422 - #6 (
+INFO  02:47:51,423 - #19 2
+ERROR 02:47:51,424 - Izvrsen oporavak do ; u liniji 10
+INFO  02:47:51,427 - #7 )
+INFO  02:47:51,427 - #5 ;
+INFO  02:47:51,427 - #4 }
+INFO  02:47:51,427 - #4 }
+INFO  02:47:51,431 - Program(
+ MJProgram
+  GlobalDeclListFull(
+    GlobalDeclListFull(
+      GlobalDeclListFull(
+        GlobalDeclListNone(
+        ) [GlobalDeclListNone]
+        GlobalVariableDecl(
+          VarDecl(
+            Type(
+             int
+            ) [Type]
+            VariableIdentList(
+              VariableIdentList(
+                OneVariableIdent(
+                  VariableIdentSingle(
+                   x
+                  ) [VariableIdentSingle]
+                ) [OneVariableIdent]
+                VariableIdentSingle(
+                 y
+                ) [VariableIdentSingle]
+              ) [VariableIdentList]
+              ArrayVariableIdent(
+               z
+              ) [ArrayVariableIdent]
+            ) [VariableIdentList]
+          ) [VarDecl]
+        ) [GlobalVariableDecl]
+      ) [GlobalDeclListFull]
+      GlobalConstantDecl(
+        ConstDeclaration(
+          Type(
+           int
+          ) [Type]
+          ConstAssignItem(
+            ConstValAssign(
+             pi
+              ConstValNum(
+               3
+              ) [ConstValNum]
+            ) [ConstValAssign]
+          ) [ConstAssignItem]
+        ) [ConstDeclaration]
+      ) [GlobalConstantDecl]
+    ) [GlobalDeclListFull]
+    GlobalVariableDecl(
+      VarDecl(
+        Type(
+         double
+        ) [Type]
+        OneVariableIdent(
+          ArrayVariableIdent(
+           array
+          ) [ArrayVariableIdent]
+        ) [OneVariableIdent]
+      ) [VarDecl]
+    ) [GlobalVariableDecl]
+  ) [GlobalDeclListFull]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            PrintStmt(
+              TermExpr(
+                Term(
+                  Const(
+                   1
+                  ) [Const]
+                ) [Term]
+              ) [TermExpr]
+            ) [PrintStmt]
+          ) [Statements]
+          ErrorStmt(
+          ) [ErrorStmt]
+        ) [Statements]
+        PrintStmt(
+          TermExpr(
+            Term(
+              Const(
+               2
+              ) [Const]
+            ) [Term]
+          ) [TermExpr]
+        ) [PrintStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  02:47:51,431 - ===================================
+INFO  02:47:51,436 -  Print count calls = 2
+INFO  02:47:51,436 -  Deklarisanih promenljivih ima = 2

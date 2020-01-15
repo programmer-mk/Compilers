@@ -1,0 +1,18 @@
+INFO  00:34:53,150 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  00:34:53,229 - #2 program
+INFO  00:34:53,229 - #19 MJProgram
+INFO  00:34:53,229 - #19 int
+INFO  00:34:53,233 - #19 x
+INFO  00:34:53,233 - #10 ,
+INFO  00:34:53,233 - #19 y
+INFO  00:34:53,233 - #10 ,
+INFO  00:34:53,237 - #19 z
+INFO  00:34:53,237 - #22 [
+INFO  00:34:53,237 - #23 ]
+INFO  00:34:53,237 - #5 ;
+INFO  00:34:53,237 - #19 int
+INFO  00:34:53,237 - #19 pi
+INFO  00:34:53,241 - #8 =
+ERROR 00:34:53,241 - 
+Sintaksna greska na liniji 3
+ERROR 00:34:53,241 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 3

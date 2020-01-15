@@ -1,0 +1,135 @@
+INFO  22:40:46,816 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  22:40:46,883 - #2 program
+INFO  22:40:46,883 - #19 MJProgram
+INFO  22:40:46,883 - #19 int
+INFO  22:40:46,884 - #19 x
+INFO  22:40:46,885 - #10 ,
+INFO  22:40:46,886 - #19 y
+INFO  22:40:46,886 - #10 ,
+INFO  22:40:46,887 - #19 z
+INFO  22:40:46,887 - #5 ;
+INFO  22:40:46,887 - #3 {
+INFO  22:40:46,888 - #19 int
+INFO  22:40:46,889 - #19 main
+INFO  22:40:46,889 - #6 (
+INFO  22:40:46,889 - #7 )
+INFO  22:40:46,890 - #3 {
+INFO  22:40:46,890 - #11 print
+INFO  22:40:46,891 - #6 (
+INFO  22:40:46,891 - #18 1
+INFO  22:40:46,891 - #7 )
+INFO  22:40:46,893 - #5 ;
+INFO  22:40:46,893 - #19 x
+INFO  22:40:46,893 - #8 =
+INFO  22:40:46,898 - #19 y
+INFO  22:40:46,898 - #14 -
+INFO  22:40:46,898 - #18 5
+INFO  22:40:46,901 - #5 ;
+INFO  22:40:46,901 - #11 print
+INFO  22:40:46,901 - #6 (
+INFO  22:40:46,901 - #18 2
+INFO  22:40:46,901 - #7 )
+INFO  22:40:46,901 - #5 ;
+INFO  22:40:46,901 - #4 }
+INFO  22:40:46,901 - #4 }
+INFO  22:40:46,904 - Program(
+ MJProgram
+  VarDeclarations(
+    NoVarDecl(
+    ) [NoVarDecl]
+    VarDecl(
+      Type(
+       int
+      ) [Type]
+      VariableIdentList(
+        VariableIdentList(
+          OneVariableIdent(
+            VariableIdentSingle(
+             x
+            ) [VariableIdentSingle]
+          ) [OneVariableIdent]
+          VariableIdentSingle(
+           y
+          ) [VariableIdentSingle]
+        ) [VariableIdentList]
+        VariableIdentSingle(
+         z
+        ) [VariableIdentSingle]
+      ) [VariableIdentList]
+    ) [VarDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            MatchedStmt(
+              PrintStmt(
+                TermExpr(
+                  Term(
+                    Const(
+                     1
+                    ) [Const]
+                  ) [Term]
+                ) [TermExpr]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              Designator(
+               x
+              ) [Designator]
+              AddSubExpr(
+                TermExpr(
+                  Term(
+                    Var(
+                      Designator(
+                       y
+                      ) [Designator]
+                    ) [Var]
+                  ) [Term]
+                ) [TermExpr]
+                AddOperation(
+                  Subop(
+                  ) [Subop]
+                ) [AddOperation]
+                Term(
+                  Const(
+                   5
+                  ) [Const]
+                ) [Term]
+              ) [AddSubExpr]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  22:40:46,905 - ===================================
+INFO  22:40:46,907 -  Print count calls = 2
+INFO  22:40:46,907 -  Deklarisanih promenljivih ima = 1

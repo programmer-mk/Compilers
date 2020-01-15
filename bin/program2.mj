@@ -1,0 +1,14 @@
+program MJProgram
+	int x, y, z[];
+	const int pi = 3;
+	double array[];
+{
+	int main() {
+		
+		print(1);
+		
+		x = y + 5;
+		
+		print(2);
+	}
+}

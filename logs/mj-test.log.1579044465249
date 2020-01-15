@@ -1,0 +1,181 @@
+INFO  00:27:23,590 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  00:27:23,690 - #2 program
+INFO  00:27:23,690 - #19 MJProgram
+INFO  00:27:23,693 - #19 int
+INFO  00:27:23,696 - #19 x
+INFO  00:27:23,696 - #10 ,
+INFO  00:27:23,698 - #19 y
+INFO  00:27:23,698 - #10 ,
+INFO  00:27:23,698 - #19 z
+INFO  00:27:23,698 - #22 [
+INFO  00:27:23,698 - #23 ]
+INFO  00:27:23,698 - #5 ;
+INFO  00:27:23,700 - #19 double
+INFO  00:27:23,700 - #19 array
+INFO  00:27:23,700 - #22 [
+INFO  00:27:23,700 - #23 ]
+INFO  00:27:23,700 - #5 ;
+INFO  00:27:23,704 - #3 {
+INFO  00:27:23,704 - #19 int
+INFO  00:27:23,704 - #19 main
+INFO  00:27:23,704 - #6 (
+INFO  00:27:23,708 - #7 )
+INFO  00:27:23,708 - #3 {
+INFO  00:27:23,724 - #11 print
+INFO  00:27:23,724 - #6 (
+INFO  00:27:23,724 - #18 1
+INFO  00:27:23,724 - #7 )
+INFO  00:27:23,728 - #5 ;
+INFO  00:27:23,728 - #19 int
+INFO  00:27:23,728 - #19 l
+ERROR 00:27:23,728 - 
+Sintaksna greska na liniji 9
+INFO  00:27:23,728 - #5 ;
+INFO  00:27:23,728 - #19 x
+INFO  00:27:23,728 - #8 =
+INFO  00:27:23,732 - #19 y
+ERROR 00:27:23,732 - Izvrsen oporavak do ; u liniji 9
+INFO  00:27:23,732 - #15 *
+INFO  00:27:23,732 - #18 5
+INFO  00:27:23,740 - #16 /
+INFO  00:27:23,740 - #19 z
+INFO  00:27:23,742 - #5 ;
+INFO  00:27:23,742 - #11 print
+INFO  00:27:23,744 - #6 (
+INFO  00:27:23,744 - #18 2
+INFO  00:27:23,744 - #7 )
+INFO  00:27:23,744 - #5 ;
+INFO  00:27:23,744 - #4 }
+INFO  00:27:23,744 - #4 }
+INFO  00:27:23,755 - Program(
+ MJProgram
+  VarDeclarations(
+    VarDeclarations(
+      NoVarDecl(
+      ) [NoVarDecl]
+      VarDecl(
+        Type(
+         int
+        ) [Type]
+        VariableIdentList(
+          VariableIdentList(
+            OneVariableIdent(
+              VariableIdentSingle(
+               x
+              ) [VariableIdentSingle]
+            ) [OneVariableIdent]
+            VariableIdentSingle(
+             y
+            ) [VariableIdentSingle]
+          ) [VariableIdentList]
+          ArrayVariableIdent(
+           z
+          ) [ArrayVariableIdent]
+        ) [VariableIdentList]
+      ) [VarDecl]
+    ) [VarDeclarations]
+    VarDecl(
+      Type(
+       double
+      ) [Type]
+      OneVariableIdent(
+        ArrayVariableIdent(
+         array
+        ) [ArrayVariableIdent]
+      ) [OneVariableIdent]
+    ) [VarDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              MatchedStmt(
+                PrintStmt(
+                  TermExpr(
+                    Term(
+                      Const(
+                       1
+                      ) [Const]
+                    ) [Term]
+                  ) [TermExpr]
+                ) [PrintStmt]
+              ) [MatchedStmt]
+            ) [Statements]
+            MatchedStmt(
+              ErrorStmt(
+              ) [ErrorStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              Designator(
+               x
+              ) [Designator]
+              AddSubExpr(
+                AddSubExpr(
+                  TermExpr(
+                    Term(
+                      Var(
+                        Designator(
+                         y
+                        ) [Designator]
+                      ) [Var]
+                    ) [Term]
+                  ) [TermExpr]
+                  MulOperation(
+                    Mulop(
+                    ) [Mulop]
+                  ) [MulOperation]
+                  Term(
+                    Const(
+                     5
+                    ) [Const]
+                  ) [Term]
+                ) [AddSubExpr]
+                MulOperation(
+                  Divop(
+                  ) [Divop]
+                ) [MulOperation]
+                Term(
+                  Var(
+                    Designator(
+                     z
+                    ) [Designator]
+                  ) [Var]
+                ) [Term]
+              ) [AddSubExpr]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:27:23,755 - ===================================
+INFO  00:27:23,759 -  Print count calls = 2
+INFO  00:27:23,759 -  Deklarisanih promenljivih ima = 2

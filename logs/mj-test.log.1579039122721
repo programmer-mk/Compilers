@@ -1,0 +1,152 @@
+INFO  22:57:45,756 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  22:57:45,814 - #2 program
+INFO  22:57:45,814 - #19 MJProgram
+INFO  22:57:45,814 - #19 int
+INFO  22:57:45,815 - #19 x
+INFO  22:57:45,816 - #10 ,
+INFO  22:57:45,817 - #19 y
+INFO  22:57:45,817 - #10 ,
+INFO  22:57:45,817 - #19 z
+INFO  22:57:45,817 - #22 [
+INFO  22:57:45,817 - #23 ]
+INFO  22:57:45,817 - #5 ;
+INFO  22:57:45,818 - #3 {
+INFO  22:57:45,819 - #19 int
+INFO  22:57:45,820 - #19 main
+INFO  22:57:45,820 - #6 (
+INFO  22:57:45,820 - #7 )
+INFO  22:57:45,821 - #3 {
+INFO  22:57:45,822 - #11 print
+INFO  22:57:45,823 - #6 (
+INFO  22:57:45,824 - #18 1
+INFO  22:57:45,824 - #7 )
+INFO  22:57:45,827 - #5 ;
+INFO  22:57:45,842 - #19 x
+INFO  22:57:45,843 - #8 =
+INFO  22:57:45,845 - #19 y
+INFO  22:57:45,847 - #15 *
+INFO  22:57:45,848 - #18 5
+INFO  22:57:45,857 - #16 /
+INFO  22:57:45,858 - #19 z
+INFO  22:57:45,865 - #5 ;
+INFO  22:57:45,866 - #11 print
+INFO  22:57:45,868 - #6 (
+INFO  22:57:45,869 - #18 2
+INFO  22:57:45,870 - #7 )
+INFO  22:57:45,870 - #5 ;
+INFO  22:57:45,871 - #4 }
+INFO  22:57:45,871 - #4 }
+INFO  22:57:45,875 - Program(
+ MJProgram
+  VarDeclarations(
+    NoVarDecl(
+    ) [NoVarDecl]
+    VarDecl(
+      Type(
+       int
+      ) [Type]
+      VariableIdentList(
+        VariableIdentList(
+          OneVariableIdent(
+            VariableIdentSingle(
+             x
+            ) [VariableIdentSingle]
+          ) [OneVariableIdent]
+          VariableIdentSingle(
+           y
+          ) [VariableIdentSingle]
+        ) [VariableIdentList]
+        ArrayVariableIdent(
+         z
+        ) [ArrayVariableIdent]
+      ) [VariableIdentList]
+    ) [VarDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            MatchedStmt(
+              PrintStmt(
+                TermExpr(
+                  Term(
+                    Const(
+                     1
+                    ) [Const]
+                  ) [Term]
+                ) [TermExpr]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              Designator(
+               x
+              ) [Designator]
+              AddSubExpr(
+                AddSubExpr(
+                  TermExpr(
+                    Term(
+                      Var(
+                        Designator(
+                         y
+                        ) [Designator]
+                      ) [Var]
+                    ) [Term]
+                  ) [TermExpr]
+                  MulOperation(
+                    Mulop(
+                    ) [Mulop]
+                  ) [MulOperation]
+                  Term(
+                    Const(
+                     5
+                    ) [Const]
+                  ) [Term]
+                ) [AddSubExpr]
+                MulOperation(
+                  Divop(
+                  ) [Divop]
+                ) [MulOperation]
+                Term(
+                  Var(
+                    Designator(
+                     z
+                    ) [Designator]
+                  ) [Var]
+                ) [Term]
+              ) [AddSubExpr]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  22:57:45,876 - ===================================
+INFO  22:57:45,912 -  Print count calls = 2
+INFO  22:57:45,912 -  Deklarisanih promenljivih ima = 1

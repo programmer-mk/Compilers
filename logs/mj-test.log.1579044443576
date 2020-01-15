@@ -1,0 +1,169 @@
+INFO  22:58:42,762 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  22:58:42,827 - #2 program
+INFO  22:58:42,827 - #19 MJProgram
+INFO  22:58:42,827 - #19 int
+INFO  22:58:42,828 - #19 x
+INFO  22:58:42,829 - #10 ,
+INFO  22:58:42,830 - #19 y
+INFO  22:58:42,830 - #10 ,
+INFO  22:58:42,830 - #19 z
+INFO  22:58:42,830 - #22 [
+INFO  22:58:42,830 - #23 ]
+INFO  22:58:42,830 - #5 ;
+INFO  22:58:42,831 - #19 double
+INFO  22:58:42,832 - #19 array
+INFO  22:58:42,832 - #22 [
+INFO  22:58:42,832 - #23 ]
+INFO  22:58:42,834 - #5 ;
+INFO  22:58:42,834 - #3 {
+INFO  22:58:42,834 - #19 int
+INFO  22:58:42,835 - #19 main
+INFO  22:58:42,836 - #6 (
+INFO  22:58:42,836 - #7 )
+INFO  22:58:42,838 - #3 {
+INFO  22:58:42,853 - #11 print
+INFO  22:58:42,854 - #6 (
+INFO  22:58:42,854 - #18 1
+INFO  22:58:42,854 - #7 )
+INFO  22:58:42,856 - #5 ;
+INFO  22:58:42,856 - #19 x
+INFO  22:58:42,856 - #8 =
+INFO  22:58:42,858 - #19 y
+INFO  22:58:42,858 - #15 *
+INFO  22:58:42,858 - #18 5
+INFO  22:58:42,859 - #16 /
+INFO  22:58:42,860 - #19 z
+INFO  22:58:42,861 - #5 ;
+INFO  22:58:42,861 - #11 print
+INFO  22:58:42,861 - #6 (
+INFO  22:58:42,861 - #18 2
+INFO  22:58:42,861 - #7 )
+INFO  22:58:42,861 - #5 ;
+INFO  22:58:42,861 - #4 }
+INFO  22:58:42,861 - #4 }
+INFO  22:58:42,865 - Program(
+ MJProgram
+  VarDeclarations(
+    VarDeclarations(
+      NoVarDecl(
+      ) [NoVarDecl]
+      VarDecl(
+        Type(
+         int
+        ) [Type]
+        VariableIdentList(
+          VariableIdentList(
+            OneVariableIdent(
+              VariableIdentSingle(
+               x
+              ) [VariableIdentSingle]
+            ) [OneVariableIdent]
+            VariableIdentSingle(
+             y
+            ) [VariableIdentSingle]
+          ) [VariableIdentList]
+          ArrayVariableIdent(
+           z
+          ) [ArrayVariableIdent]
+        ) [VariableIdentList]
+      ) [VarDecl]
+    ) [VarDeclarations]
+    VarDecl(
+      Type(
+       double
+      ) [Type]
+      OneVariableIdent(
+        ArrayVariableIdent(
+         array
+        ) [ArrayVariableIdent]
+      ) [OneVariableIdent]
+    ) [VarDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            MatchedStmt(
+              PrintStmt(
+                TermExpr(
+                  Term(
+                    Const(
+                     1
+                    ) [Const]
+                  ) [Term]
+                ) [TermExpr]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              Designator(
+               x
+              ) [Designator]
+              AddSubExpr(
+                AddSubExpr(
+                  TermExpr(
+                    Term(
+                      Var(
+                        Designator(
+                         y
+                        ) [Designator]
+                      ) [Var]
+                    ) [Term]
+                  ) [TermExpr]
+                  MulOperation(
+                    Mulop(
+                    ) [Mulop]
+                  ) [MulOperation]
+                  Term(
+                    Const(
+                     5
+                    ) [Const]
+                  ) [Term]
+                ) [AddSubExpr]
+                MulOperation(
+                  Divop(
+                  ) [Divop]
+                ) [MulOperation]
+                Term(
+                  Var(
+                    Designator(
+                     z
+                    ) [Designator]
+                  ) [Var]
+                ) [Term]
+              ) [AddSubExpr]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  22:58:42,866 - ===================================
+INFO  22:58:42,869 -  Print count calls = 2
+INFO  22:58:42,869 -  Deklarisanih promenljivih ima = 2
