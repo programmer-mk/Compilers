@@ -1,4 +1,4 @@
-
+    
 
 package rs.ac.bg.etf.pp1;
 
@@ -9,9 +9,9 @@ import rs.ac.bg.etf.pp1.ast.*;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
+   	boolean errorDetected;
    
-   
-    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+    // redefined methods for error reporting because text message content change
      
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
       done_parsing();
@@ -27,6 +27,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	errorDetected = true;
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -35,6 +36,9 @@ parser code {:
 
 :}
 
+init with {:
+	errorDetected = false;
+:}
 
 scan with {:
 	Symbol s = this.getScanner().next_token();
@@ -43,7 +47,7 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, EQUAL, RETURN, COMMA, PRINT, VOID, CONST;
+terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, EQUAL, RETURN, COMMA, PRINT, VOID, CONST, NEW;
 terminal PLUS, SUB, MUL, DIV, MOD;
 terminal Integer NUMBER;
 terminal Character CHAR;
@@ -54,22 +58,15 @@ terminal LBRACK, RBRACK;
 terminal INCREMENT, DECREMENT;
 terminal ASSIGN;
 
-nonterminal Program Program;
 nonterminal VarDeclList VarDeclList;
 nonterminal MethodDeclList MethodDeclList;
 nonterminal VarDecl VarDecl;
-nonterminal Type Type;
-nonterminal MethodDecl MethodDecl;
 nonterminal FormPars FormPars;
 nonterminal StatementList StatementList;
 nonterminal FormalParamList FormalParamList;
 nonterminal FormalParamDecl FormalParamDecl;
 nonterminal Statement Statement;
-nonterminal Designator Designator;
-nonterminal Expr Expr;
-nonterminal Term Term;
 nonterminal Addop Addop;
-nonterminal Factor Factor;
 nonterminal ActualPars ActualPars;
 nonterminal ActualParamList ActualParamList;
 nonterminal Mulop Mulop;
@@ -84,17 +81,26 @@ nonterminal ConstValAssign ConstValAssign;
 nonterminal ConstVal ConstVal;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal AssignStmnt AssignStmnt;
+nonterminal PreFormParsDummy PreFormParsDummy;
+nonterminal PreActParsDummy PreActParsDummy;
+nonterminal ActualParam ActualParam;
 
-Program ::= (Program) PROG IDENT:I1 GlobalDeclList:G2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, G2, M3); RESULT.setLine(I1left); :};
+
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Factor, Term, Expr,IncludeVoidType;
+
+Program ::= (Program) PROG ProgName:p GlobalDeclList:G1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(p, G1, M2); RESULT.setLine(pleft); :};
+
+ProgName ::= (ProgName) IDENT:progName {: RESULT=new ProgName(progName); RESULT.setLine(progNameleft); :};
 
 GlobalDeclList ::= (GlobalDeclListFull) GlobalDeclList:G1 GlobalDecl:G2 {: RESULT=new GlobalDeclListFull(G1, G2); RESULT.setLine(G1left); :}
 				   |
 				   (GlobalDeclListNone) {: RESULT=new GlobalDeclListNone(); :} /* epsilon */
 				   ;
 				   
-GlobalDecl ::=     (GlobalConstantDecl) ConstDecl:C1 {: RESULT=new GlobalConstantDecl(C1); RESULT.setLine(C1left); :}
+GlobalDecl ::=     (GlobalConstantDecl) ConstDecl:cd {: RESULT=new GlobalConstantDecl(cd); RESULT.setLine(cdleft); :}
 			       |
-			       (GlobalVariableDecl) VarDecl:V1 {: RESULT=new GlobalVariableDecl(V1); RESULT.setLine(V1left); :}
+			       (GlobalVariableDecl) VarDecl:vd {: RESULT=new GlobalVariableDecl(vd); RESULT.setLine(vdleft); :}
 			       ;
 			       
 ConstDecl ::=      (ConstDeclaration) CONST Type:T1 ConstAssignList:C2 SEMI {: RESULT=new ConstDeclaration(T1, C2); RESULT.setLine(T1left); :};
@@ -104,7 +110,7 @@ ConstAssignList ::=    (ConstAssignListFull) ConstAssignList:C1 COMMA ConstValAs
                        (ConstAssignItem) ConstValAssign:C1 {: RESULT=new ConstAssignItem(C1); RESULT.setLine(C1left); :}
                        ;
                        
-ConstValAssign  ::=     (ConstValAssign) IDENT:I1 ASSIGN ConstVal:C2 {: RESULT=new ConstValAssign(I1, C2); RESULT.setLine(I1left); :};
+ConstValAssign  ::=     (ConstValAssign) IDENT:constIdent ASSIGN ConstVal:C1 {: RESULT=new ConstValAssign(constIdent, C1); RESULT.setLine(constIdentleft); :};
 
 
 ConstVal        ::=     (ConstValNum) NUMBER:N1 {: RESULT=new ConstValNum(N1); RESULT.setLine(N1left); :} 
@@ -124,12 +130,12 @@ VarDecl ::= (VarDecl) Type:varType VarIdentList:V1 SEMI {: RESULT=new VarDecl(va
 			
 VarIdentList  ::= (VariableIdentList) VarIdentList:V1 COMMA VarIdent:V2 {: RESULT=new VariableIdentList(V1, V2); RESULT.setLine(V1left); :}
                   |
-                  (OneVariableIdent) VarIdent:V1 {: RESULT=new OneVariableIdent(V1); RESULT.setLine(V1left); :}
+                  (OneVariableIdent) VarIdent:varIdent {: RESULT=new OneVariableIdent(varIdent); RESULT.setLine(varIdentleft); :}
                   ;
 
-VarIdent   ::= (VariableIdentSingle) IDENT:I1 {: RESULT=new VariableIdentSingle(I1); RESULT.setLine(I1left); :}
+VarIdent   ::= (VariableIdentSingle) IDENT:varIdent {: RESULT=new VariableIdentSingle(varIdent); RESULT.setLine(varIdentleft); :}
                |
-               (ArrayVariableIdent) IDENT:I1 LBRACK RBRACK {: RESULT=new ArrayVariableIdent(I1); RESULT.setLine(I1left); :}
+               (ArrayVariableIdent) IDENT:arrIdent LBRACK RBRACK {: RESULT=new ArrayVariableIdent(arrIdent); RESULT.setLine(arrIdentleft); :}
                ;
               
 
@@ -138,10 +144,16 @@ Type ::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(type
 MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclarations(M1, M2); RESULT.setLine(M1left); :}
 				|
 				(NoMethodDecl) {: RESULT=new NoMethodDecl(); :} /* epsilon */
-				;
+				;				
 				
-MethodDecl ::= (MethodDecl) Type:retType IDENT:methName LPAREN FormPars:F1 RPAREN VarDeclList:V2 LBRACE StatementList:S3 RBRACE {: RESULT=new MethodDecl(retType, methName, F1, V2, S3); RESULT.setLine(retTypeleft); :};
-              
+MethodDecl ::= (MethodDecl) MethodSignature:M1 VarDeclList:V2 LBRACE StatementList:S3 RBRACE {: RESULT=new MethodDecl(M1, V2, S3); RESULT.setLine(M1left); :};
+ 
+MethodSignature ::= (MethodSignature) IncludeVoidType:I1 IDENT:methName LPAREN  PreFormParsDummy:P2 FormPars:F3 RPAREN {: RESULT=new MethodSignature(I1, methName, P2, F3); RESULT.setLine(I1left); :};
+
+IncludeVoidType ::= (WithoutVoidType) Type:typeName {: RESULT=new WithoutVoidType(typeName); RESULT.setLine(typeNameleft); :}
+					|
+					(VoidType) VOID {: RESULT=new VoidType(); :}
+					;
 
 FormPars ::= (FormParams) FormalParamList:F1 {: RESULT=new FormParams(F1); RESULT.setLine(F1left); :}
 		     |
@@ -152,14 +164,23 @@ FormalParamList ::= (FormalParamDecls) FormalParamList:F1 COMMA FormalParamDecl:
 				|
 				(SingleFormalParamDecl) FormalParamDecl:F1 {: RESULT=new SingleFormalParamDecl(F1); RESULT.setLine(F1left); :}
 				;
+				
+FormalParamDecl ::= (FormParDeclSingle) Type:T1 IDENT:I2 {: RESULT=new FormParDeclSingle(T1, I2); RESULT.setLine(T1left); :}
+                |
+                (FormParDeclArray) Type:T1 IDENT:I2 LBRACK RBRACK {: RESULT=new FormParDeclArray(T1, I2); RESULT.setLine(T1left); :}
+                |
+                (FormParDeclError) error:l
+                {: parser.report_error("Error recovery in formal param declaration on line" + lleft, null); :} {: RESULT=new FormParDeclError(); :}
+                ;
+                
+PreFormParsDummy ::=  (PreFormParsDummy) {: RESULT=new PreFormParsDummy(); :} /* epsilon */ ;
 
 StatementList ::= (Statements) StatementList:S1 Statement:S2 {: RESULT=new Statements(S1, S2); RESULT.setLine(S1left); :}
 				|
 				(NoStmt) {: RESULT=new NoStmt(); :} /* epsilon */
 				;
 				
-		 
-
+				
 Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(D1); RESULT.setLine(D1left); :}
 		   |
 		   (ErrorStmt) error SEMI:l
@@ -170,6 +191,8 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   (ReturnExpr) RETURN Expr:t SEMI {: RESULT=new ReturnExpr(t); RESULT.setLine(tleft); :}
 		   |
 		   (ReturnNoExpr) RETURN SEMI {: RESULT=new ReturnNoExpr(); :}
+		   |
+		   (ProcCall) Designator: func LPAREN ActualPars:A1 RPAREN SEMI {: RESULT=new ProcCall(func, A1); RESULT.setLine(funcleft); :}
 		   ;
 			
 Expr ::= (AddSubExpr) Expr:te Operation:op Term:t {: RESULT=new AddSubExpr(te, op, t); RESULT.setLine(teleft); :}
@@ -183,24 +206,36 @@ Factor ::= (Const) NUMBER:N1 {: RESULT=new Const(N1); RESULT.setLine(N1left); :}
 		|
 		(Var) Designator:d {: RESULT=new Var(d); RESULT.setLine(dleft); :}
 		| 
-		(FuncCall) Designator:func LPAREN ActualPars:A1 RPAREN {: RESULT=new FuncCall(func, A1); RESULT.setLine(funcleft); :}
+		(FuncCall) Designator:func LPAREN PreActParsDummy:P1 ActualPars:A2 RPAREN {: RESULT=new FuncCall(func, P1, A2); RESULT.setLine(funcleft); :}
+		|
+		(ArrayAccess)Designator:d LBRACK NUMBER:num RBRACK {: RESULT=new ArrayAccess(d, num); RESULT.setLine(dleft); :}
+		|
+		(DynamicData) NEW Type:type {: RESULT=new DynamicData(type); RESULT.setLine(typeleft); :} 
+		|
+		(DynamicArr) NEW Type:type LBRACK Expr:E1 RBRACK {: RESULT=new DynamicArr(type, E1); RESULT.setLine(typeleft); :}
 		;
+		
+PreActParsDummy ::= (PreActParsDummy) {: RESULT=new PreActParsDummy(); :} /* epsilon */ ;
 		
 ActualPars ::= (Actuals) ActualParamList:A1 {: RESULT=new Actuals(A1); RESULT.setLine(A1left); :}
 			|
 			(NoActuals) {: RESULT=new NoActuals(); :} /* epsilon */
 			;
 		
-ActualParamList ::= (ActualParams) ActualParamList:A1 COMMA Expr:E2 {: RESULT=new ActualParams(A1, E2); RESULT.setLine(A1left); :}
+ActualParamList ::= (ActualParams) ActualParamList:A1 COMMA ActualParam:A2 {: RESULT=new ActualParams(A1, A2); RESULT.setLine(A1left); :}
 				|
-				(ActualParam) Expr:E1 {: RESULT=new ActualParam(E1); RESULT.setLine(E1left); :}
+				(ActualParameter) ActualParam:A1 {: RESULT=new ActualParameter(A1); RESULT.setLine(A1left); :}
 				;
+				
+ActualParam ::= (ActualPar) Expr:E1 {: RESULT=new ActualPar(E1); RESULT.setLine(E1left); :};
 
 DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt:A1 {: RESULT=new AssignDesignatorStatement(A1); RESULT.setLine(A1left); :}
                             |
                             (IncrementStatement) Designator:D1 INCREMENT {: RESULT=new IncrementStatement(D1); RESULT.setLine(D1left); :}
                             |
-                            (DecrementStatement) Designator:D1 DECREMENT {: RESULT=new DecrementStatement(D1); RESULT.setLine(D1left); :};				
+                            (DecrementStatement) Designator:D1 DECREMENT {: RESULT=new DecrementStatement(D1); RESULT.setLine(D1left); :}
+                            ;	
+                            						
 				
 AssignStmnt             ::= (AssignStatement) Designator:D1 ASSIGN Expr:E2 {: RESULT=new AssignStatement(D1, E2); RESULT.setLine(D1left); :};				
 				

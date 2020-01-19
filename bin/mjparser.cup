@@ -1,4 +1,4 @@
-
+    
 
 package rs.ac.bg.etf.pp1;
 
@@ -9,9 +9,9 @@ import rs.ac.bg.etf.pp1.ast.*;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
+   	boolean errorDetected;
    
-   
-    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+    // redefined methods for error reporting because text message content change
      
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
       done_parsing();
@@ -27,6 +27,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	errorDetected = true;
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -35,6 +36,9 @@ parser code {:
 
 :}
 
+init with {:
+	errorDetected = false;
+:}
 
 scan with {:
 	Symbol s = this.getScanner().next_token();
@@ -43,7 +47,7 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, EQUAL, RETURN, COMMA, PRINT, VOID, CONST;
+terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, EQUAL, RETURN, COMMA, PRINT, VOID, CONST, NEW;
 terminal PLUS, SUB, MUL, DIV, MOD;
 terminal Integer NUMBER;
 terminal Character CHAR;
@@ -54,25 +58,34 @@ terminal LBRACK, RBRACK;
 terminal INCREMENT, DECREMENT;
 terminal ASSIGN;
 
-nonterminal Program, VarDeclList, MethodDeclList, VarDecl, Type, MethodDecl;
+nonterminal VarDeclList, MethodDeclList, VarDecl;
 nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
-nonterminal Designator, Expr, Term, Addop, Factor, ActualPars, ActualParamList;
+nonterminal Addop, ActualPars, ActualParamList;
 nonterminal Mulop, Operation;
 nonterminal VarIdentList, VarIdent;
 nonterminal GlobalDeclList, GlobalDecl;
 nonterminal ConstDecl, ConstAssignList, ConstValAssign, ConstVal;
 nonterminal DesignatorStatement, AssignStmnt;
+nonterminal PreFormParsDummy;
+nonterminal PreActParsDummy;
+nonterminal ActualParam;
 
-Program ::= (Program) PROG IDENT GlobalDeclList LBRACE MethodDeclList RBRACE;
+
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Factor, Term, Expr,IncludeVoidType;
+
+Program ::= (Program) PROG ProgName:p GlobalDeclList LBRACE MethodDeclList RBRACE;
+
+ProgName ::= (ProgName) IDENT:progName;
 
 GlobalDeclList ::= (GlobalDeclListFull) GlobalDeclList GlobalDecl
 				   |
 				   (GlobalDeclListNone) /* epsilon */
 				   ;
 				   
-GlobalDecl ::=     (GlobalConstantDecl) ConstDecl
+GlobalDecl ::=     (GlobalConstantDecl) ConstDecl:cd
 			       |
-			       (GlobalVariableDecl) VarDecl
+			       (GlobalVariableDecl) VarDecl:vd
 			       ;
 			       
 ConstDecl ::=      (ConstDeclaration) CONST Type ConstAssignList SEMI;
@@ -82,7 +95,7 @@ ConstAssignList ::=    (ConstAssignListFull) ConstAssignList COMMA ConstValAssig
                        (ConstAssignItem) ConstValAssign
                        ;
                        
-ConstValAssign  ::=     (ConstValAssign) IDENT ASSIGN ConstVal;
+ConstValAssign  ::=     (ConstValAssign) IDENT:constIdent ASSIGN ConstVal;
 
 
 ConstVal        ::=     (ConstValNum) NUMBER 
@@ -102,12 +115,12 @@ VarDecl ::= (VarDecl) Type:varType VarIdentList SEMI;
 			
 VarIdentList  ::= (VariableIdentList) VarIdentList COMMA VarIdent
                   |
-                  (OneVariableIdent) VarIdent
+                  (OneVariableIdent) VarIdent:varIdent
                   ;
 
-VarIdent   ::= (VariableIdentSingle) IDENT
+VarIdent   ::= (VariableIdentSingle) IDENT:varIdent
                |
-               (ArrayVariableIdent) IDENT LBRACK RBRACK
+               (ArrayVariableIdent) IDENT:arrIdent LBRACK RBRACK
                ;
               
 
@@ -116,10 +129,16 @@ Type ::= (Type) IDENT:typeName;
 MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				|
 				(NoMethodDecl) /* epsilon */
-				;
+				;				
 				
-MethodDecl ::= (MethodDecl) Type:retType IDENT:methName LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
-              
+MethodDecl ::= (MethodDecl) MethodSignature VarDeclList LBRACE StatementList RBRACE;
+ 
+MethodSignature ::= (MethodSignature) IncludeVoidType IDENT:methName LPAREN  PreFormParsDummy FormPars RPAREN;
+
+IncludeVoidType ::= (WithoutVoidType) Type:typeName
+					|
+					(VoidType) VOID
+					;
 
 FormPars ::= (FormParams) FormalParamList
 		     |
@@ -130,14 +149,23 @@ FormalParamList ::= (FormalParamDecls) FormalParamList COMMA FormalParamDecl
 				|
 				(SingleFormalParamDecl) FormalParamDecl
 				;
+				
+FormalParamDecl ::= (FormParDeclSingle) Type IDENT
+                |
+                (FormParDeclArray) Type IDENT LBRACK RBRACK
+                |
+                (FormParDeclError) error:l
+                {: parser.report_error("Error recovery in formal param declaration on line" + lleft, null); :}
+                ;
+                
+PreFormParsDummy ::=  (PreFormParsDummy) /* epsilon */ ;
 
 StatementList ::= (Statements) StatementList Statement
 				|
 				(NoStmt) /* epsilon */
 				;
 				
-		 
-
+				
 Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ErrorStmt) error SEMI:l
@@ -148,6 +176,8 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   (ReturnExpr) RETURN Expr:t SEMI
 		   |
 		   (ReturnNoExpr) RETURN SEMI
+		   |
+		   (ProcCall) Designator: func LPAREN ActualPars RPAREN SEMI
 		   ;
 			
 Expr ::= (AddSubExpr) Expr:te Operation:op Term:t
@@ -161,24 +191,36 @@ Factor ::= (Const) NUMBER
 		|
 		(Var) Designator:d
 		| 
-		(FuncCall) Designator:func LPAREN ActualPars RPAREN
+		(FuncCall) Designator:func LPAREN PreActParsDummy ActualPars RPAREN
+		|
+		(ArrayAccess)Designator:d LBRACK NUMBER:num RBRACK
+		|
+		(DynamicData) NEW Type:type 
+		|
+		(DynamicArr) NEW Type:type LBRACK Expr RBRACK
 		;
+		
+PreActParsDummy ::= (PreActParsDummy) /* epsilon */ ;
 		
 ActualPars ::= (Actuals) ActualParamList
 			|
 			(NoActuals) /* epsilon */
 			;
 		
-ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
+ActualParamList ::= (ActualParams) ActualParamList COMMA ActualParam
 				|
-				(ActualParam) Expr
+				(ActualParameter) ActualParam
 				;
+				
+ActualParam ::= (ActualPar) Expr;
 
 DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt
                             |
                             (IncrementStatement) Designator INCREMENT
                             |
-                            (DecrementStatement) Designator DECREMENT;				
+                            (DecrementStatement) Designator DECREMENT
+                            ;	
+                            						
 				
 AssignStmnt             ::= (AssignStatement) Designator ASSIGN Expr;				
 				

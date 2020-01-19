@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/0/2020 4:26:5
+// 19/0/2020 16:47:50
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,11 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class FuncCall extends Factor {
 
     private Designator Designator;
+    private PreActParsDummy PreActParsDummy;
     private ActualPars ActualPars;
 
-    public FuncCall (Designator Designator, ActualPars ActualPars) {
+    public FuncCall (Designator Designator, PreActParsDummy PreActParsDummy, ActualPars ActualPars) {
         this.Designator=Designator;
         if(Designator!=null) Designator.setParent(this);
+        this.PreActParsDummy=PreActParsDummy;
+        if(PreActParsDummy!=null) PreActParsDummy.setParent(this);
         this.ActualPars=ActualPars;
         if(ActualPars!=null) ActualPars.setParent(this);
     }
@@ -23,6 +26,14 @@ public class FuncCall extends Factor {
 
     public void setDesignator(Designator Designator) {
         this.Designator=Designator;
+    }
+
+    public PreActParsDummy getPreActParsDummy() {
+        return PreActParsDummy;
+    }
+
+    public void setPreActParsDummy(PreActParsDummy PreActParsDummy) {
+        this.PreActParsDummy=PreActParsDummy;
     }
 
     public ActualPars getActualPars() {
@@ -39,17 +50,20 @@ public class FuncCall extends Factor {
 
     public void childrenAccept(Visitor visitor) {
         if(Designator!=null) Designator.accept(visitor);
+        if(PreActParsDummy!=null) PreActParsDummy.accept(visitor);
         if(ActualPars!=null) ActualPars.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Designator!=null) Designator.traverseTopDown(visitor);
+        if(PreActParsDummy!=null) PreActParsDummy.traverseTopDown(visitor);
         if(ActualPars!=null) ActualPars.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Designator!=null) Designator.traverseBottomUp(visitor);
+        if(PreActParsDummy!=null) PreActParsDummy.traverseBottomUp(visitor);
         if(ActualPars!=null) ActualPars.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -61,6 +75,12 @@ public class FuncCall extends Factor {
 
         if(Designator!=null)
             buffer.append(Designator.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(PreActParsDummy!=null)
+            buffer.append(PreActParsDummy.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

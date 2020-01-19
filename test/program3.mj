@@ -1,0 +1,25 @@
+program MJProgram
+	int x, y, z;
+	int t;
+	const int pi = 3;
+	char array[];
+{
+	int k () int c; {
+	   c = 2;
+	   return c+2;
+	}
+
+	int main() {
+		
+		print(1);
+		
+		x = y / 5 + 3;
+		
+	    k();
+	    
+	    t++;
+		
+		print(2);
+		return 1;
+	}
+}

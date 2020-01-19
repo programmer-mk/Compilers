@@ -1,7 +1,7 @@
 program MJProgram
-	int x, y, z[];
+	int x, y, z;
 	const int pi = 3;
-	double array[];
+	char array[];
 {
 	int main() {
 		

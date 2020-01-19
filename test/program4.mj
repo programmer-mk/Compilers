@@ -1,0 +1,33 @@
+program MJProgram
+	int x, y, z;
+	int t;
+	int m;
+	const int pi = 3;
+	int l [];
+	char array[];
+{
+	int k (int s, int t) int c; {
+	   c = 2;
+	   s = 3;
+	   return c + 2 + s;
+	}
+
+	void main() {
+		
+		print(1);
+		
+		x = y / 5 + 3;
+		
+		m = new int;
+		
+		l = new int[2];
+		
+		x = y + l[0];
+		
+	    x = k(2,3);
+	    
+	    t++;
+		
+		print(2);
+	}
+}

@@ -1,100 +1,218 @@
-INFO  04:26:32,184 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
-INFO  04:26:32,262 - #2 program
-INFO  04:26:32,262 - #22 MJProgram
-INFO  04:26:32,262 - #22 int
-INFO  04:26:32,263 - #22 x
-INFO  04:26:32,266 - #10 ,
-INFO  04:26:32,270 - #22 y
-INFO  04:26:32,270 - #10 ,
-INFO  04:26:32,270 - #22 z
-INFO  04:26:32,270 - #23 [
-INFO  04:26:32,271 - #24 ]
-INFO  04:26:32,271 - #5 ;
-INFO  04:26:32,271 - #13 const
-INFO  04:26:32,272 - #22 int
-INFO  04:26:32,272 - #22 pi
-INFO  04:26:32,272 - #27 =
-INFO  04:26:32,273 - #19 3
-INFO  04:26:32,273 - #5 ;
-INFO  04:26:32,274 - #22 double
-INFO  04:26:32,275 - #22 array
-INFO  04:26:32,275 - #23 [
-INFO  04:26:32,275 - #24 ]
-INFO  04:26:32,275 - #5 ;
-INFO  04:26:32,275 - #3 {
-INFO  04:26:32,275 - #22 int
-INFO  04:26:32,277 - #22 main
-INFO  04:26:32,277 - #6 (
-INFO  04:26:32,277 - #7 )
-INFO  04:26:32,278 - #3 {
-INFO  04:26:32,279 - #11 print
-INFO  04:26:32,281 - #6 (
-INFO  04:26:32,281 - #19 1
-INFO  04:26:32,281 - #7 )
-INFO  04:26:32,285 - #5 ;
-INFO  04:26:32,285 - #22 x
-INFO  04:26:32,285 - #27 =
-INFO  04:26:32,287 - #22 y
-INFO  04:26:32,287 - #14 +
-INFO  04:26:32,287 - #19 5
-INFO  04:26:32,288 - #5 ;
-INFO  04:26:32,288 - #11 print
-INFO  04:26:32,289 - #6 (
-INFO  04:26:32,289 - #19 2
-INFO  04:26:32,289 - #7 )
-INFO  04:26:32,289 - #5 ;
-INFO  04:26:32,290 - #4 }
-INFO  04:26:32,292 - #4 }
-INFO  04:26:32,300 - Program(
- MJProgram
+INFO  16:49:36,065 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program4.mj
+INFO  16:49:36,188 - #2 program
+INFO  16:49:36,188 - #23 MJProgram
+INFO  16:49:36,189 - #23 int
+INFO  16:49:36,193 - #23 x
+INFO  16:49:36,194 - #10 ,
+INFO  16:49:36,195 - #23 y
+INFO  16:49:36,195 - #10 ,
+INFO  16:49:36,195 - #23 z
+INFO  16:49:36,195 - #5 ;
+INFO  16:49:36,196 - #23 int
+INFO  16:49:36,199 - #23 t
+INFO  16:49:36,199 - #5 ;
+INFO  16:49:36,199 - #23 int
+INFO  16:49:36,200 - #23 m
+INFO  16:49:36,200 - #5 ;
+INFO  16:49:36,200 - #13 const
+INFO  16:49:36,201 - #23 int
+INFO  16:49:36,201 - #23 pi
+INFO  16:49:36,201 - #28 =
+INFO  16:49:36,201 - #20 3
+INFO  16:49:36,202 - #5 ;
+INFO  16:49:36,204 - #23 int
+INFO  16:49:36,226 - #23 l
+INFO  16:49:36,226 - #24 [
+INFO  16:49:36,226 - #25 ]
+INFO  16:49:36,226 - #5 ;
+INFO  16:49:36,227 - #23 char
+INFO  16:49:36,227 - #23 array
+INFO  16:49:36,227 - #24 [
+INFO  16:49:36,227 - #25 ]
+INFO  16:49:36,227 - #5 ;
+INFO  16:49:36,228 - #3 {
+INFO  16:49:36,228 - #23 int
+INFO  16:49:36,229 - #23 k
+INFO  16:49:36,229 - #6 (
+INFO  16:49:36,230 - #23 int
+INFO  16:49:36,231 - #23 s
+INFO  16:49:36,231 - #10 ,
+INFO  16:49:36,232 - #23 int
+INFO  16:49:36,232 - #23 t
+INFO  16:49:36,232 - #7 )
+INFO  16:49:36,233 - #23 int
+INFO  16:49:36,236 - #23 c
+INFO  16:49:36,236 - #5 ;
+INFO  16:49:36,237 - #3 {
+INFO  16:49:36,237 - #23 c
+INFO  16:49:36,238 - #28 =
+INFO  16:49:36,240 - #20 2
+INFO  16:49:36,240 - #5 ;
+INFO  16:49:36,243 - #23 s
+INFO  16:49:36,243 - #28 =
+INFO  16:49:36,244 - #20 3
+INFO  16:49:36,244 - #5 ;
+INFO  16:49:36,244 - #9 return
+INFO  16:49:36,244 - #23 c
+INFO  16:49:36,244 - #15 +
+INFO  16:49:36,245 - #20 2
+INFO  16:49:36,246 - #15 +
+INFO  16:49:36,247 - #23 s
+INFO  16:49:36,247 - #5 ;
+INFO  16:49:36,247 - #4 }
+INFO  16:49:36,253 - #12 void
+INFO  16:49:36,261 - #23 main
+INFO  16:49:36,266 - #6 (
+INFO  16:49:36,267 - #7 )
+INFO  16:49:36,269 - #3 {
+INFO  16:49:36,269 - #11 print
+INFO  16:49:36,269 - #6 (
+INFO  16:49:36,269 - #20 1
+INFO  16:49:36,276 - #7 )
+INFO  16:49:36,276 - #5 ;
+INFO  16:49:36,276 - #23 x
+INFO  16:49:36,277 - #28 =
+INFO  16:49:36,277 - #23 y
+INFO  16:49:36,277 - #18 /
+INFO  16:49:36,277 - #20 5
+INFO  16:49:36,279 - #15 +
+INFO  16:49:36,279 - #20 3
+INFO  16:49:36,280 - #5 ;
+INFO  16:49:36,280 - #23 m
+INFO  16:49:36,280 - #28 =
+INFO  16:49:36,280 - #14 new
+INFO  16:49:36,280 - #23 int
+INFO  16:49:36,280 - #5 ;
+INFO  16:49:36,281 - #23 l
+INFO  16:49:36,281 - #28 =
+INFO  16:49:36,281 - #14 new
+INFO  16:49:36,281 - #23 int
+INFO  16:49:36,281 - #24 [
+INFO  16:49:36,282 - #20 2
+INFO  16:49:36,282 - #25 ]
+INFO  16:49:36,282 - #5 ;
+INFO  16:49:36,283 - #23 x
+INFO  16:49:36,283 - #28 =
+INFO  16:49:36,283 - #23 y
+INFO  16:49:36,283 - #15 +
+INFO  16:49:36,284 - #23 l
+INFO  16:49:36,284 - #24 [
+INFO  16:49:36,284 - #20 0
+INFO  16:49:36,284 - #25 ]
+INFO  16:49:36,285 - #5 ;
+INFO  16:49:36,285 - #23 x
+INFO  16:49:36,285 - #28 =
+INFO  16:49:36,286 - #23 k
+INFO  16:49:36,286 - #6 (
+INFO  16:49:36,286 - #20 2
+INFO  16:49:36,288 - #10 ,
+INFO  16:49:36,289 - #20 3
+INFO  16:49:36,289 - #7 )
+INFO  16:49:36,290 - #5 ;
+INFO  16:49:36,290 - #23 t
+INFO  16:49:36,291 - #26 ++
+INFO  16:49:36,291 - #5 ;
+INFO  16:49:36,291 - #11 print
+INFO  16:49:36,291 - #6 (
+INFO  16:49:36,291 - #20 2
+INFO  16:49:36,292 - #7 )
+INFO  16:49:36,292 - #5 ;
+INFO  16:49:36,292 - #4 }
+INFO  16:49:36,292 - #4 }
+INFO  16:49:36,297 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
   GlobalDeclListFull(
     GlobalDeclListFull(
       GlobalDeclListFull(
-        GlobalDeclListNone(
-        ) [GlobalDeclListNone]
-        GlobalVariableDecl(
-          VarDecl(
+        GlobalDeclListFull(
+          GlobalDeclListFull(
+            GlobalDeclListFull(
+              GlobalDeclListNone(
+              ) [GlobalDeclListNone]
+              GlobalVariableDecl(
+                VarDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  VariableIdentList(
+                    VariableIdentList(
+                      OneVariableIdent(
+                        VariableIdentSingle(
+                         x
+                        ) [VariableIdentSingle]
+                      ) [OneVariableIdent]
+                      VariableIdentSingle(
+                       y
+                      ) [VariableIdentSingle]
+                    ) [VariableIdentList]
+                    VariableIdentSingle(
+                     z
+                    ) [VariableIdentSingle]
+                  ) [VariableIdentList]
+                ) [VarDecl]
+              ) [GlobalVariableDecl]
+            ) [GlobalDeclListFull]
+            GlobalVariableDecl(
+              VarDecl(
+                Type(
+                 int
+                ) [Type]
+                OneVariableIdent(
+                  VariableIdentSingle(
+                   t
+                  ) [VariableIdentSingle]
+                ) [OneVariableIdent]
+              ) [VarDecl]
+            ) [GlobalVariableDecl]
+          ) [GlobalDeclListFull]
+          GlobalVariableDecl(
+            VarDecl(
+              Type(
+               int
+              ) [Type]
+              OneVariableIdent(
+                VariableIdentSingle(
+                 m
+                ) [VariableIdentSingle]
+              ) [OneVariableIdent]
+            ) [VarDecl]
+          ) [GlobalVariableDecl]
+        ) [GlobalDeclListFull]
+        GlobalConstantDecl(
+          ConstDeclaration(
             Type(
              int
             ) [Type]
-            VariableIdentList(
-              VariableIdentList(
-                OneVariableIdent(
-                  VariableIdentSingle(
-                   x
-                  ) [VariableIdentSingle]
-                ) [OneVariableIdent]
-                VariableIdentSingle(
-                 y
-                ) [VariableIdentSingle]
-              ) [VariableIdentList]
-              ArrayVariableIdent(
-               z
-              ) [ArrayVariableIdent]
-            ) [VariableIdentList]
-          ) [VarDecl]
-        ) [GlobalVariableDecl]
+            ConstAssignItem(
+              ConstValAssign(
+               pi
+                ConstValNum(
+                 3
+                ) [ConstValNum]
+              ) [ConstValAssign]
+            ) [ConstAssignItem]
+          ) [ConstDeclaration]
+        ) [GlobalConstantDecl]
       ) [GlobalDeclListFull]
-      GlobalConstantDecl(
-        ConstDeclaration(
+      GlobalVariableDecl(
+        VarDecl(
           Type(
            int
           ) [Type]
-          ConstAssignItem(
-            ConstValAssign(
-             pi
-              ConstValNum(
-               3
-              ) [ConstValNum]
-            ) [ConstValAssign]
-          ) [ConstAssignItem]
-        ) [ConstDeclaration]
-      ) [GlobalConstantDecl]
+          OneVariableIdent(
+            ArrayVariableIdent(
+             l
+            ) [ArrayVariableIdent]
+          ) [OneVariableIdent]
+        ) [VarDecl]
+      ) [GlobalVariableDecl]
     ) [GlobalDeclListFull]
     GlobalVariableDecl(
       VarDecl(
         Type(
-         double
+         char
         ) [Type]
         OneVariableIdent(
           ArrayVariableIdent(
@@ -105,60 +223,331 @@ INFO  04:26:32,300 - Program(
     ) [GlobalVariableDecl]
   ) [GlobalDeclListFull]
   MethodDeclarations(
-    NoMethodDecl(
-    ) [NoMethodDecl]
+    MethodDeclarations(
+      NoMethodDecl(
+      ) [NoMethodDecl]
+      MethodDecl(
+        MethodSignature(
+          WithoutVoidType(
+            Type(
+             int
+            ) [Type]
+          ) [WithoutVoidType]
+         k
+          PreFormParsDummy(
+          ) [PreFormParsDummy]
+          FormParams(
+            FormalParamDecls(
+              SingleFormalParamDecl(
+                FormParDeclSingle(
+                  Type(
+                   int
+                  ) [Type]
+                 s
+                ) [FormParDeclSingle]
+              ) [SingleFormalParamDecl]
+              FormParDeclSingle(
+                Type(
+                 int
+                ) [Type]
+               t
+              ) [FormParDeclSingle]
+            ) [FormalParamDecls]
+          ) [FormParams]
+        ) [MethodSignature]
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          VarDecl(
+            Type(
+             int
+            ) [Type]
+            OneVariableIdent(
+              VariableIdentSingle(
+               c
+              ) [VariableIdentSingle]
+            ) [OneVariableIdent]
+          ) [VarDecl]
+        ) [VarDeclarations]
+        Statements(
+          Statements(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              Assignment(
+                AssignDesignatorStatement(
+                  AssignStatement(
+                    Designator(
+                     c
+                    ) [Designator]
+                    TermExpr(
+                      Term(
+                        Const(
+                         2
+                        ) [Const]
+                      ) [Term]
+                    ) [TermExpr]
+                  ) [AssignStatement]
+                ) [AssignDesignatorStatement]
+              ) [Assignment]
+            ) [Statements]
+            Assignment(
+              AssignDesignatorStatement(
+                AssignStatement(
+                  Designator(
+                   s
+                  ) [Designator]
+                  TermExpr(
+                    Term(
+                      Const(
+                       3
+                      ) [Const]
+                    ) [Term]
+                  ) [TermExpr]
+                ) [AssignStatement]
+              ) [AssignDesignatorStatement]
+            ) [Assignment]
+          ) [Statements]
+          ReturnExpr(
+            AddSubExpr(
+              AddSubExpr(
+                TermExpr(
+                  Term(
+                    Var(
+                      Designator(
+                       c
+                      ) [Designator]
+                    ) [Var]
+                  ) [Term]
+                ) [TermExpr]
+                AddOperation(
+                  Addop(
+                  ) [Addop]
+                ) [AddOperation]
+                Term(
+                  Const(
+                   2
+                  ) [Const]
+                ) [Term]
+              ) [AddSubExpr]
+              AddOperation(
+                Addop(
+                ) [Addop]
+              ) [AddOperation]
+              Term(
+                Var(
+                  Designator(
+                   s
+                  ) [Designator]
+                ) [Var]
+              ) [Term]
+            ) [AddSubExpr]
+          ) [ReturnExpr]
+        ) [Statements]
+      ) [MethodDecl]
+    ) [MethodDeclarations]
     MethodDecl(
-      Type(
-       int
-      ) [Type]
-     main
-      NoFormParam(
-      ) [NoFormParam]
+      MethodSignature(
+        VoidType(
+        ) [VoidType]
+       main
+        PreFormParsDummy(
+        ) [PreFormParsDummy]
+        NoFormParam(
+        ) [NoFormParam]
+      ) [MethodSignature]
       NoVarDecl(
       ) [NoVarDecl]
       Statements(
         Statements(
           Statements(
-            NoStmt(
-            ) [NoStmt]
-            PrintStmt(
-              TermExpr(
-                Term(
-                  Const(
-                   1
-                  ) [Const]
-                ) [Term]
-              ) [TermExpr]
-            ) [PrintStmt]
-          ) [Statements]
-          Assignment(
-            AssignDesignatorStatement(
-              AssignStatement(
-                Designator(
-                 x
-                ) [Designator]
-                AddSubExpr(
+            Statements(
+              Statements(
+                Statements(
+                  Statements(
+                    Statements(
+                      NoStmt(
+                      ) [NoStmt]
+                      PrintStmt(
+                        TermExpr(
+                          Term(
+                            Const(
+                             1
+                            ) [Const]
+                          ) [Term]
+                        ) [TermExpr]
+                      ) [PrintStmt]
+                    ) [Statements]
+                    Assignment(
+                      AssignDesignatorStatement(
+                        AssignStatement(
+                          Designator(
+                           x
+                          ) [Designator]
+                          AddSubExpr(
+                            AddSubExpr(
+                              TermExpr(
+                                Term(
+                                  Var(
+                                    Designator(
+                                     y
+                                    ) [Designator]
+                                  ) [Var]
+                                ) [Term]
+                              ) [TermExpr]
+                              MulOperation(
+                                Divop(
+                                ) [Divop]
+                              ) [MulOperation]
+                              Term(
+                                Const(
+                                 5
+                                ) [Const]
+                              ) [Term]
+                            ) [AddSubExpr]
+                            AddOperation(
+                              Addop(
+                              ) [Addop]
+                            ) [AddOperation]
+                            Term(
+                              Const(
+                               3
+                              ) [Const]
+                            ) [Term]
+                          ) [AddSubExpr]
+                        ) [AssignStatement]
+                      ) [AssignDesignatorStatement]
+                    ) [Assignment]
+                  ) [Statements]
+                  Assignment(
+                    AssignDesignatorStatement(
+                      AssignStatement(
+                        Designator(
+                         m
+                        ) [Designator]
+                        TermExpr(
+                          Term(
+                            DynamicData(
+                              Type(
+                               int
+                              ) [Type]
+                            ) [DynamicData]
+                          ) [Term]
+                        ) [TermExpr]
+                      ) [AssignStatement]
+                    ) [AssignDesignatorStatement]
+                  ) [Assignment]
+                ) [Statements]
+                Assignment(
+                  AssignDesignatorStatement(
+                    AssignStatement(
+                      Designator(
+                       l
+                      ) [Designator]
+                      TermExpr(
+                        Term(
+                          DynamicArr(
+                            Type(
+                             int
+                            ) [Type]
+                            TermExpr(
+                              Term(
+                                Const(
+                                 2
+                                ) [Const]
+                              ) [Term]
+                            ) [TermExpr]
+                          ) [DynamicArr]
+                        ) [Term]
+                      ) [TermExpr]
+                    ) [AssignStatement]
+                  ) [AssignDesignatorStatement]
+                ) [Assignment]
+              ) [Statements]
+              Assignment(
+                AssignDesignatorStatement(
+                  AssignStatement(
+                    Designator(
+                     x
+                    ) [Designator]
+                    AddSubExpr(
+                      TermExpr(
+                        Term(
+                          Var(
+                            Designator(
+                             y
+                            ) [Designator]
+                          ) [Var]
+                        ) [Term]
+                      ) [TermExpr]
+                      AddOperation(
+                        Addop(
+                        ) [Addop]
+                      ) [AddOperation]
+                      Term(
+                        ArrayAccess(
+                          Designator(
+                           l
+                          ) [Designator]
+                         0
+                        ) [ArrayAccess]
+                      ) [Term]
+                    ) [AddSubExpr]
+                  ) [AssignStatement]
+                ) [AssignDesignatorStatement]
+              ) [Assignment]
+            ) [Statements]
+            Assignment(
+              AssignDesignatorStatement(
+                AssignStatement(
+                  Designator(
+                   x
+                  ) [Designator]
                   TermExpr(
                     Term(
-                      Var(
+                      FuncCall(
                         Designator(
-                         y
+                         k
                         ) [Designator]
-                      ) [Var]
+                        PreActParsDummy(
+                        ) [PreActParsDummy]
+                        Actuals(
+                          ActualParams(
+                            ActualParameter(
+                              ActualPar(
+                                TermExpr(
+                                  Term(
+                                    Const(
+                                     2
+                                    ) [Const]
+                                  ) [Term]
+                                ) [TermExpr]
+                              ) [ActualPar]
+                            ) [ActualParameter]
+                            ActualPar(
+                              TermExpr(
+                                Term(
+                                  Const(
+                                   3
+                                  ) [Const]
+                                ) [Term]
+                              ) [TermExpr]
+                            ) [ActualPar]
+                          ) [ActualParams]
+                        ) [Actuals]
+                      ) [FuncCall]
                     ) [Term]
                   ) [TermExpr]
-                  AddOperation(
-                    Addop(
-                    ) [Addop]
-                  ) [AddOperation]
-                  Term(
-                    Const(
-                     5
-                    ) [Const]
-                  ) [Term]
-                ) [AddSubExpr]
-              ) [AssignStatement]
-            ) [AssignDesignatorStatement]
+                ) [AssignStatement]
+              ) [AssignDesignatorStatement]
+            ) [Assignment]
+          ) [Statements]
+          Assignment(
+            IncrementStatement(
+              Designator(
+               t
+              ) [Designator]
+            ) [IncrementStatement]
           ) [Assignment]
         ) [Statements]
         PrintStmt(
@@ -174,6 +563,18 @@ INFO  04:26:32,300 - Program(
     ) [MethodDecl]
   ) [MethodDeclarations]
 ) [Program]
-INFO  04:26:32,302 - ===================================
-INFO  04:26:32,305 -  Print count calls = 2
-INFO  04:26:32,306 -  Deklarisanih promenljivih ima = 2
+INFO  16:49:36,298 - ===================================
+ERROR 16:49:36,320 - Declared variable  xwith type : 1on line2
+ERROR 16:49:36,322 - Declared variable  ywith type : 1on line2
+ERROR 16:49:36,322 - list of variables
+ERROR 16:49:36,322 - Declared variable  zwith type : 1on line2
+ERROR 16:49:36,323 - list of variables
+ERROR 16:49:36,323 - Declared variable  twith type : 1on line3
+ERROR 16:49:36,325 - Declared variable  mwith type : 1on line4
+ERROR 16:49:36,326 - Declared array variable  lwith type : 1on line6
+ERROR 16:49:36,326 - Declared array variable  arraywith type : 2on line7
+ERROR 16:49:36,327 - Declared variable  cwith type : 1on line9
+INFO  16:49:36,328 -  Print count calls = 2
+INFO  16:49:36,328 -  Deklarisanih promenljivih ima = 0
+INFO  16:49:36,329 - ===================================
+INFO  16:49:36,331 - Code parsing is successfully finished

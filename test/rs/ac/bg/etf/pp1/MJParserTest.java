@@ -14,6 +14,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
+import rs.etf.pp1.symboltable.Tab;
 
 public class MJParserTest {
 
@@ -28,7 +29,7 @@ public class MJParserTest {
 		
 		Reader br = null;
 		try {
-			File sourceCode = new File("test/program2.mj");
+			File sourceCode = new File("test/program4.mj");
 			log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 			
 			br = new BufferedReader(new FileReader(sourceCode));
@@ -43,14 +44,21 @@ public class MJParserTest {
 			log.info("===================================");
 
 			// ispis prepoznatih programskih konstrukcija
-			RuleVisitor v = new RuleVisitor();
-			prog.traverseBottomUp(v); 
-	      
-			log.info(" Print count calls = " + v.printCallCount);
-
-			log.info(" Deklarisanih promenljivih ima = " + v.varDeclCount);
+			Tab.init();
+			SemanticPass v = new SemanticPass();
+			prog.traverseBottomUp(v);
 			
-		} 
+			log.info(" Print count calls = " + v.printCallCount);
+			log.info(" Deklarisanih promenljivih ima = " + v.varDeclCount);
+			log.info("===================================");
+			Tab.dump();
+			
+			if(!p.errorDetected && v.passed()) {
+				log.info("Code parsing is successfully finished");
+			}else {
+				log.error("Code parsing isn't successfully finished");
+			}
+ 		} 
 		finally {
 			if (br != null) try { br.close(); } catch (IOException e1) { log.error(e1.getMessage(), e1); }
 		}
