@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 19/0/2020 16:47:50
+// 20/0/2020 20:42:10
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -13,6 +13,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FormalParamDecl FormalParamDecl) { }
     public void visit(StatementList StatementList) { }
     public void visit(Factor Factor) { }
+    public void visit(Designator Designator) { }
     public void visit(ActualParam ActualParam) { }
     public void visit(ActualParamList ActualParamList) { }
     public void visit(GlobalDeclList GlobalDeclList) { }
@@ -37,7 +38,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Addop Addop) { visit(); }
     public void visit(MulOperation MulOperation) { visit(); }
     public void visit(AddOperation AddOperation) { visit(); }
-    public void visit(Designator Designator) { visit(); }
+    public void visit(ArrayElemDesignator ArrayElemDesignator) { visit(); }
+    public void visit(DesignatorVar DesignatorVar) { visit(); }
     public void visit(AssignStatement AssignStatement) { visit(); }
     public void visit(DecrementStatement DecrementStatement) { visit(); }
     public void visit(IncrementStatement IncrementStatement) { visit(); }
@@ -50,7 +52,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(PreActParsDummy PreActParsDummy) { visit(); }
     public void visit(DynamicArr DynamicArr) { visit(); }
     public void visit(DynamicData DynamicData) { visit(); }
-    public void visit(ArrayAccess ArrayAccess) { visit(); }
     public void visit(FuncCall FuncCall) { visit(); }
     public void visit(Var Var) { visit(); }
     public void visit(Const Const) { visit(); }

@@ -3,7 +3,7 @@ program MJProgram
 	const int pi = 3;
 	char array[];
 {
-	int main() {
+	void main() {
 		
 		print(1);
 		

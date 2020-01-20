@@ -1,19 +1,19 @@
 // generated with ast extension for cup
 // version 0.8
-// 19/0/2020 16:47:50
+// 20/0/2020 20:42:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ArrayAccess extends Factor {
+public class ArrayElemDesignator extends Designator {
 
     private Designator Designator;
-    private Integer num;
+    private Integer N2;
 
-    public ArrayAccess (Designator Designator, Integer num) {
+    public ArrayElemDesignator (Designator Designator, Integer N2) {
         this.Designator=Designator;
         if(Designator!=null) Designator.setParent(this);
-        this.num=num;
+        this.N2=N2;
     }
 
     public Designator getDesignator() {
@@ -24,12 +24,12 @@ public class ArrayAccess extends Factor {
         this.Designator=Designator;
     }
 
-    public Integer getNum() {
-        return num;
+    public Integer getN2() {
+        return N2;
     }
 
-    public void setNum(Integer num) {
-        this.num=num;
+    public void setN2(Integer N2) {
+        this.N2=N2;
     }
 
     public void accept(Visitor visitor) {
@@ -53,7 +53,7 @@ public class ArrayAccess extends Factor {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ArrayAccess(\n");
+        buffer.append("ArrayElemDesignator(\n");
 
         if(Designator!=null)
             buffer.append(Designator.toString("  "+tab));
@@ -61,11 +61,11 @@ public class ArrayAccess extends Factor {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+num);
+        buffer.append(" "+tab+N2);
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [ArrayAccess]");
+        buffer.append(") [ArrayElemDesignator]");
         return buffer.toString();
     }
 }

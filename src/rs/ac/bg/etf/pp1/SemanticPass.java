@@ -78,6 +78,11 @@ public class SemanticPass extends VisitorAdaptor {
 	
     public void visit(PrintStmt print) {
 		printCallCount++;
+		if(print.getExpr().struct != Tab.intType && print.getExpr().struct != Tab.charType) {
+			report_error("Semantic error on line " + print.getLine()+ "Operand type instruction PRINT must be char or int!", null);
+		}
+		
+			
 	}
     
     public void visit(ProgName progName) {
@@ -179,12 +184,36 @@ public class SemanticPass extends VisitorAdaptor {
      	voidType.struct = Tab.noType;
     }
     
-    public void visit(Designator designator) {
+    public void visit(DesignatorVar designator) {
     	Obj varName = Tab.find(designator.getName());
     	if(varName == Tab.noObj) {
     		report_error("Error on line "+ designator.getLine()+" : name "+ designator.getName()+" is not declared", null);	
     	}
     	designator.obj = varName;
+    }
+    
+    public void visit(ArrayElemDesignator arrDesign) {
+    	/*
+    	Obj varName = Tab.find(arrDesign.getName());
+    	if(varName == Tab.noObj) {
+    		report_error("Error on line "+ arrDesign.getLine()+" : name "+ arrDesign.getName()+" is not declared", null);	
+    	}
+    	*/
+   
+    
+    	
+    	Obj desigObj = arrDesign.getDesignator().obj;
+    	if(desigObj.getType().getKind() != Struct.Array) {
+    		report_error("Error on line "+ arrDesign.getLine()+ ": name "+ arrDesign.getDesignator().obj.getName() + " is not an array!", null);
+    	}else {
+    		arrDesign.obj = new Obj(Obj.Elem, desigObj.getName() + "_elem", desigObj.getType().getElemType());
+    	}
+    	
+    	
+    	if(!definedArrays.containsKey(desigObj.getName())) {
+    		report_error("Error on line "+ arrDesign.getLine()+ ": name "+ arrDesign.getDesignator().obj.getName() + " is only declared!", null);
+    	}
+    	
     }
     
     public void visit(FuncCall funcCall) {
@@ -227,20 +256,6 @@ public class SemanticPass extends VisitorAdaptor {
         }
     }
     
-    public void visit(ArrayAccess arrayAccess) {
-    	String arrayName = arrayAccess.getDesignator().getName();
-    	Obj arr = Tab.find(arrayName);
-    	if(arr.getType().getKind() != Struct.Array) {
-    		report_error("Error on line "+ arrayAccess.getLine()+ ": name "+ arrayAccess.getDesignator().getName() + " is not an array!", null);
-    	}
-    	
-    	if(!definedArrays.containsKey(arrayName)) {
-    		report_error("Error on line "+ arrayAccess.getLine()+ ": name "+ arrayAccess.getDesignator().getName() + " is only declared!", null);
-    	}
-    	
-    	arrayAccess.struct = arr.getType().getElemType();	
-    }
-    
     public void visit(Term term) {
     	term.struct = term.getFactor().struct;
     }
@@ -260,6 +275,10 @@ public class SemanticPass extends VisitorAdaptor {
     public void visit(AddSubExpr addSubExpr) {
     	Struct exprType = addSubExpr.getExpr().struct;
     	Struct termType = addSubExpr.getTerm().struct;
+    	if(termType.getKind() == Struct.Array) {
+    		termType = termType.getElemType();
+    	}
+    	
     	if(exprType.equals(termType) && exprType == Tab.intType) {
     		addSubExpr.struct = exprType;
     	}else {
@@ -287,16 +306,25 @@ public class SemanticPass extends VisitorAdaptor {
     public void visit(AssignStatement assignStatement) {
     	Struct first = assignStatement.getExpr().struct;
     	Struct second = assignStatement.getDesignator().obj.getType();
-    	if(first.getKind() == Struct.Array) {
-    		// Type arr[] = new Type[x];
-    		Struct delcaredArrayType = Tab.find(assignStatement.getDesignator().getName()).getType(); // array type
-    		if(!assignStatement.getExpr().struct.assignableTo(delcaredArrayType)) {
-        		report_error("Error on line "+ assignStatement.getLine()+ " : " + "incompatible types in assign statement ", null);
+    	if(assignStatement.getDesignator().getClass() == DesignatorVar.class) {
+    		//------------------------
+    		if(first.getKind() == Struct.Array) {
+        		// Type arr[] = new Type[x];
+        		Struct delcaredArrayType = Tab.find(assignStatement.getDesignator().obj.getName()).getType(); // array type
+        		if(!assignStatement.getExpr().struct.assignableTo(delcaredArrayType)) {
+            		report_error("Error on line "+ assignStatement.getLine()+ " : " + "incompatible types in assign statement ", null);
+            	}
+        		
+        		definedArrays.put(assignStatement.getDesignator().obj.getName(), 1);
+        	}else {
+        		if(!assignStatement.getExpr().struct.assignableTo(assignStatement.getDesignator().obj.getType())) {
+            		report_error("Error on line "+ assignStatement.getLine()+ " : " + "incompatible types in assign statement ", null);
+            	}
         	}
-    		
-    		definedArrays.put(assignStatement.getDesignator().getName(), 1);
     	}else {
-    		if(!assignStatement.getExpr().struct.assignableTo(assignStatement.getDesignator().obj.getType())) {
+    		// array element assign expr
+    		Obj desigObj = assignStatement.getDesignator().obj;
+        	if(!assignStatement.getExpr().struct.assignableTo(desigObj.getType())) {
         		report_error("Error on line "+ assignStatement.getLine()+ " : " + "incompatible types in assign statement ", null);
         	}
     	}
@@ -307,7 +335,7 @@ public class SemanticPass extends VisitorAdaptor {
     }
     
     public void visit(IncrementStatement increment) {
-    	String varName = increment.getDesignator().getName();
+    	String varName = increment.getDesignator().obj.getName();
     	Struct varType = Tab.find(varName).getType();
     	if(varType.getKind() != Struct.Int) {
     		report_error("Error on line "+ increment.getLine()+ " : " + "variable type isn't INT", null);
@@ -315,7 +343,7 @@ public class SemanticPass extends VisitorAdaptor {
     }
     
     public void visit(DecrementStatement decrement) {
-    	String varName = decrement.getDesignator().getName();
+    	String varName = decrement.getDesignator().obj.getName();
     	Struct varType = Tab.find(varName).getType();
     	if(varType.getKind() != Struct.Int) {
     		report_error("Error on line "+ decrement.getLine()+ " : " + "variable type isn't INT", null);
@@ -345,7 +373,7 @@ public class SemanticPass extends VisitorAdaptor {
         currentActParTypesStack.peek().add(actParam.getExpr().struct);
     }
     
-    
+   
     public boolean passed() {
     	return !errorDetected;
     }

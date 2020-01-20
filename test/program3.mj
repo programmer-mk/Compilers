@@ -9,7 +9,7 @@ program MJProgram
 	   return c+2;
 	}
 
-	int main() {
+	void main() {
 		
 		print(1);
 		
@@ -20,6 +20,5 @@ program MJProgram
 	    t++;
 		
 		print(2);
-		return 1;
 	}
 }

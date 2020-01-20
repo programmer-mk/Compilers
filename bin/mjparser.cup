@@ -65,13 +65,13 @@ nonterminal Mulop, Operation;
 nonterminal VarIdentList, VarIdent;
 nonterminal GlobalDeclList, GlobalDecl;
 nonterminal ConstDecl, ConstAssignList, ConstValAssign, ConstVal;
-nonterminal DesignatorStatement, AssignStmnt;
+nonterminal DesignatorStatement;
 nonterminal PreFormParsDummy;
 nonterminal PreActParsDummy;
 nonterminal ActualParam;
 
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator,AssignStmnt;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Factor, Term, Expr,IncludeVoidType;
 
 Program ::= (Program) PROG ProgName:p GlobalDeclList LBRACE MethodDeclList RBRACE;
@@ -193,8 +193,6 @@ Factor ::= (Const) NUMBER
 		| 
 		(FuncCall) Designator:func LPAREN PreActParsDummy ActualPars RPAREN
 		|
-		(ArrayAccess)Designator:d LBRACK NUMBER:num RBRACK
-		|
 		(DynamicData) NEW Type:type 
 		|
 		(DynamicArr) NEW Type:type LBRACK Expr RBRACK
@@ -222,9 +220,13 @@ DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt
                             ;	
                             						
 				
-AssignStmnt             ::= (AssignStatement) Designator ASSIGN Expr;				
+AssignStmnt             ::= (AssignStatement) Designator ASSIGN Expr
+							;		
 				
-Designator ::= (Designator) IDENT:name;
+Designator ::= (DesignatorVar) IDENT:name
+			   |
+			   (ArrayElemDesignator) Designator LBRACK NUMBER RBRACK
+			   ;
 
 Operation ::= (AddOperation) Addop
 		      |

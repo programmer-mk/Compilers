@@ -1,14 +1,30 @@
 program MJProgram
 	int x; int y;
+	int array[];
 {
-	int main() {
+	int k () int c; {
+		c = 2;
+	
+		print(0);
+		
+		return c+2;
+	}
+	
+	
+	void main() {
+		x = 3;
+		
+		array = new int[30];
+		
+		
 		
 		
 		
 		print(1);
 		
-		x = y + 5;
+		print(x);
 		
-		print(2);
+		print(y);
+	
 	}
 }
