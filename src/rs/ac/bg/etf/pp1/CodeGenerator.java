@@ -8,12 +8,14 @@ import rs.ac.bg.etf.pp1.ast.*;
 import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
+import rs.etf.pp1.symboltable.concepts.Struct;
 
 public class CodeGenerator extends VisitorAdaptor {
 
 	private int mainPc;
 	
 	private Stack<Integer> addop = new Stack<>();
+	private Stack<Integer> mulop = new Stack<>();
 	
 	public int getMainPc() {
 		return mainPc;
@@ -33,6 +35,15 @@ public class CodeGenerator extends VisitorAdaptor {
 		Obj con = Tab.insert(Obj.Con, "$", constVal.struct);
 		con.setLevel(0); // global const, global scope
 		con.setAdr(constVal.getN1());
+		
+		// Push const on expr stack
+		Code.load(con);
+	}
+	
+	public void visit(ArrayIndex arrayIndex) {
+		Obj con = Tab.insert(Obj.Con, "$", Tab.intType);
+		con.setLevel(0); // global const, global scope
+		con.setAdr(arrayIndex.getN1());
 		
 		// Push const on expr stack
 		Code.load(con);
@@ -96,7 +107,11 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	 public void visit(AddSubExpr addSubExpr) {
-	        Code.put(addop.pop());
+		if(addSubExpr.getOperation().getClass() == AddOperation.class ) {
+		   Code.put(addop.pop());
+		}else {
+		   Code.put(mulop.pop());
+		}
 	 }
 	
 	public void visit(Addop addOperation) {
@@ -104,12 +119,39 @@ public class CodeGenerator extends VisitorAdaptor {
 		addop.push(Code.add);
 	}
 	
-	public void visit(ArrayElemDesignator arrayAccess) {
-	   Code.load(arrayAccess.obj);
+	public void visit(Subop subOperation) {
+		addop.push(Code.sub);
 	}
 	
+	public void visit(Mulop muloOperation) {
+		mulop.push(Code.mul);
+	}
+	
+	public void visit(Divop divOperation) {
+		mulop.push(Code.div);
+	}
+	
+	public void visit(Modop modOperation) {
+		mulop.push(Code.rem);
+	}
+	
+	public void visit(PreArrIdxDummy preArrIdxDummy) {
+		Obj arrObj = ((ArrayElemDesignator) preArrIdxDummy.getParent()).getDesignator().obj;
+		Code.load(arrObj);	
+	}
+	
+	
+	public void visit(ArrayElemDesignator arrayElemDesignator) {
+		if(!(arrayElemDesignator.getParent().getClass() == AssignStatement.class)) {
+			Code.load(arrayElemDesignator.obj);
+		}
+	}
+		
 	public void visit(DesignatorVar designatorVar) {
-		Code.load(designatorVar.obj);
+		if(!(designatorVar.getParent().getClass() == AssignStatement.class
+				|| designatorVar.getParent().getParent().getClass() == AssignStatement.class || designatorVar.getParent().getClass() == ArrayElemDesignator.class)) {													
+			Code.load(designatorVar.obj);
+		}
 	}
 	
 	public void visit(DynamicArr dynamicArray) {
@@ -117,4 +159,17 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.put(dynamicArray.struct.getElemType().equals(Tab.charType) ? 0 : 1); // TODO: what for bool?
     }
 	
+	public void visit(IncrementStatement incrementStatement) {
+		//Code.load(incrementStatement.getDesignator().obj); designator object is already pushed on stack in designatorVar method
+		Code.loadConst(1);
+		Code.put(Code.add);
+		Code.store(incrementStatement.getDesignator().obj);
+	}
+	
+	public void visit(DecrementStatement decrementStatement) {
+		//Code.load(incrementStatement.getDesignator().obj); designator object is already pushed on stack in designatorVar method
+		Code.loadConst(1);
+		Code.put(Code.sub);
+		Code.store(decrementStatement.getDesignator().obj);
+	}
 }

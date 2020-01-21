@@ -5,25 +5,22 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class Term implements SyntaxNode {
+public class ArrayIndex implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    public rs.etf.pp1.symboltable.concepts.Struct struct = null;
+    private Integer N1;
 
-    private Factor Factor;
-
-    public Term (Factor Factor) {
-        this.Factor=Factor;
-        if(Factor!=null) Factor.setParent(this);
+    public ArrayIndex (Integer N1) {
+        this.N1=N1;
     }
 
-    public Factor getFactor() {
-        return Factor;
+    public Integer getN1() {
+        return N1;
     }
 
-    public void setFactor(Factor Factor) {
-        this.Factor=Factor;
+    public void setN1(Integer N1) {
+        this.N1=N1;
     }
 
     public SyntaxNode getParent() {
@@ -47,32 +44,26 @@ public class Term implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Factor!=null) Factor.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Factor!=null) Factor.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Factor!=null) Factor.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("Term(\n");
+        buffer.append("ArrayIndex(\n");
 
-        if(Factor!=null)
-            buffer.append(Factor.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
+        buffer.append(" "+tab+N1);
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [Term]");
+        buffer.append(") [ArrayIndex]");
         return buffer.toString();
     }
 }

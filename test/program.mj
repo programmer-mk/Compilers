@@ -2,29 +2,27 @@ program MJProgram
 	int x; int y;
 	int array[];
 {
-	int k () int c; {
-		c = 2;
-	
-		print(0);
 		
-		return c+2;
-	}
-	
-	
 	void main() {
-		x = 3;
+		x = 3 * 2  * 4 / 8;
 		
-		array = new int[30];
+		x++;
 		
+	    print(x);
+	    
+	    x--;
+	    x--;
+	    
+	    print(x);
 		
+		array = new int[33];
 		
+		array[12] = 20;
 		
+		y =  array[12] + 4 - 1;
 		
 		print(1);
 		
-		print(x);
-		
 		print(y);
-	
 	}
 }

@@ -83,7 +83,8 @@ nonterminal DesignatorStatement DesignatorStatement;
 nonterminal PreFormParsDummy PreFormParsDummy;
 nonterminal PreActParsDummy PreActParsDummy;
 nonterminal ActualParam ActualParam;
-
+nonterminal PreArrIdxDummy PreArrIdxDummy;
+nonterminal ArrayIndex ArrayIndex;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator,AssignStmnt;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Factor, Term, Expr,IncludeVoidType;
@@ -235,12 +236,17 @@ DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt:A1 {: RESULT
                             						
 				
 AssignStmnt             ::= (AssignStatement) Designator:D1 ASSIGN Expr:E2 {: RESULT=new AssignStatement(D1, E2); RESULT.setLine(D1left); :}
-							;		
+							;	
+								
 				
 Designator ::= (DesignatorVar) IDENT:name {: RESULT=new DesignatorVar(name); RESULT.setLine(nameleft); :}
 			   |
-			   (ArrayElemDesignator) Designator:D1 LBRACK NUMBER:N2 RBRACK {: RESULT=new ArrayElemDesignator(D1, N2); RESULT.setLine(D1left); :}
+			   (ArrayElemDesignator) Designator:D1 LBRACK PreArrIdxDummy:P2 ArrayIndex:A3 RBRACK {: RESULT=new ArrayElemDesignator(D1, P2, A3); RESULT.setLine(D1left); :}
 			   ;
+			   
+ArrayIndex ::= (ArrayIndex) NUMBER:N1 {: RESULT=new ArrayIndex(N1); RESULT.setLine(N1left); :};
+
+PreArrIdxDummy ::= (PreArrIdxDummy) {: RESULT=new PreArrIdxDummy(); :}; /* epsilon */
 
 Operation ::= (AddOperation) Addop:A1 {: RESULT=new AddOperation(A1); RESULT.setLine(A1left); :}
 		      |

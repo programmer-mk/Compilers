@@ -5,9 +5,27 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class Subop extends Addop {
+public class PreArrIdxDummy implements SyntaxNode {
 
-    public Subop () {
+    private SyntaxNode parent;
+    private int line;
+    public PreArrIdxDummy () {
+    }
+
+    public SyntaxNode getParent() {
+        return parent;
+    }
+
+    public void setParent(SyntaxNode parent) {
+        this.parent=parent;
+    }
+
+    public int getLine() {
+        return line;
+    }
+
+    public void setLine(int line) {
+        this.line=line;
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +46,10 @@ public class Subop extends Addop {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("Subop(\n");
+        buffer.append("PreArrIdxDummy(\n");
 
         buffer.append(tab);
-        buffer.append(") [Subop]");
+        buffer.append(") [PreArrIdxDummy]");
         return buffer.toString();
     }
 }

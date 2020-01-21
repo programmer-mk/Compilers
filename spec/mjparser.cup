@@ -69,7 +69,8 @@ nonterminal DesignatorStatement;
 nonterminal PreFormParsDummy;
 nonterminal PreActParsDummy;
 nonterminal ActualParam;
-
+nonterminal PreArrIdxDummy;
+nonterminal ArrayIndex;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator,AssignStmnt;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Factor, Term, Expr,IncludeVoidType;
@@ -221,12 +222,17 @@ DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt
                             						
 				
 AssignStmnt             ::= (AssignStatement) Designator ASSIGN Expr
-							;		
+							;	
+								
 				
 Designator ::= (DesignatorVar) IDENT:name
 			   |
-			   (ArrayElemDesignator) Designator LBRACK NUMBER RBRACK
+			   (ArrayElemDesignator) Designator LBRACK PreArrIdxDummy ArrayIndex RBRACK
 			   ;
+			   
+ArrayIndex ::= (ArrayIndex) NUMBER;
+
+PreArrIdxDummy ::= (PreArrIdxDummy); /* epsilon */
 
 Operation ::= (AddOperation) Addop
 		      |
