@@ -47,7 +47,7 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, EQUAL, RETURN, COMMA, PRINT, VOID, CONST, NEW;
+terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, EQUAL, RETURN, COMMA, PRINT, VOID, CONST, NEW, READ;
 terminal PLUS, SUB, MUL, DIV, MOD;
 terminal Integer NUMBER;
 terminal Character CHAR;
@@ -78,15 +78,13 @@ nonterminal GlobalDecl GlobalDecl;
 nonterminal ConstDecl ConstDecl;
 nonterminal ConstAssignList ConstAssignList;
 nonterminal ConstValAssign ConstValAssign;
-nonterminal ConstVal ConstVal;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal PreFormParsDummy PreFormParsDummy;
 nonterminal PreActParsDummy PreActParsDummy;
 nonterminal ActualParam ActualParam;
 nonterminal PreArrIdxDummy PreArrIdxDummy;
-nonterminal ArrayIndex ArrayIndex;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator,AssignStmnt;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodSignature, Designator,AssignStmnt,ConstVal;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Factor, Term, Expr,IncludeVoidType;
 
 Program ::= (Program) PROG ProgName:p GlobalDeclList:G1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(p, G1, M2); RESULT.setLine(pleft); :};
@@ -188,6 +186,8 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   |
 		   (PrintStmt) PRINT LPAREN Expr:E1 RPAREN SEMI {: RESULT=new PrintStmt(E1); RESULT.setLine(E1left); :}
 		   |
+		   (ReadStmt) READ LPAREN Designator:d  RPAREN SEMI {: RESULT=new ReadStmt(d); RESULT.setLine(dleft); :}
+		   |
 		   (ReturnExpr) RETURN Expr:t SEMI {: RESULT=new ReturnExpr(t); RESULT.setLine(tleft); :}
 		   |
 		   (ReturnNoExpr) RETURN SEMI {: RESULT=new ReturnNoExpr(); :}
@@ -202,16 +202,18 @@ Expr ::= (AddSubExpr) Expr:te Operation:op Term:t {: RESULT=new AddSubExpr(te, o
 
 Term ::= (Term) Factor:t {: RESULT=new Term(t); RESULT.setLine(tleft); :};
 
-Factor ::= (Const) NUMBER:N1 {: RESULT=new Const(N1); RESULT.setLine(N1left); :}
-		|
-		(Var) Designator:d {: RESULT=new Var(d); RESULT.setLine(dleft); :}
-		| 
-		(FuncCall) Designator:func LPAREN PreActParsDummy:P1 ActualPars:A2 RPAREN {: RESULT=new FuncCall(func, P1, A2); RESULT.setLine(funcleft); :}
-		|
-		(DynamicData) NEW Type:type {: RESULT=new DynamicData(type); RESULT.setLine(typeleft); :} 
-		|
-		(DynamicArr) NEW Type:type LBRACK Expr:E1 RBRACK {: RESULT=new DynamicArr(type, E1); RESULT.setLine(typeleft); :}
-		;
+Factor ::= (Var) Designator:d {: RESULT=new Var(d); RESULT.setLine(dleft); :}
+			|
+			(FactorConstVal) ConstVal:C1 {: RESULT=new FactorConstVal(C1); RESULT.setLine(C1left); :}
+			| 
+			(FuncCall) Designator:func LPAREN PreActParsDummy:P1 ActualPars:A2 RPAREN {: RESULT=new FuncCall(func, P1, A2); RESULT.setLine(funcleft); :}
+			|
+			(DynamicData) NEW Type:type {: RESULT=new DynamicData(type); RESULT.setLine(typeleft); :} 
+			|
+			(DynamicArr) NEW Type:type LBRACK Expr:E1 RBRACK {: RESULT=new DynamicArr(type, E1); RESULT.setLine(typeleft); :}
+			|
+			(FactorParen) LPAREN Expr:E1 RPAREN {: RESULT=new FactorParen(E1); RESULT.setLine(E1left); :}
+			;
 		
 PreActParsDummy ::= (PreActParsDummy) {: RESULT=new PreActParsDummy(); :} /* epsilon */ ;
 		
@@ -241,10 +243,9 @@ AssignStmnt             ::= (AssignStatement) Designator:D1 ASSIGN Expr:E2 {: RE
 				
 Designator ::= (DesignatorVar) IDENT:name {: RESULT=new DesignatorVar(name); RESULT.setLine(nameleft); :}
 			   |
-			   (ArrayElemDesignator) Designator:D1 LBRACK PreArrIdxDummy:P2 ArrayIndex:A3 RBRACK {: RESULT=new ArrayElemDesignator(D1, P2, A3); RESULT.setLine(D1left); :}
+			   (ArrayElemDesignator) Designator:D1 LBRACK PreArrIdxDummy:P2 Expr:E3 RBRACK {: RESULT=new ArrayElemDesignator(D1, P2, E3); RESULT.setLine(D1left); :}
 			   ;
 			   
-ArrayIndex ::= (ArrayIndex) NUMBER:N1 {: RESULT=new ArrayIndex(N1); RESULT.setLine(N1left); :};
 
 PreArrIdxDummy ::= (PreArrIdxDummy) {: RESULT=new PreArrIdxDummy(); :}; /* epsilon */
 

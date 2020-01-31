@@ -5,20 +5,21 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class VariableIdentSingle extends VarIdent {
+public class FactorParen extends Factor {
 
-    private String varIdent;
+    private Expr Expr;
 
-    public VariableIdentSingle (String varIdent) {
-        this.varIdent=varIdent;
+    public FactorParen (Expr Expr) {
+        this.Expr=Expr;
+        if(Expr!=null) Expr.setParent(this);
     }
 
-    public String getVarIdent() {
-        return varIdent;
+    public Expr getExpr() {
+        return Expr;
     }
 
-    public void setVarIdent(String varIdent) {
-        this.varIdent=varIdent;
+    public void setExpr(Expr Expr) {
+        this.Expr=Expr;
     }
 
     public void accept(Visitor visitor) {
@@ -26,26 +27,32 @@ public class VariableIdentSingle extends VarIdent {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Expr!=null) Expr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Expr!=null) Expr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Expr!=null) Expr.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("VariableIdentSingle(\n");
+        buffer.append("FactorParen(\n");
 
-        buffer.append(" "+tab+varIdent);
+        if(Expr!=null)
+            buffer.append(Expr.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [VariableIdentSingle]");
+        buffer.append(") [FactorParen]");
         return buffer.toString();
     }
 }

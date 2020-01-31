@@ -126,8 +126,23 @@ public class SemanticPass extends VisitorAdaptor {
     	Obj varNode = Tab.insert(Obj.Var, arrayVariable.getArrIdent(), new Struct(Struct.Array, currentType));
     }
     
-    public void visit(ConstValAssign constVal) {
-    	constants.put(constVal.getConstIdent(), currentType.getKind());
+    public void visit(ConstValAssign constValAssign) {
+    	constants.put(constValAssign.getConstIdent(), currentType.getKind()); // remove ?
+    	Obj valObj = constValAssign.getConstVal().obj;
+        if (valObj.getType().equals(currentType)) {
+            if (Tab.currentScope().findSymbol(constValAssign.getConstIdent()) == null) {
+                Obj temp = Tab.insert(valObj.getKind(), constValAssign.getConstIdent(), valObj.getType());
+                temp.setAdr(valObj.getAdr());
+
+                if (temp.getLevel() == 0) {
+                  //  globalConstCnt++;
+                }
+            } else {
+                report_error("Error on " + constValAssign.getLine() + "(" + constValAssign.getConstIdent() + ") is already declared", null);
+            }
+        } else {
+            report_error("Error on " + constValAssign.getLine() + ": incompatible types", null);
+        }
     }
     
     public void visit(MethodSignature methodSignature) {
@@ -287,6 +302,10 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
+    public void visit(FactorParen factorParen) {
+    	factorParen.struct = factorParen.getExpr().struct;
+    }
+    
     public void visit(ReturnExpr returnExpr) {
     	returnFounded = true;
     	Struct currentMethodType = currentMethod.getType();
@@ -295,8 +314,20 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
-    public void visit (Const cnst) {
-    	cnst.struct = Tab.intType;
+    public void visit(FactorConstVal factorConst) {
+    	factorConst.struct = factorConst.getConstVal().obj.getType();
+    }
+    
+    public void visit(ConstValNum constValNum) {
+    	constValNum.obj = new Obj(Obj.Con, "", Tab.intType, constValNum.getN1(), Obj.NO_VALUE);
+    }
+    
+    public void visit(ConstValChar constValChar) {
+    	constValChar.obj = new Obj(Obj.Con, "", Tab.charType, constValChar.getC1(), Obj.NO_VALUE);
+    }
+    
+    public void visit(ConstValBool constValBool) {
+    	constValBool.obj = new Obj(Obj.Con, "", Tab.intType, Boolean.valueOf(constValBool.getB1()) ? 1 : 0, Obj.NO_VALUE);
     }
     
     public void visit(Var var) {
@@ -373,7 +404,14 @@ public class SemanticPass extends VisitorAdaptor {
         currentActParTypesStack.peek().add(actParam.getExpr().struct);
     }
     
-   
+    public void visit(ReadStmt readStatement) {
+    	String varName = readStatement.getDesignator().obj.getName();
+    	Struct varType = Tab.find(varName).getType();
+    	if(!(varType.getKind() == Struct.Int || varType.getKind()== Struct.Char || varType.getKind()== Struct.Bool)) {
+    		report_error("Error on line "+ readStatement.getLine()+ " : " + "variable type isn't INT or Char or Bool", null);
+    	}
+    }
+    
     public boolean passed() {
     	return !errorDetected;
     }

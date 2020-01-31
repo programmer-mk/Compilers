@@ -39,6 +39,7 @@ import java_cup.runtime.Symbol;
 
 "program"   { return new_symbol(sym.PROG, yytext());}
 "print" 	{ return new_symbol(sym.PRINT, yytext()); }
+"read"      { return new_symbol(sym.READ, yytext()); } 
 "return" 	{ return new_symbol(sym.RETURN, yytext()); }
 "void" 		{ return new_symbol(sym.VOID, yytext()); }
 "const"     { return new_symbol(sym.CONST, yytext()); }
@@ -66,6 +67,7 @@ import java_cup.runtime.Symbol;
 
 [0-9]+  { return new_symbol(sym.NUMBER, new Integer (yytext())); }
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{return new_symbol (sym.IDENT, yytext()); }
+"'"[\040-\176]"'" { return new_symbol(sym.CHAR, new Character(yytext().charAt(1))); }
 
 . { System.err.println("Lexical error ("+yytext()+") in line "+(yyline+1)); }
 

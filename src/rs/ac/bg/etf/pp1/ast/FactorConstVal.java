@@ -5,21 +5,21 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class TermExpr extends Expr {
+public class FactorConstVal extends Factor {
 
-    private Term Term;
+    private ConstVal ConstVal;
 
-    public TermExpr (Term Term) {
-        this.Term=Term;
-        if(Term!=null) Term.setParent(this);
+    public FactorConstVal (ConstVal ConstVal) {
+        this.ConstVal=ConstVal;
+        if(ConstVal!=null) ConstVal.setParent(this);
     }
 
-    public Term getTerm() {
-        return Term;
+    public ConstVal getConstVal() {
+        return ConstVal;
     }
 
-    public void setTerm(Term Term) {
-        this.Term=Term;
+    public void setConstVal(ConstVal ConstVal) {
+        this.ConstVal=ConstVal;
     }
 
     public void accept(Visitor visitor) {
@@ -27,32 +27,32 @@ public class TermExpr extends Expr {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Term!=null) Term.accept(visitor);
+        if(ConstVal!=null) ConstVal.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Term!=null) Term.traverseTopDown(visitor);
+        if(ConstVal!=null) ConstVal.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Term!=null) Term.traverseBottomUp(visitor);
+        if(ConstVal!=null) ConstVal.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("TermExpr(\n");
+        buffer.append("FactorConstVal(\n");
 
-        if(Term!=null)
-            buffer.append(Term.toString("  "+tab));
+        if(ConstVal!=null)
+            buffer.append(ConstVal.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [TermExpr]");
+        buffer.append(") [FactorConstVal]");
         return buffer.toString();
     }
 }

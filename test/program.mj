@@ -8,6 +8,8 @@ program MJProgram
 		
 		x++;
 		
+		read(x);
+		
 	    print(x);
 	    
 	    x--;

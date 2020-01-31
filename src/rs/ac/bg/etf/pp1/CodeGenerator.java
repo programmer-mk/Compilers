@@ -31,23 +31,29 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 	
-	public void visit(Const constVal) {
-		Obj con = Tab.insert(Obj.Con, "$", constVal.struct);
+	public void visit(ConstVal constVal) {
+		/*
+		Obj con = Tab.insert(Obj.Con, "$", constVal.obj.get);
 		con.setLevel(0); // global const, global scope
 		con.setAdr(constVal.getN1());
 		
 		// Push const on expr stack
 		Code.load(con);
+		*/
 	}
 	
+	/*
 	public void visit(ArrayIndex arrayIndex) {
 		Obj con = Tab.insert(Obj.Con, "$", Tab.intType);
 		con.setLevel(0); // global const, global scope
-		con.setAdr(arrayIndex.getN1());
+		con.setAdr(arrayIndex.getExpr());
 		
 		// Push const on expr stack
 		Code.load(con);
 	}
+	*/
+	
+	
 	
 	public void visit(MethodSignature methodSignature) {
 		if("main".equalsIgnoreCase(methodSignature.getMethName())) {
@@ -113,6 +119,16 @@ public class CodeGenerator extends VisitorAdaptor {
 		   Code.put(mulop.pop());
 		}
 	 }
+	 
+	public void visit(ReadStmt readStatement) {
+		if(readStatement.getDesignator().obj.getType().equals(Tab.intType)) {
+			Code.put(Code.read);
+		}else {
+			Code.put(Code.bread);
+		}
+		
+		Code.store(readStatement.getDesignator().obj);
+	}
 	
 	public void visit(Addop addOperation) {
 		// we asume that elements in expr are already on expression stack
