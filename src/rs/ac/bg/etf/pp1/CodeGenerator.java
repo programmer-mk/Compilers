@@ -31,16 +31,10 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 	
-	public void visit(ConstVal constVal) {
-		/*
-		Obj con = Tab.insert(Obj.Con, "$", constVal.obj.get);
-		con.setLevel(0); // global const, global scope
-		con.setAdr(constVal.getN1());
-		
-		// Push const on expr stack
-		Code.load(con);
-		*/
-	}
+
+    public void visit(FactorConstVal factorConstVal) {
+        Code.load(factorConstVal.getConstVal().obj);
+    }
 	
 	/*
 	public void visit(ArrayIndex arrayIndex) {
@@ -52,8 +46,6 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.load(con);
 	}
 	*/
-	
-	
 	
 	public void visit(MethodSignature methodSignature) {
 		if("main".equalsIgnoreCase(methodSignature.getMethName())) {
@@ -119,6 +111,10 @@ public class CodeGenerator extends VisitorAdaptor {
 		   Code.put(mulop.pop());
 		}
 	 }
+	 
+	public void visit(FactorParen factorParen) {
+		
+	}
 	 
 	public void visit(ReadStmt readStatement) {
 		if(readStatement.getDesignator().obj.getType().equals(Tab.intType)) {
