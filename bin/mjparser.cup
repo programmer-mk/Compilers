@@ -61,7 +61,7 @@ terminal ASSIGN;
 nonterminal VarDeclList, MethodDeclList, VarDecl;
 nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
 nonterminal Addop, ActualPars, ActualParamList;
-nonterminal Mulop, Operation;
+nonterminal Mulop;
 nonterminal VarIdentList, VarIdent;
 nonterminal GlobalDeclList, GlobalDecl;
 nonterminal ConstDecl, ConstAssignList, ConstValAssign;
@@ -182,12 +182,15 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   (ProcCall) Designator: func LPAREN ActualPars RPAREN SEMI
 		   ;
 			
-Expr ::= (AddSubExpr) Expr:te Operation:op Term:t
+Expr ::= (AddSubExpr) Expr:te Addop Term
 	     |
-	     (TermExpr) Term:t
+	     (TermExpr) Term
 	     ;
 
-Term ::= (Term) Factor:t;
+Term ::= (TermFactor) Factor:t
+		 |
+		 (TermMulop) Term Mulop Factor
+		 ;
 
 Factor ::= (Var) Designator:d
 			|
@@ -235,11 +238,6 @@ Designator ::= (DesignatorVar) IDENT:name
 			   
 
 PreArrIdxDummy ::= (PreArrIdxDummy); /* epsilon */
-
-Operation ::= (AddOperation) Addop
-		      |
-		      (MulOperation) Mulop
-		      ;
 
 Addop ::= (Addop) PLUS
 		  |

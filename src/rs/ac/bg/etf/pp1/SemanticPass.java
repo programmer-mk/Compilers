@@ -271,7 +271,7 @@ public class SemanticPass extends VisitorAdaptor {
         }
     }
     
-    public void visit(Term term) {
+    public void visit(TermFactor term) {
     	term.struct = term.getFactor().struct;
     }
     
@@ -363,6 +363,10 @@ public class SemanticPass extends VisitorAdaptor {
     
     public void visit(TermExpr termExpr) {
     	termExpr.struct = termExpr.getTerm().struct;
+    }
+    
+    public void visit(TermMulop termMulop) {
+    	termMulop.struct = termMulop.getTerm().struct;
     }
     
     public void visit(IncrementStatement increment) {

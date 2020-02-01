@@ -1,13 +1,12 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/0/2020 22:21:39
+// 1/1/2020 1:36:56
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public abstract class VisitorAdaptor implements Visitor { 
 
-    public void visit(Operation Operation) { }
     public void visit(IncludeVoidType IncludeVoidType) { }
     public void visit(VarIdent VarIdent) { }
     public void visit(FormalParamDecl FormalParamDecl) { }
@@ -15,6 +14,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Factor Factor) { }
     public void visit(Designator Designator) { }
     public void visit(ActualParam ActualParam) { }
+    public void visit(Term Term) { }
     public void visit(ActualParamList ActualParamList) { }
     public void visit(GlobalDeclList GlobalDeclList) { }
     public void visit(AssignStmnt AssignStmnt) { }
@@ -36,8 +36,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Mulop Mulop) { visit(); }
     public void visit(Subop Subop) { visit(); }
     public void visit(Addop Addop) { visit(); }
-    public void visit(MulOperation MulOperation) { visit(); }
-    public void visit(AddOperation AddOperation) { visit(); }
     public void visit(PreArrIdxDummy PreArrIdxDummy) { visit(); }
     public void visit(ArrayElemDesignator ArrayElemDesignator) { visit(); }
     public void visit(DesignatorVar DesignatorVar) { visit(); }
@@ -57,7 +55,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FuncCall FuncCall) { visit(); }
     public void visit(FactorConstVal FactorConstVal) { visit(); }
     public void visit(Var Var) { visit(); }
-    public void visit(Term Term) { visit(); }
+    public void visit(TermMulop TermMulop) { visit(); }
+    public void visit(TermFactor TermFactor) { visit(); }
     public void visit(TermExpr TermExpr) { visit(); }
     public void visit(AddSubExpr AddSubExpr) { visit(); }
     public void visit(ProcCall ProcCall) { visit(); }

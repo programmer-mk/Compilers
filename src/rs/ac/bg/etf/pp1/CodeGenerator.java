@@ -105,16 +105,12 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	 public void visit(AddSubExpr addSubExpr) {
-		if(addSubExpr.getOperation().getClass() == AddOperation.class ) {
-		   Code.put(addop.pop());
-		}else {
-		   Code.put(mulop.pop());
-		}
+		Code.put(addop.pop());
 	 }
 	 
-	public void visit(FactorParen factorParen) {
-		
-	}
+	 public void visit(TermMulop term_mulop) {
+	        Code.put(mulop.pop());
+	 }
 	 
 	public void visit(ReadStmt readStatement) {
 		if(readStatement.getDesignator().obj.getType().equals(Tab.intType)) {

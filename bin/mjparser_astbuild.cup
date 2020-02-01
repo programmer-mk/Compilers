@@ -70,7 +70,6 @@ nonterminal Addop Addop;
 nonterminal ActualPars ActualPars;
 nonterminal ActualParamList ActualParamList;
 nonterminal Mulop Mulop;
-nonterminal Operation Operation;
 nonterminal VarIdentList VarIdentList;
 nonterminal VarIdent VarIdent;
 nonterminal GlobalDeclList GlobalDeclList;
@@ -195,12 +194,15 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   (ProcCall) Designator: func LPAREN ActualPars:A1 RPAREN SEMI {: RESULT=new ProcCall(func, A1); RESULT.setLine(funcleft); :}
 		   ;
 			
-Expr ::= (AddSubExpr) Expr:te Operation:op Term:t {: RESULT=new AddSubExpr(te, op, t); RESULT.setLine(teleft); :}
+Expr ::= (AddSubExpr) Expr:te Addop:A1 Term:T2 {: RESULT=new AddSubExpr(te, A1, T2); RESULT.setLine(teleft); :}
 	     |
-	     (TermExpr) Term:t {: RESULT=new TermExpr(t); RESULT.setLine(tleft); :}
+	     (TermExpr) Term:T1 {: RESULT=new TermExpr(T1); RESULT.setLine(T1left); :}
 	     ;
 
-Term ::= (Term) Factor:t {: RESULT=new Term(t); RESULT.setLine(tleft); :};
+Term ::= (TermFactor) Factor:t {: RESULT=new TermFactor(t); RESULT.setLine(tleft); :}
+		 |
+		 (TermMulop) Term:T1 Mulop:M2 Factor:F3 {: RESULT=new TermMulop(T1, M2, F3); RESULT.setLine(T1left); :}
+		 ;
 
 Factor ::= (Var) Designator:d {: RESULT=new Var(d); RESULT.setLine(dleft); :}
 			|
@@ -248,11 +250,6 @@ Designator ::= (DesignatorVar) IDENT:name {: RESULT=new DesignatorVar(name); RES
 			   
 
 PreArrIdxDummy ::= (PreArrIdxDummy) {: RESULT=new PreArrIdxDummy(); :}; /* epsilon */
-
-Operation ::= (AddOperation) Addop:A1 {: RESULT=new AddOperation(A1); RESULT.setLine(A1left); :}
-		      |
-		      (MulOperation) Mulop:M1 {: RESULT=new MulOperation(M1); RESULT.setLine(M1left); :}
-		      ;
 
 Addop ::= (Addop) PLUS {: RESULT=new Addop(); :}
 		  |
