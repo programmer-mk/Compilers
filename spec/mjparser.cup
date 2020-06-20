@@ -57,11 +57,13 @@ terminal String IDENT;
 terminal LBRACK, RBRACK;
 terminal INCREMENT, DECREMENT;
 terminal ASSIGN;
+terminal  ADDEQUAL, SUBEQUAL, MULEQUAL, DIVEQUAL, MODEQUAL;
 
 nonterminal VarDeclList, MethodDeclList, VarDecl;
 nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
 nonterminal Addop, ActualPars, ActualParamList;
 nonterminal Mulop;
+nonterminal Assignop, AddopLeft, AddopRight, MullopLeft, MullopRight;
 nonterminal VarIdentList, VarIdent;
 nonterminal GlobalDeclList, GlobalDecl;
 nonterminal ConstDecl, ConstAssignList, ConstValAssign;
@@ -95,7 +97,7 @@ ConstAssignList ::=    (ConstAssignListFull) ConstAssignList COMMA ConstValAssig
                        (ConstAssignItem) ConstValAssign
                        ;
                        
-ConstValAssign  ::=     (ConstValAssign) IDENT:constIdent ASSIGN ConstVal;
+ConstValAssign  ::=     (ConstValAssign) IDENT:constIdent Assignop ConstVal;
 
 
 ConstVal        ::=     (ConstValNum) NUMBER 
@@ -227,7 +229,7 @@ DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt
                             ;	
                             						
 				
-AssignStmnt             ::= (AssignStatement) Designator ASSIGN Expr
+AssignStmnt             ::= (AssignStatement) Designator:design Assignop Expr
 							;	
 								
 				
@@ -239,17 +241,50 @@ Designator ::= (DesignatorVar) IDENT:name
 
 PreArrIdxDummy ::= (PreArrIdxDummy); /* epsilon */
 
-Addop ::= (Addop) PLUS
-		  |
-		  (Subop) SUB
-		  ;
 
-Mulop ::= (Mulop) MUL
-		  |
-		  (Divop) DIV
-		  |
-		  (Modop) MOD
-		  ;
+Assignop ::=  (Assignop) ASSIGN
+              |
+              (AddRightOp)  AddopRight 
+              |
+              (MullRightOp) MullopRight
+              ;
+ 
+Addop ::= (AddLeft) AddopLeft
+          | 
+          (AddRight) AddopRight
+          ;
+          
+AddopLeft ::= (Add) PLUS
+		      |
+		      (Sub) SUB
+		      ;
+
+AddopRight ::= (AddEqual) ADDEQUAL
+			   |
+			   (SubEqual) SUBEQUAL
+			   ;
+
+Mulop ::= (MulLeft) MullopLeft
+          | 
+          (MulRight) MullopRight
+          ;
+
+			    
+MullopLeft ::= (Muloperation) MUL
+		       |
+		       (Divoperation) DIV
+		       |
+		       (Modoperation) MOD
+		       ;
+
+MullopRight ::= (MullAddEqual) MULEQUAL
+			   |
+			   (DivEqual) DIVEQUAL
+			   |
+			   (ModEqual) MODEQUAL
+			   ;
+
+
 		
 		
 

@@ -1,5 +1,6 @@
 package rs.ac.bg.etf.pp1;
 
+import java.util.HashMap;
 import java.util.Stack;
 
 import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
@@ -16,6 +17,14 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	private Stack<Integer> addop = new Stack<>();
 	private Stack<Integer> mulop = new Stack<>();
+	private Stack<Integer> equal = new Stack<>();
+	private Stack<Obj> nestedVariables = new Stack<>();
+	
+	Obj currentObject = null;
+	Obj previousObject = null;
+	
+	HashMap<String, Integer> counts = new HashMap<>();
+	ArrayElemDesignator currElemDesignator = null;
 	
 	public int getMainPc() {
 		return mainPc;
@@ -73,9 +82,69 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	public void visit(AssignStatement assignStatement) {
+		if(!equal.isEmpty()) {
+			if(!addop.isEmpty()) {
+				 Code.put(addop.pop());
+			}else {
+			   // mulop is not empty
+				if(!mulop.isEmpty())  Code.put(mulop.pop());
+			}
+		   
+		    if(assignStatement.getDesignator().getClass() != ArrayElemDesignator.class) {
+		    	Code.put(Code.dup);
+		    }else {
+		    	Code.put(Code.dup_x2);
+		    }  
+		}
+		
 		Code.store(assignStatement.getDesignator().obj);
+		
+		if(!equal.isEmpty()) {
+			Code.put(Code.pop);
+		}
+		
+		/*
+		if(currElemDesignator != null)
+			helper(currElemDesignator);
+		currElemDesignator = null;
+		*/
 	}
-
+	
+	
+	public void visit(AddopLeft addOpLeft) {
+		Code.put(addop.pop());
+	}
+	
+	public void visit(MullopLeft mulOpLeft) {
+		Code.put(mulop.pop());
+	}
+	
+	public void visit(MullRightOp mulRightOp) {
+		equal.add(1);
+		AssignStatement assignStatement = (AssignStatement) mulRightOp.getParent();
+		if(assignStatement != null) {
+			if(assignStatement.getDesignator().getClass() != ArrayElemDesignator.class) {
+				Code.load(assignStatement.getDesignator().obj);
+			}else {
+				Code.put(Code.dup2);
+				Code.load(assignStatement.getDesignator().obj);
+			}
+		}
+	}
+	
+	
+	public void visit(AddRightOp addOpRight) {
+		equal.add(1);
+		AssignStatement assignStatement = (AssignStatement) addOpRight.getParent();
+		if(assignStatement != null) {
+			if(assignStatement.getDesignator().getClass() != ArrayElemDesignator.class) {
+				Code.load(assignStatement.getDesignator().obj);
+			}else {
+				Code.put(Code.dup2);
+				Code.load(assignStatement.getDesignator().obj);
+			}
+		}
+	}
 	
 	public void visit(FuncCall funcCall) {
 		Obj functionObj = funcCall.getDesignator().obj;
@@ -105,11 +174,82 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	 public void visit(AddSubExpr addSubExpr) {
-		Code.put(addop.pop());
+		 if(addSubExpr.getParent().getClass() == AddSubExpr.class) {
+			//instructionList.add(1);
+		 } else {
+			 
+			//previos addSubExpr
+			if(!nestedVariables.isEmpty() ) {
+				 
+				AssignStatement assignStatement = (AssignStatement) addSubExpr.getParent();
+				if(assignStatement != null && assignStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
+					//skip
+				}else {
+					 Code.put(addop.pop());
+					 Code.put(Code.dup);
+					 Code.store(nestedVariables.pop());	
+				}
+				
+				 
+				
+			}
+			 
+			 
+		   if(!equal.isEmpty()) {
+			    if(!addop.isEmpty()) {
+			    	Code.put(addop.pop());
+			    }else if(!mulop.isEmpty()) {
+			    	Code.put(mulop.pop());
+			    }
+			    Code.put(Code.dup);
+			    if(!nestedVariables.isEmpty()) {
+			    	Code.store(nestedVariables.pop());
+			    }
+			    
+			    //Code.put(Code.pop);
+		   }
+		 }
 	 }
 	 
 	 public void visit(TermMulop term_mulop) {
-	        Code.put(mulop.pop());
+	     //   Code.put(mulop.pop());
+	        
+		 if(term_mulop.getParent().getClass() == TermMulop.class) {
+				//instructionList.add(1);
+			 } else {
+				 
+				//previos addSubExpr
+				if(!nestedVariables.isEmpty() ) {
+					 
+					AssignStatement assignStatement = (AssignStatement) term_mulop.getParent().getParent();
+					if(assignStatement != null && assignStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
+						//skip
+					}else {
+						 Code.put(mulop.pop());
+						 Code.put(Code.dup);
+						 Code.store(nestedVariables.pop());	
+					}
+					
+					 
+					
+				}
+				 
+				 
+			   if(!equal.isEmpty()) {
+				    if(!addop.isEmpty()) {
+				    	Code.put(addop.pop());
+				    }else if(!mulop.isEmpty()) {
+				    	Code.put(mulop.pop());
+				    }
+				    Code.put(Code.dup);
+				    if(!nestedVariables.isEmpty()) {
+				    	Code.store(nestedVariables.pop());
+				    }
+				    
+				    //Code.put(Code.pop);
+			   } 
+	        
+			 }   
 	 }
 	 
 	public void visit(ReadStmt readStatement) {
@@ -122,25 +262,56 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.store(readStatement.getDesignator().obj);
 	}
 	
-	public void visit(Addop addOperation) {
+	public void visit(Add addOperation) {
 		// we asume that elements in expr are already on expression stack
 		addop.push(Code.add);
 	}
 	
-	public void visit(Subop subOperation) {
+	public void visit(Sub subOperation) {
 		addop.push(Code.sub);
 	}
 	
-	public void visit(Mulop muloOperation) {
+	public void visit(Mulop mulOperation) {
 		mulop.push(Code.mul);
 	}
 	
-	public void visit(Divop divOperation) {
+	public void visit(Divoperation divOperation) {
 		mulop.push(Code.div);
 	}
 	
-	public void visit(Modop modOperation) {
+	public void visit(Modoperation modOperation) {
 		mulop.push(Code.rem);
+	}
+	
+	public void visit(AddEqual addEqual) {
+		addop.push(Code.add);
+	}
+	
+	public void visit(SubEqual subEqual) {
+		addop.push(Code.sub);
+	}
+	
+	public void visit(MullAddEqual mulEqual) {
+		mulop.push(Code.mul);
+	}
+	
+	public void visit(DivEqual divEqual) {
+		mulop.push(Code.div);
+	}
+	
+	public void visit(ModEqual modEqual) {
+		mulop.push(Code.rem);
+	}
+	
+	public void visit(AddRight addRight) {
+		equal.add(1);
+		
+		/*  += in expression  */
+		//Code.load(currentObject);
+	}
+	
+	public void visit(MulRight mulRight) {
+		equal.add(1);
 	}
 	
 	public void visit(PreArrIdxDummy preArrIdxDummy) {
@@ -148,21 +319,48 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.load(arrObj);	
 	}
 	
+	public void helper(ArrayElemDesignator arrayElemDesignator) {
+		String arrayName = arrayElemDesignator.getDesignator().obj.getName();
+		Integer num = counts.get(arrayName);
+		if(num == null) {
+			counts.put(arrayName, 1);
+		}else {
+			counts.put(arrayName, num+1);
+		}
+		
+	
+		Code.load(arrayElemDesignator.getDesignator().obj);
+		Code.loadConst(3);
+		Code.loadConst(counts.get(arrayName));
+		Code.store(arrayElemDesignator.obj);
+	}
+	
 	
 	public void visit(ArrayElemDesignator arrayElemDesignator) {
 		if(!(arrayElemDesignator.getParent().getClass() == AssignStatement.class)) {
-			Code.load(arrayElemDesignator.obj);
+			Code.load(arrayElemDesignator.obj);	// bilo ovde
 		}
+		
+		currElemDesignator = arrayElemDesignator;
+		/* this is for += purposes */
+		nestedVariables.add(arrayElemDesignator.obj);
 	}
 		
 	public void visit(DesignatorVar designatorVar) {
 		if(!(designatorVar.getParent().getClass() == AssignStatement.class
 				|| designatorVar.getParent().getParent().getClass() == AssignStatement.class || designatorVar.getParent().getClass() == ArrayElemDesignator.class)) {													
 			Code.load(designatorVar.obj);
+			
+			/* for += in expression */
+			nestedVariables.add(designatorVar.obj);
 		}
 	}
 	
 	public void visit(DynamicArr dynamicArray) {
+		
+		Code.put(Code.const_1);
+		Code.put(Code.add);
+		
         Code.put(Code.newarray);
         Code.put(dynamicArray.struct.getElemType().equals(Tab.charType) ? 0 : 1); // TODO: what for bool?
     }

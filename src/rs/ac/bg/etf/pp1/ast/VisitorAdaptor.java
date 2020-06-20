@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/1/2020 1:36:56
+// 20/5/2020 17:52:51
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,19 @@ package rs.ac.bg.etf.pp1.ast;
 public abstract class VisitorAdaptor implements Visitor { 
 
     public void visit(IncludeVoidType IncludeVoidType) { }
+    public void visit(Mulop Mulop) { }
+    public void visit(MullopRight MullopRight) { }
     public void visit(VarIdent VarIdent) { }
     public void visit(FormalParamDecl FormalParamDecl) { }
+    public void visit(MullopLeft MullopLeft) { }
     public void visit(StatementList StatementList) { }
+    public void visit(Addop Addop) { }
     public void visit(Factor Factor) { }
+    public void visit(AddopLeft AddopLeft) { }
     public void visit(Designator Designator) { }
     public void visit(ActualParam ActualParam) { }
     public void visit(Term Term) { }
+    public void visit(AddopRight AddopRight) { }
     public void visit(ActualParamList ActualParamList) { }
     public void visit(GlobalDeclList GlobalDeclList) { }
     public void visit(AssignStmnt AssignStmnt) { }
@@ -31,11 +37,23 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDeclList MethodDeclList) { }
     public void visit(GlobalDecl GlobalDecl) { }
     public void visit(FormPars FormPars) { }
-    public void visit(Modop Modop) { visit(); }
-    public void visit(Divop Divop) { visit(); }
-    public void visit(Mulop Mulop) { visit(); }
-    public void visit(Subop Subop) { visit(); }
-    public void visit(Addop Addop) { visit(); }
+    public void visit(ModEqual ModEqual) { visit(); }
+    public void visit(DivEqual DivEqual) { visit(); }
+    public void visit(MullAddEqual MullAddEqual) { visit(); }
+    public void visit(Modoperation Modoperation) { visit(); }
+    public void visit(Divoperation Divoperation) { visit(); }
+    public void visit(Muloperation Muloperation) { visit(); }
+    public void visit(MulRight MulRight) { visit(); }
+    public void visit(MulLeft MulLeft) { visit(); }
+    public void visit(SubEqual SubEqual) { visit(); }
+    public void visit(AddEqual AddEqual) { visit(); }
+    public void visit(Sub Sub) { visit(); }
+    public void visit(Add Add) { visit(); }
+    public void visit(AddRight AddRight) { visit(); }
+    public void visit(AddLeft AddLeft) { visit(); }
+    public void visit(MullRightOp MullRightOp) { visit(); }
+    public void visit(AddRightOp AddRightOp) { visit(); }
+    public void visit(Assignop Assignop) { visit(); }
     public void visit(PreArrIdxDummy PreArrIdxDummy) { visit(); }
     public void visit(ArrayElemDesignator ArrayElemDesignator) { visit(); }
     public void visit(DesignatorVar DesignatorVar) { visit(); }

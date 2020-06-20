@@ -57,6 +57,7 @@ terminal String IDENT;
 terminal LBRACK, RBRACK;
 terminal INCREMENT, DECREMENT;
 terminal ASSIGN;
+terminal  ADDEQUAL, SUBEQUAL, MULEQUAL, DIVEQUAL, MODEQUAL;
 
 nonterminal VarDeclList VarDeclList;
 nonterminal MethodDeclList MethodDeclList;
@@ -70,6 +71,11 @@ nonterminal Addop Addop;
 nonterminal ActualPars ActualPars;
 nonterminal ActualParamList ActualParamList;
 nonterminal Mulop Mulop;
+nonterminal Assignop Assignop;
+nonterminal AddopLeft AddopLeft;
+nonterminal AddopRight AddopRight;
+nonterminal MullopLeft MullopLeft;
+nonterminal MullopRight MullopRight;
 nonterminal VarIdentList VarIdentList;
 nonterminal VarIdent VarIdent;
 nonterminal GlobalDeclList GlobalDeclList;
@@ -107,7 +113,7 @@ ConstAssignList ::=    (ConstAssignListFull) ConstAssignList:C1 COMMA ConstValAs
                        (ConstAssignItem) ConstValAssign:C1 {: RESULT=new ConstAssignItem(C1); RESULT.setLine(C1left); :}
                        ;
                        
-ConstValAssign  ::=     (ConstValAssign) IDENT:constIdent ASSIGN ConstVal:C1 {: RESULT=new ConstValAssign(constIdent, C1); RESULT.setLine(constIdentleft); :};
+ConstValAssign  ::=     (ConstValAssign) IDENT:constIdent Assignop:A1 ConstVal:C2 {: RESULT=new ConstValAssign(constIdent, A1, C2); RESULT.setLine(constIdentleft); :};
 
 
 ConstVal        ::=     (ConstValNum) NUMBER:N1 {: RESULT=new ConstValNum(N1); RESULT.setLine(N1left); :} 
@@ -239,7 +245,7 @@ DesignatorStatement     ::= (AssignDesignatorStatement) AssignStmnt:A1 {: RESULT
                             ;	
                             						
 				
-AssignStmnt             ::= (AssignStatement) Designator:D1 ASSIGN Expr:E2 {: RESULT=new AssignStatement(D1, E2); RESULT.setLine(D1left); :}
+AssignStmnt             ::= (AssignStatement) Designator:design Assignop:A1 Expr:E2 {: RESULT=new AssignStatement(design, A1, E2); RESULT.setLine(designleft); :}
 							;	
 								
 				
@@ -251,17 +257,50 @@ Designator ::= (DesignatorVar) IDENT:name {: RESULT=new DesignatorVar(name); RES
 
 PreArrIdxDummy ::= (PreArrIdxDummy) {: RESULT=new PreArrIdxDummy(); :}; /* epsilon */
 
-Addop ::= (Addop) PLUS {: RESULT=new Addop(); :}
-		  |
-		  (Subop) SUB {: RESULT=new Subop(); :}
-		  ;
 
-Mulop ::= (Mulop) MUL {: RESULT=new Mulop(); :}
-		  |
-		  (Divop) DIV {: RESULT=new Divop(); :}
-		  |
-		  (Modop) MOD {: RESULT=new Modop(); :}
-		  ;
+Assignop ::=  (Assignop) ASSIGN {: RESULT=new Assignop(); :}
+              |
+              (AddRightOp)  AddopRight:A1 {: RESULT=new AddRightOp(A1); RESULT.setLine(A1left); :} 
+              |
+              (MullRightOp) MullopRight:M1 {: RESULT=new MullRightOp(M1); RESULT.setLine(M1left); :}
+              ;
+ 
+Addop ::= (AddLeft) AddopLeft:A1 {: RESULT=new AddLeft(A1); RESULT.setLine(A1left); :}
+          | 
+          (AddRight) AddopRight:A1 {: RESULT=new AddRight(A1); RESULT.setLine(A1left); :}
+          ;
+          
+AddopLeft ::= (Add) PLUS {: RESULT=new Add(); :}
+		      |
+		      (Sub) SUB {: RESULT=new Sub(); :}
+		      ;
+
+AddopRight ::= (AddEqual) ADDEQUAL {: RESULT=new AddEqual(); :}
+			   |
+			   (SubEqual) SUBEQUAL {: RESULT=new SubEqual(); :}
+			   ;
+
+Mulop ::= (MulLeft) MullopLeft:M1 {: RESULT=new MulLeft(M1); RESULT.setLine(M1left); :}
+          | 
+          (MulRight) MullopRight:M1 {: RESULT=new MulRight(M1); RESULT.setLine(M1left); :}
+          ;
+
+			    
+MullopLeft ::= (Muloperation) MUL {: RESULT=new Muloperation(); :}
+		       |
+		       (Divoperation) DIV {: RESULT=new Divoperation(); :}
+		       |
+		       (Modoperation) MOD {: RESULT=new Modoperation(); :}
+		       ;
+
+MullopRight ::= (MullAddEqual) MULEQUAL {: RESULT=new MullAddEqual(); :}
+			   |
+			   (DivEqual) DIVEQUAL {: RESULT=new DivEqual(); :}
+			   |
+			   (ModEqual) MODEQUAL {: RESULT=new ModEqual(); :}
+			   ;
+
+
 		
 		
 

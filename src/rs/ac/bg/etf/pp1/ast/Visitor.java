@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/1/2020 1:36:56
+// 20/5/2020 17:52:51
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,19 @@ package rs.ac.bg.etf.pp1.ast;
 public interface Visitor { 
 
     public void visit(IncludeVoidType IncludeVoidType);
+    public void visit(Mulop Mulop);
+    public void visit(MullopRight MullopRight);
     public void visit(VarIdent VarIdent);
     public void visit(FormalParamDecl FormalParamDecl);
+    public void visit(MullopLeft MullopLeft);
     public void visit(StatementList StatementList);
+    public void visit(Addop Addop);
     public void visit(Factor Factor);
+    public void visit(AddopLeft AddopLeft);
     public void visit(Designator Designator);
     public void visit(ActualParam ActualParam);
     public void visit(Term Term);
+    public void visit(AddopRight AddopRight);
     public void visit(ActualParamList ActualParamList);
     public void visit(GlobalDeclList GlobalDeclList);
     public void visit(AssignStmnt AssignStmnt);
@@ -31,11 +37,23 @@ public interface Visitor {
     public void visit(MethodDeclList MethodDeclList);
     public void visit(GlobalDecl GlobalDecl);
     public void visit(FormPars FormPars);
-    public void visit(Modop Modop);
-    public void visit(Divop Divop);
-    public void visit(Mulop Mulop);
-    public void visit(Subop Subop);
-    public void visit(Addop Addop);
+    public void visit(ModEqual ModEqual);
+    public void visit(DivEqual DivEqual);
+    public void visit(MullAddEqual MullAddEqual);
+    public void visit(Modoperation Modoperation);
+    public void visit(Divoperation Divoperation);
+    public void visit(Muloperation Muloperation);
+    public void visit(MulRight MulRight);
+    public void visit(MulLeft MulLeft);
+    public void visit(SubEqual SubEqual);
+    public void visit(AddEqual AddEqual);
+    public void visit(Sub Sub);
+    public void visit(Add Add);
+    public void visit(AddRight AddRight);
+    public void visit(AddLeft AddLeft);
+    public void visit(MullRightOp MullRightOp);
+    public void visit(AddRightOp AddRightOp);
+    public void visit(Assignop Assignop);
     public void visit(PreArrIdxDummy PreArrIdxDummy);
     public void visit(ArrayElemDesignator ArrayElemDesignator);
     public void visit(DesignatorVar DesignatorVar);

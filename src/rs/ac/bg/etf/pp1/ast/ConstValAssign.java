@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/1/2020 1:36:55
+// 20/5/2020 17:52:51
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,10 +10,13 @@ public class ConstValAssign implements SyntaxNode {
     private SyntaxNode parent;
     private int line;
     private String constIdent;
+    private Assignop Assignop;
     private ConstVal ConstVal;
 
-    public ConstValAssign (String constIdent, ConstVal ConstVal) {
+    public ConstValAssign (String constIdent, Assignop Assignop, ConstVal ConstVal) {
         this.constIdent=constIdent;
+        this.Assignop=Assignop;
+        if(Assignop!=null) Assignop.setParent(this);
         this.ConstVal=ConstVal;
         if(ConstVal!=null) ConstVal.setParent(this);
     }
@@ -24,6 +27,14 @@ public class ConstValAssign implements SyntaxNode {
 
     public void setConstIdent(String constIdent) {
         this.constIdent=constIdent;
+    }
+
+    public Assignop getAssignop() {
+        return Assignop;
+    }
+
+    public void setAssignop(Assignop Assignop) {
+        this.Assignop=Assignop;
     }
 
     public ConstVal getConstVal() {
@@ -55,15 +66,18 @@ public class ConstValAssign implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Assignop!=null) Assignop.accept(visitor);
         if(ConstVal!=null) ConstVal.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Assignop!=null) Assignop.traverseTopDown(visitor);
         if(ConstVal!=null) ConstVal.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Assignop!=null) Assignop.traverseBottomUp(visitor);
         if(ConstVal!=null) ConstVal.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -74,6 +88,12 @@ public class ConstValAssign implements SyntaxNode {
         buffer.append("ConstValAssign(\n");
 
         buffer.append(" "+tab+constIdent);
+        buffer.append("\n");
+
+        if(Assignop!=null)
+            buffer.append(Assignop.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(ConstVal!=null)

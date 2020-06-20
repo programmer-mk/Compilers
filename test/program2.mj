@@ -1,14 +1,18 @@
 program MJProgram
 	int x, y, z;
 	const int pi = 3;
-	char array[];
+	int array[];
 {
 	void main() {
 		
-		print(1);
+		x = 2;
+		y = 2;
+		z = 3;
+	
+		x *= z += 5;
 		
-		x = y + 5;
-		
-		print(2);
+		print(x);
+		print(z);
+			
 	}
 }
