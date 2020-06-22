@@ -53,6 +53,7 @@ terminal Integer NUMBER;
 terminal Character CHAR;
 terminal String BOOL;
 terminal String IDENT;
+terminal HASH;
 /* terminal IF, ELSE; */
 terminal LBRACK, RBRACK;
 terminal INCREMENT, DECREMENT;
@@ -275,6 +276,8 @@ MullopLeft ::= (Muloperation) MUL
 		       (Divoperation) DIV
 		       |
 		       (Modoperation) MOD
+		       |
+		       (HashOperation) HASH
 		       ;
 
 MullopRight ::= (MullAddEqual) MULEQUAL

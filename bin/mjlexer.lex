@@ -48,6 +48,7 @@ import java_cup.runtime.Symbol;
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
 "-" 		{ return new_symbol(sym.SUB, yytext()); }
 "*" 		{ return new_symbol(sym.MUL, yytext()); }
+"#"         { return new_symbol(sym.HASH, yytext()); }
 "+="        { return new_symbol(sym.ADDEQUAL, yytext()); }
 "-="        { return new_symbol(sym.SUBEQUAL, yytext()); }
 "*="        { return new_symbol(sym.MULEQUAL, yytext()); }

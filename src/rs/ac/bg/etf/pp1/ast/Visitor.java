@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/5/2020 1:0:40
+// 22/5/2020 10:10:38
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -40,6 +40,7 @@ public interface Visitor {
     public void visit(ModEqual ModEqual);
     public void visit(DivEqual DivEqual);
     public void visit(MullAddEqual MullAddEqual);
+    public void visit(HashOperation HashOperation);
     public void visit(Modoperation Modoperation);
     public void visit(Divoperation Divoperation);
     public void visit(Muloperation Muloperation);

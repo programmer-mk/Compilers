@@ -20,6 +20,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	private Stack<Integer> equal = new Stack<>();
 	private Stack<Obj> nestedVariables = new Stack<>();
 	
+	boolean hashOperationStarted = false;
+	
 	Obj currentObject = null;
 	Obj previousObject = null;
 	
@@ -42,7 +44,29 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 
     public void visit(FactorConstVal factorConstVal) {
-        Code.load(factorConstVal.getConstVal().obj);
+    	boolean arrayDesignatorParent = false;
+    	TermExpr termExpr = null;
+    	try {
+    	    termExpr = (TermExpr) (factorConstVal.getParent().getParent());
+    	}
+    	catch(ClassCastException e) {
+    		
+    	}
+    	if(termExpr != null && termExpr.getParent().getClass() == ArrayElemDesignator.class) {
+    	    arrayDesignatorParent = true;
+    	}
+    	
+    	if(!hashOperationStarted && !arrayDesignatorParent) {
+    		Code.load(factorConstVal.getConstVal().obj);
+    	}else if(!arrayDesignatorParent){
+    		Code.load(factorConstVal.getConstVal().obj);
+    		Code.put(Code.dup);
+    		Code.put(Code.mul);
+    		hashOperationStarted = false;
+    	//	Code.put(Code.sub);
+    	} else {
+    		Code.load(factorConstVal.getConstVal().obj);
+    	}
     }
 	
 	/*
@@ -292,6 +316,13 @@ public class CodeGenerator extends VisitorAdaptor {
 		mulop.push(Code.rem);
 	}
 	
+	public void visit(HashOperation hashOperation) {
+		Code.put(Code.dup);
+		Code.put(Code.mul);
+		mulop.push(Code.sub);
+		hashOperationStarted = true;
+	}
+	
 	public void visit(AddEqual addEqual) {
 		addop.push(Code.add);
 	}
@@ -350,6 +381,11 @@ public class CodeGenerator extends VisitorAdaptor {
 				&& arrayElemDesignator.getParent().getClass() != IncrementStatement.class
 				&& arrayElemDesignator.getParent().getClass() != DecrementStatement.class) {
 			Code.load(arrayElemDesignator.obj);	// bilo ovde
+			if(hashOperationStarted) {
+				Code.put(Code.dup);
+	    		Code.put(Code.mul);
+	    		hashOperationStarted = false;
+			}
 		}
 		
 		currElemDesignator = arrayElemDesignator;
@@ -364,6 +400,12 @@ public class CodeGenerator extends VisitorAdaptor {
 			
 			/* for += in expression */
 			nestedVariables.add(designatorVar.obj);
+			if(hashOperationStarted) {
+				Code.put(Code.dup);
+	    		Code.put(Code.mul);
+	    		hashOperationStarted = false;
+			}
+			
 		}
 	}
 	
