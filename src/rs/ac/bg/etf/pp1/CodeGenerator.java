@@ -103,6 +103,14 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.pop);
 		}
 		
+		while(!equal.isEmpty()) {
+			equal.pop();
+		}
+		
+		while(!nestedVariables.isEmpty()) {
+			nestedVariables.pop();
+		}
+		
 		/*
 		if(currElemDesignator != null)
 			helper(currElemDesignator);
@@ -175,11 +183,14 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	 public void visit(AddSubExpr addSubExpr) {
 		 if(addSubExpr.getParent().getClass() == AddSubExpr.class) {
-			//instructionList.add(1);
+			//old version i can assume?
+			Code.put(addop.pop());
+			 
+			 
 		 } else {
 			 
 			//previos addSubExpr
-			if(!nestedVariables.isEmpty() ) {
+			if(!nestedVariables.isEmpty() && !equal.isEmpty()) {
 				 
 				AssignStatement assignStatement = (AssignStatement) addSubExpr.getParent();
 				if(assignStatement != null && assignStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
@@ -189,11 +200,10 @@ public class CodeGenerator extends VisitorAdaptor {
 					 Code.put(Code.dup);
 					 Code.store(nestedVariables.pop());	
 				}
-				
-				 
-				
+			}else {
+				// old version
+				Code.put(addop.pop());
 			}
-			 
 			 
 		   if(!equal.isEmpty()) {
 			    if(!addop.isEmpty()) {
@@ -219,7 +229,7 @@ public class CodeGenerator extends VisitorAdaptor {
 			 } else {
 				 
 				//previos addSubExpr
-				if(!nestedVariables.isEmpty() ) {
+				if(!nestedVariables.isEmpty() && !equal.isEmpty()) {
 					 
 					AssignStatement assignStatement = (AssignStatement) term_mulop.getParent().getParent();
 					if(assignStatement != null && assignStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
@@ -229,17 +239,16 @@ public class CodeGenerator extends VisitorAdaptor {
 						 Code.put(Code.dup);
 						 Code.store(nestedVariables.pop());	
 					}
-					
-					 
-					
+				}else {
+					// old version without *= , /= , %= 
+					Code.put(mulop.pop());
 				}
 				 
-				 
 			   if(!equal.isEmpty()) {
-				    if(!addop.isEmpty()) {
-				    	Code.put(addop.pop());
-				    }else if(!mulop.isEmpty()) {
+				    if(!mulop.isEmpty()) {
 				    	Code.put(mulop.pop());
+				    }else if(!addop.isEmpty()) {
+				    	Code.put(addop.pop());
 				    }
 				    Code.put(Code.dup);
 				    if(!nestedVariables.isEmpty()) {
@@ -271,7 +280,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		addop.push(Code.sub);
 	}
 	
-	public void visit(Mulop mulOperation) {
+	public void visit(Muloperation mulOperation) {
 		mulop.push(Code.mul);
 	}
 	
@@ -337,7 +346,9 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	
 	public void visit(ArrayElemDesignator arrayElemDesignator) {
-		if(!(arrayElemDesignator.getParent().getClass() == AssignStatement.class)) {
+		if(!(arrayElemDesignator.getParent().getClass() == AssignStatement.class)
+				&& arrayElemDesignator.getParent().getClass() != IncrementStatement.class
+				&& arrayElemDesignator.getParent().getClass() != DecrementStatement.class) {
 			Code.load(arrayElemDesignator.obj);	// bilo ovde
 		}
 		
@@ -357,9 +368,11 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	public void visit(DynamicArr dynamicArray) {
-		
+		/* this is from one modification???
 		Code.put(Code.const_1);
 		Code.put(Code.add);
+		*/
+		
 		
         Code.put(Code.newarray);
         Code.put(dynamicArray.struct.getElemType().equals(Tab.charType) ? 0 : 1); // TODO: what for bool?
@@ -367,15 +380,37 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	public void visit(IncrementStatement incrementStatement) {
 		//Code.load(incrementStatement.getDesignator().obj); designator object is already pushed on stack in designatorVar method
-		Code.loadConst(1);
-		Code.put(Code.add);
-		Code.store(incrementStatement.getDesignator().obj);
+		if(incrementStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
+			ArrayElemDesignator arrayElemDesignator = (ArrayElemDesignator) incrementStatement.getDesignator();
+			Code.put(Code.dup2);
+			Code.load(arrayElemDesignator.obj);
+			Code.loadConst(1);
+			Code.put(Code.add);
+			
+			Code.store(arrayElemDesignator.obj);
+		} else {
+			Code.loadConst(1);
+			Code.put(Code.add);
+			Code.store(incrementStatement.getDesignator().obj);
+		}
+		
 	}
 	
 	public void visit(DecrementStatement decrementStatement) {
 		//Code.load(incrementStatement.getDesignator().obj); designator object is already pushed on stack in designatorVar method
-		Code.loadConst(1);
-		Code.put(Code.sub);
-		Code.store(decrementStatement.getDesignator().obj);
+		if(decrementStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
+			ArrayElemDesignator arrayElemDesignator = (ArrayElemDesignator) decrementStatement.getDesignator();
+			Code.put(Code.dup2);
+			Code.load(arrayElemDesignator.obj);
+			Code.loadConst(1);
+			Code.put(Code.sub);
+			
+			Code.store(arrayElemDesignator.obj);
+		} else {
+			Code.loadConst(1);
+			Code.put(Code.sub);
+			Code.store(decrementStatement.getDesignator().obj);
+		}
+		
 	}
 }

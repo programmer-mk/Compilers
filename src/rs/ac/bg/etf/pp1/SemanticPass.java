@@ -372,7 +372,7 @@ public class SemanticPass extends VisitorAdaptor {
     public void visit(IncrementStatement increment) {
     	String varName = increment.getDesignator().obj.getName();
     	Struct varType = Tab.find(varName).getType();
-    	if(varType.getKind() != Struct.Int) {
+    	if(!(varType.getKind() == Struct.Int || increment.getDesignator().obj.getKind() == Obj.Elem )) {
     		report_error("Error on line "+ increment.getLine()+ " : " + "variable type isn't INT", null);
     	}
     }
@@ -380,7 +380,7 @@ public class SemanticPass extends VisitorAdaptor {
     public void visit(DecrementStatement decrement) {
     	String varName = decrement.getDesignator().obj.getName();
     	Struct varType = Tab.find(varName).getType();
-    	if(varType.getKind() != Struct.Int) {
+    	if(!(varType.getKind() == Struct.Int || decrement.getDesignator().obj.getKind() == Obj.Elem)) {
     		report_error("Error on line "+ decrement.getLine()+ " : " + "variable type isn't INT", null);
     	}
     }

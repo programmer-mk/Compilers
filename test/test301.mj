@@ -10,15 +10,6 @@ program test301
 	char nizch[];
 	
 {
-	void incInput()
-	int i;
-	{
-		read(i);
-		print(i);
-		i++;
-		print(i);
-	}
-
 	void main()	
 		int bodovi;
 	{
@@ -38,6 +29,11 @@ program test301
 		print(bodovi); 
 		print(niz[2]);
 		
+		//read(bodovi);
+		niz[2] += bodovi *= 2;
+		niz[2]++;
+		print(niz[2]);
+		
 		
 		nizch = new char[3];
 		nizch[0] = 'a';
@@ -49,8 +45,6 @@ program test301
 		
 		bodovi = bodovi + (pet * jedan - 1) * bodovi - (3 % 2 + 3 * 2 - 3); 
 		print(bodovi);
-			
-		incInput();
 	}
 }
 
