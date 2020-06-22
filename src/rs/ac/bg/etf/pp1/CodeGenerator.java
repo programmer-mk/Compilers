@@ -24,7 +24,10 @@ public class CodeGenerator extends VisitorAdaptor {
 	Obj previousObject = null;
 	
 	HashMap<String, Integer> counts = new HashMap<>();
-	ArrayElemDesignator currElemDesignator = null;
+	HashMap<String, Integer> arraySizes = new HashMap<>();
+
+	DesignatorVar currElemDesignator = null;
+	int arrSize = 0;
 	
 	public int getMainPc() {
 		return mainPc;
@@ -43,6 +46,13 @@ public class CodeGenerator extends VisitorAdaptor {
 
     public void visit(FactorConstVal factorConstVal) {
         Code.load(factorConstVal.getConstVal().obj);
+    }
+    
+    public void visit(ConstValNum constVal) {
+    	if(currElemDesignator != null) {
+    		arrSize = constVal.getN1();
+    	}
+    	
     }
 	
 	/*
@@ -112,10 +122,13 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 		
 		/*
-		if(currElemDesignator != null)
-			helper(currElemDesignator);
-		currElemDesignator = null;
-		*/
+		if(currElemDesignator != null) {
+			keepArraySize(currElemDesignator);
+			currElemDesignator = null;
+		}
+			*/
+		
+		
 	}
 	
 	
@@ -339,9 +352,18 @@ public class CodeGenerator extends VisitorAdaptor {
 		
 	
 		Code.load(arrayElemDesignator.getDesignator().obj);
-		Code.loadConst(3);
+		Code.loadConst(getArraySize(arrayName));
 		Code.loadConst(counts.get(arrayName));
 		Code.store(arrayElemDesignator.obj);
+	}
+	
+	public int getArraySize(String arrayName) {
+		return arraySizes.get(arrayName);
+	}
+	
+	public void keepArraySize(DesignatorVar currArrayElemDesignator) {
+		String arrayName = currArrayElemDesignator.obj.getName();
+		arraySizes.put(arrayName,arrSize);
 	}
 	
 	
@@ -350,9 +372,14 @@ public class CodeGenerator extends VisitorAdaptor {
 				&& arrayElemDesignator.getParent().getClass() != IncrementStatement.class
 				&& arrayElemDesignator.getParent().getClass() != DecrementStatement.class) {
 			Code.load(arrayElemDesignator.obj);	// bilo ovde
+			helper(arrayElemDesignator);
+	    }
+		/*
+		else {
+			currElemDesignator = arrayElemDesignator;	
 		}
-		
-		currElemDesignator = arrayElemDesignator;
+		*/
+	
 		/* this is for += purposes */
 		nestedVariables.add(arrayElemDesignator.obj);
 	}
@@ -362,17 +389,20 @@ public class CodeGenerator extends VisitorAdaptor {
 				|| designatorVar.getParent().getParent().getClass() == AssignStatement.class || designatorVar.getParent().getClass() == ArrayElemDesignator.class)) {													
 			Code.load(designatorVar.obj);
 			
+			
 			/* for += in expression */
 			nestedVariables.add(designatorVar.obj);
+		}else {
+			 currElemDesignator = designatorVar;
 		}
 	}
 	
 	public void visit(DynamicArr dynamicArray) {
-		/* this is from one modification???
+		/* this is from one modification??? */
 		Code.put(Code.const_1);
 		Code.put(Code.add);
-		*/
-		
+	
+		keepArraySize(currElemDesignator);
 		
         Code.put(Code.newarray);
         Code.put(dynamicArray.struct.getElemType().equals(Tab.charType) ? 0 : 1); // TODO: what for bool?
