@@ -6,13 +6,19 @@ program MJProgram
 	void main() {
 		
 		x = 2;
-		y = 2;
-		z = 3;
-	
-		x *= z += 5;
+		y = 3 ;
+		array = new int[3];
+		array[1] = 1;
+		array[0] = 2;
+		
+     
+	     x += array[0] += y;
+		
 		
 		print(x);
-		print(z);
+		print(y);
+		print(array[0]);
+		print(array[1]);
 			
 	}
 }

@@ -1,326 +1,155 @@
-INFO  09:08:45,249 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\test301.mj
-INFO  09:08:45,394 - #2 program
-INFO  09:08:45,394 - #24 test301
-INFO  09:08:45,394 - #13 const
-INFO  09:08:45,397 - #24 int
-INFO  09:08:45,397 - #24 nula
-INFO  09:08:45,398 - #29 =
-INFO  09:08:45,399 - #21 0
-INFO  09:08:45,399 - #5 ;
-INFO  09:08:45,401 - #13 const
-INFO  09:08:45,409 - #24 int
-INFO  09:08:45,410 - #24 jedan
-INFO  09:08:45,410 - #29 =
-INFO  09:08:45,410 - #21 1
-INFO  09:08:45,410 - #5 ;
-INFO  09:08:45,411 - #13 const
-INFO  09:08:45,411 - #24 int
-INFO  09:08:45,411 - #24 pet
-INFO  09:08:45,411 - #29 =
-INFO  09:08:45,411 - #21 5
-INFO  09:08:45,411 - #5 ;
-INFO  09:08:45,420 - #24 int
-INFO  09:08:45,420 - #24 niz
-INFO  09:08:45,420 - #25 [
-INFO  09:08:45,420 - #26 ]
-INFO  09:08:45,420 - #5 ;
-INFO  09:08:45,421 - #24 char
-INFO  09:08:45,422 - #24 nizch
-INFO  09:08:45,422 - #25 [
-INFO  09:08:45,422 - #26 ]
-INFO  09:08:45,422 - #5 ;
-INFO  09:08:45,423 - #3 {
-INFO  09:08:45,423 - #12 void
-INFO  09:08:45,424 - #24 main
-INFO  09:08:45,425 - #6 (
-INFO  09:08:45,425 - #7 )
-INFO  09:08:45,427 - #24 int
-INFO  09:08:45,430 - #24 bodovi
-INFO  09:08:45,430 - #5 ;
-INFO  09:08:45,430 - #3 {
-INFO  09:08:45,430 - #24 bodovi
-INFO  09:08:45,431 - #29 =
-INFO  09:08:45,432 - #21 0
-INFO  09:08:45,432 - #5 ;
-INFO  09:08:45,433 - #24 bodovi
-INFO  09:08:45,434 - #27 ++
-INFO  09:08:45,434 - #5 ;
-INFO  09:08:45,434 - #24 bodovi
-INFO  09:08:45,434 - #29 =
-INFO  09:08:45,434 - #24 bodovi
-INFO  09:08:45,434 - #16 +
-INFO  09:08:45,434 - #24 jedan
-INFO  09:08:45,437 - #5 ;
-INFO  09:08:45,437 - #24 bodovi
-INFO  09:08:45,437 - #29 =
-INFO  09:08:45,438 - #24 bodovi
-INFO  09:08:45,438 - #18 *
-INFO  09:08:45,438 - #24 pet
-INFO  09:08:45,440 - #5 ;
-INFO  09:08:45,440 - #24 bodovi
-INFO  09:08:45,441 - #28 --
-INFO  09:08:45,441 - #5 ;
-INFO  09:08:45,441 - #11 print
-INFO  09:08:45,442 - #6 (
-INFO  09:08:45,442 - #24 bodovi
-INFO  09:08:45,442 - #7 )
-INFO  09:08:45,442 - #5 ;
-INFO  09:08:45,442 - #24 niz
-INFO  09:08:45,443 - #29 =
-INFO  09:08:45,443 - #14 new
-INFO  09:08:45,443 - #24 int
-INFO  09:08:45,443 - #25 [
-INFO  09:08:45,443 - #21 3
-INFO  09:08:45,444 - #26 ]
-INFO  09:08:45,444 - #5 ;
-INFO  09:08:45,444 - #24 niz
-INFO  09:08:45,444 - #25 [
-INFO  09:08:45,444 - #24 nula
-INFO  09:08:45,446 - #26 ]
-INFO  09:08:45,447 - #29 =
-INFO  09:08:45,447 - #24 jedan
-INFO  09:08:45,447 - #5 ;
-INFO  09:08:45,448 - #24 niz
-INFO  09:08:45,451 - #25 [
-INFO  09:08:45,451 - #21 1
-INFO  09:08:45,453 - #26 ]
-INFO  09:08:45,454 - #29 =
-INFO  09:08:45,454 - #21 2
-INFO  09:08:45,454 - #5 ;
-INFO  09:08:45,454 - #24 niz
-INFO  09:08:45,456 - #25 [
-INFO  09:08:45,457 - #24 niz
-INFO  09:08:45,457 - #25 [
-INFO  09:08:45,457 - #24 jedan
-INFO  09:08:45,457 - #26 ]
-INFO  09:08:45,457 - #26 ]
-INFO  09:08:45,457 - #29 =
-INFO  09:08:45,457 - #24 niz
-INFO  09:08:45,457 - #25 [
-INFO  09:08:45,458 - #24 niz
-INFO  09:08:45,458 - #25 [
-INFO  09:08:45,458 - #21 0
-INFO  09:08:45,458 - #26 ]
-INFO  09:08:45,458 - #26 ]
-INFO  09:08:45,458 - #18 *
-INFO  09:08:45,458 - #21 3
-INFO  09:08:45,458 - #5 ;
-INFO  09:08:45,458 - #24 bodovi
-INFO  09:08:45,458 - #29 =
-INFO  09:08:45,459 - #24 niz
-INFO  09:08:45,459 - #25 [
-INFO  09:08:45,459 - #21 2
-INFO  09:08:45,459 - #26 ]
-INFO  09:08:45,459 - #19 /
-INFO  09:08:45,459 - #24 niz
-INFO  09:08:45,461 - #25 [
-INFO  09:08:45,461 - #21 0
-INFO  09:08:45,461 - #26 ]
-INFO  09:08:45,461 - #5 ;
-INFO  09:08:45,461 - #11 print
-INFO  09:08:45,461 - #6 (
-INFO  09:08:45,461 - #24 bodovi
-INFO  09:08:45,461 - #7 )
-INFO  09:08:45,461 - #5 ;
-INFO  09:08:45,461 - #11 print
-INFO  09:08:45,462 - #6 (
-INFO  09:08:45,462 - #24 niz
-INFO  09:08:45,462 - #25 [
-INFO  09:08:45,462 - #21 2
-INFO  09:08:45,462 - #26 ]
-INFO  09:08:45,462 - #7 )
-INFO  09:08:45,462 - #5 ;
-INFO  09:08:45,462 - #24 niz
-INFO  09:08:45,475 - #25 [
-INFO  09:08:45,475 - #21 2
-INFO  09:08:45,475 - #26 ]
-INFO  09:08:45,475 - #30 +=
-INFO  09:08:45,475 - #24 bodovi
-INFO  09:08:45,478 - #32 *=
-INFO  09:08:45,478 - #21 2
-INFO  09:08:45,481 - #5 ;
-INFO  09:08:45,481 - #24 niz
-INFO  09:08:45,481 - #25 [
-INFO  09:08:45,482 - #21 2
-INFO  09:08:45,482 - #26 ]
-INFO  09:08:45,482 - #27 ++
-INFO  09:08:45,482 - #5 ;
-INFO  09:08:45,482 - #11 print
-INFO  09:08:45,482 - #6 (
-INFO  09:08:45,482 - #24 niz
-INFO  09:08:45,483 - #25 [
-INFO  09:08:45,483 - #21 2
-INFO  09:08:45,483 - #26 ]
-INFO  09:08:45,483 - #7 )
-INFO  09:08:45,483 - #5 ;
-INFO  09:08:45,483 - #24 nizch
-INFO  09:08:45,483 - #29 =
-INFO  09:08:45,483 - #14 new
-INFO  09:08:45,483 - #24 char
-INFO  09:08:45,483 - #25 [
-INFO  09:08:45,484 - #21 3
-INFO  09:08:45,484 - #26 ]
-INFO  09:08:45,484 - #5 ;
-INFO  09:08:45,484 - #24 nizch
-INFO  09:08:45,485 - #25 [
-INFO  09:08:45,485 - #21 0
-INFO  09:08:45,485 - #26 ]
-INFO  09:08:45,485 - #29 =
-INFO  09:08:45,485 - #22 a
-INFO  09:08:45,485 - #5 ;
-INFO  09:08:45,485 - #24 nizch
-INFO  09:08:45,485 - #25 [
-INFO  09:08:45,486 - #24 jedan
-INFO  09:08:45,486 - #26 ]
-INFO  09:08:45,486 - #29 =
-INFO  09:08:45,486 - #22 b
-INFO  09:08:45,486 - #5 ;
-INFO  09:08:45,486 - #24 nizch
-INFO  09:08:45,486 - #25 [
-INFO  09:08:45,486 - #24 pet
-INFO  09:08:45,486 - #17 -
-INFO  09:08:45,486 - #21 3
-INFO  09:08:45,487 - #26 ]
-INFO  09:08:45,488 - #29 =
-INFO  09:08:45,488 - #22 c
-INFO  09:08:45,488 - #5 ;
-INFO  09:08:45,488 - #11 print
-INFO  09:08:45,488 - #6 (
-INFO  09:08:45,488 - #24 nizch
-INFO  09:08:45,488 - #25 [
-INFO  09:08:45,488 - #21 1
-INFO  09:08:45,488 - #26 ]
-INFO  09:08:45,488 - #7 )
-INFO  09:08:45,488 - #5 ;
-INFO  09:08:45,489 - #11 print
-INFO  09:08:45,489 - #6 (
-INFO  09:08:45,489 - #24 nizch
-INFO  09:08:45,489 - #25 [
-INFO  09:08:45,489 - #24 jedan
-INFO  09:08:45,489 - #18 *
-INFO  09:08:45,489 - #21 2
-INFO  09:08:45,489 - #26 ]
-INFO  09:08:45,489 - #7 )
-INFO  09:08:45,489 - #5 ;
-INFO  09:08:45,489 - #24 bodovi
-INFO  09:08:45,489 - #29 =
-INFO  09:08:45,489 - #24 bodovi
-INFO  09:08:45,490 - #16 +
-INFO  09:08:45,490 - #6 (
-INFO  09:08:45,490 - #24 pet
-INFO  09:08:45,490 - #18 *
-INFO  09:08:45,490 - #24 jedan
-INFO  09:08:45,490 - #17 -
-INFO  09:08:45,490 - #21 1
-INFO  09:08:45,490 - #7 )
-INFO  09:08:45,490 - #18 *
-INFO  09:08:45,490 - #24 bodovi
-INFO  09:08:45,490 - #17 -
-INFO  09:08:45,491 - #6 (
-INFO  09:08:45,491 - #21 3
-INFO  09:08:45,491 - #20 %
-INFO  09:08:45,491 - #21 2
-INFO  09:08:45,492 - #16 +
-INFO  09:08:45,492 - #21 3
-INFO  09:08:45,492 - #18 *
-INFO  09:08:45,492 - #21 2
-INFO  09:08:45,493 - #17 -
-INFO  09:08:45,493 - #21 3
-INFO  09:08:45,493 - #7 )
-INFO  09:08:45,493 - #5 ;
-INFO  09:08:45,493 - #11 print
-INFO  09:08:45,493 - #6 (
-INFO  09:08:45,493 - #24 bodovi
-INFO  09:08:45,493 - #7 )
-INFO  09:08:45,494 - #5 ;
-INFO  09:08:45,494 - #4 }
-INFO  09:08:45,494 - #4 }
-INFO  09:08:45,508 - Program(
+INFO  02:53:14,905 - Compiling source file: C:\Users\dmm\eclipse-workspace\MJCompiler\test\program2.mj
+INFO  02:53:14,994 - #2 program
+INFO  02:53:14,995 - #24 MJProgram
+INFO  02:53:14,995 - #24 int
+INFO  02:53:14,997 - #24 x
+INFO  02:53:14,998 - #10 ,
+INFO  02:53:14,999 - #24 y
+INFO  02:53:14,999 - #10 ,
+INFO  02:53:15,000 - #24 z
+INFO  02:53:15,000 - #5 ;
+INFO  02:53:15,000 - #13 const
+INFO  02:53:15,006 - #24 int
+INFO  02:53:15,007 - #24 pi
+INFO  02:53:15,008 - #29 =
+INFO  02:53:15,008 - #21 3
+INFO  02:53:15,009 - #5 ;
+INFO  02:53:15,013 - #24 int
+INFO  02:53:15,014 - #24 array
+INFO  02:53:15,014 - #25 [
+INFO  02:53:15,014 - #26 ]
+INFO  02:53:15,014 - #5 ;
+INFO  02:53:15,031 - #3 {
+INFO  02:53:15,032 - #12 void
+INFO  02:53:15,035 - #24 main
+INFO  02:53:15,036 - #6 (
+INFO  02:53:15,036 - #7 )
+INFO  02:53:15,038 - #3 {
+INFO  02:53:15,041 - #24 x
+INFO  02:53:15,042 - #29 =
+INFO  02:53:15,042 - #21 2
+INFO  02:53:15,042 - #5 ;
+INFO  02:53:15,044 - #24 y
+INFO  02:53:15,045 - #29 =
+INFO  02:53:15,045 - #21 3
+INFO  02:53:15,045 - #5 ;
+INFO  02:53:15,045 - #24 array
+INFO  02:53:15,045 - #29 =
+INFO  02:53:15,045 - #14 new
+INFO  02:53:15,046 - #24 int
+INFO  02:53:15,046 - #25 [
+INFO  02:53:15,046 - #21 3
+INFO  02:53:15,046 - #26 ]
+INFO  02:53:15,046 - #5 ;
+INFO  02:53:15,046 - #24 array
+INFO  02:53:15,047 - #25 [
+INFO  02:53:15,048 - #21 1
+INFO  02:53:15,049 - #26 ]
+INFO  02:53:15,050 - #29 =
+INFO  02:53:15,050 - #21 1
+INFO  02:53:15,050 - #5 ;
+INFO  02:53:15,050 - #24 array
+INFO  02:53:15,050 - #25 [
+INFO  02:53:15,050 - #21 0
+INFO  02:53:15,051 - #26 ]
+INFO  02:53:15,051 - #29 =
+INFO  02:53:15,051 - #21 2
+INFO  02:53:15,051 - #5 ;
+INFO  02:53:15,052 - #24 x
+INFO  02:53:15,052 - #30 +=
+INFO  02:53:15,052 - #24 array
+INFO  02:53:15,055 - #25 [
+INFO  02:53:15,055 - #21 0
+INFO  02:53:15,055 - #26 ]
+INFO  02:53:15,055 - #30 +=
+INFO  02:53:15,056 - #24 y
+INFO  02:53:15,056 - #5 ;
+INFO  02:53:15,057 - #11 print
+INFO  02:53:15,057 - #6 (
+INFO  02:53:15,057 - #24 x
+INFO  02:53:15,065 - #7 )
+INFO  02:53:15,066 - #5 ;
+INFO  02:53:15,066 - #11 print
+INFO  02:53:15,066 - #6 (
+INFO  02:53:15,066 - #24 y
+INFO  02:53:15,066 - #7 )
+INFO  02:53:15,066 - #5 ;
+INFO  02:53:15,067 - #11 print
+INFO  02:53:15,067 - #6 (
+INFO  02:53:15,067 - #24 array
+INFO  02:53:15,067 - #25 [
+INFO  02:53:15,068 - #21 0
+INFO  02:53:15,068 - #26 ]
+INFO  02:53:15,068 - #7 )
+INFO  02:53:15,068 - #5 ;
+INFO  02:53:15,068 - #11 print
+INFO  02:53:15,068 - #6 (
+INFO  02:53:15,069 - #24 array
+INFO  02:53:15,069 - #25 [
+INFO  02:53:15,069 - #21 1
+INFO  02:53:15,069 - #26 ]
+INFO  02:53:15,069 - #7 )
+INFO  02:53:15,069 - #5 ;
+INFO  02:53:15,069 - #4 }
+INFO  02:53:15,070 - #4 }
+INFO  02:53:15,076 - Program(
   ProgName(
-   test301
+   MJProgram
   ) [ProgName]
   GlobalDeclListFull(
     GlobalDeclListFull(
       GlobalDeclListFull(
-        GlobalDeclListFull(
-          GlobalDeclListFull(
-            GlobalDeclListNone(
-            ) [GlobalDeclListNone]
-            GlobalConstantDecl(
-              ConstDeclaration(
-                Type(
-                 int
-                ) [Type]
-                ConstAssignItem(
-                  ConstValAssign(
-                   nula
-                    Assignop(
-                    ) [Assignop]
-                    ConstValNum(
-                     0
-                    ) [ConstValNum]
-                  ) [ConstValAssign]
-                ) [ConstAssignItem]
-              ) [ConstDeclaration]
-            ) [GlobalConstantDecl]
-          ) [GlobalDeclListFull]
-          GlobalConstantDecl(
-            ConstDeclaration(
-              Type(
-               int
-              ) [Type]
-              ConstAssignItem(
-                ConstValAssign(
-                 jedan
-                  Assignop(
-                  ) [Assignop]
-                  ConstValNum(
-                   1
-                  ) [ConstValNum]
-                ) [ConstValAssign]
-              ) [ConstAssignItem]
-            ) [ConstDeclaration]
-          ) [GlobalConstantDecl]
-        ) [GlobalDeclListFull]
-        GlobalConstantDecl(
-          ConstDeclaration(
+        GlobalDeclListNone(
+        ) [GlobalDeclListNone]
+        GlobalVariableDecl(
+          VarDecl(
             Type(
              int
             ) [Type]
-            ConstAssignItem(
-              ConstValAssign(
-               pet
-                Assignop(
-                ) [Assignop]
-                ConstValNum(
-                 5
-                ) [ConstValNum]
-              ) [ConstValAssign]
-            ) [ConstAssignItem]
-          ) [ConstDeclaration]
-        ) [GlobalConstantDecl]
+            VariableIdentList(
+              VariableIdentList(
+                OneVariableIdent(
+                  VariableIdentSingle(
+                   x
+                  ) [VariableIdentSingle]
+                ) [OneVariableIdent]
+                VariableIdentSingle(
+                 y
+                ) [VariableIdentSingle]
+              ) [VariableIdentList]
+              VariableIdentSingle(
+               z
+              ) [VariableIdentSingle]
+            ) [VariableIdentList]
+          ) [VarDecl]
+        ) [GlobalVariableDecl]
       ) [GlobalDeclListFull]
-      GlobalVariableDecl(
-        VarDecl(
+      GlobalConstantDecl(
+        ConstDeclaration(
           Type(
            int
           ) [Type]
-          OneVariableIdent(
-            ArrayVariableIdent(
-             niz
-            ) [ArrayVariableIdent]
-          ) [OneVariableIdent]
-        ) [VarDecl]
-      ) [GlobalVariableDecl]
+          ConstAssignItem(
+            ConstValAssign(
+             pi
+              Assignop(
+              ) [Assignop]
+              ConstValNum(
+               3
+              ) [ConstValNum]
+            ) [ConstValAssign]
+          ) [ConstAssignItem]
+        ) [ConstDeclaration]
+      ) [GlobalConstantDecl]
     ) [GlobalDeclListFull]
     GlobalVariableDecl(
       VarDecl(
         Type(
-         char
+         int
         ) [Type]
         OneVariableIdent(
           ArrayVariableIdent(
-           nizch
+           array
           ) [ArrayVariableIdent]
         ) [OneVariableIdent]
       ) [VarDecl]
@@ -339,20 +168,8 @@ INFO  09:08:45,508 - Program(
         NoFormParam(
         ) [NoFormParam]
       ) [MethodSignature]
-      VarDeclarations(
-        NoVarDecl(
-        ) [NoVarDecl]
-        VarDecl(
-          Type(
-           int
-          ) [Type]
-          OneVariableIdent(
-            VariableIdentSingle(
-             bodovi
-            ) [VariableIdentSingle]
-          ) [OneVariableIdent]
-        ) [VarDecl]
-      ) [VarDeclarations]
+      NoVarDecl(
+      ) [NoVarDecl]
       Statements(
         Statements(
           Statements(
@@ -363,469 +180,16 @@ INFO  09:08:45,508 - Program(
                     Statements(
                       Statements(
                         Statements(
-                          Statements(
-                            Statements(
-                              Statements(
-                                Statements(
-                                  Statements(
-                                    Statements(
-                                      Statements(
-                                        Statements(
-                                          Statements(
-                                            Statements(
-                                              Statements(
-                                                Statements(
-                                                  Statements(
-                                                    Statements(
-                                                      NoStmt(
-                                                      ) [NoStmt]
-                                                      Assignment(
-                                                        AssignDesignatorStatement(
-                                                          AssignStatement(
-                                                            DesignatorVar(
-                                                             bodovi
-                                                            ) [DesignatorVar]
-                                                            Assignop(
-                                                            ) [Assignop]
-                                                            TermExpr(
-                                                              TermFactor(
-                                                                FactorConstVal(
-                                                                  ConstValNum(
-                                                                   0
-                                                                  ) [ConstValNum]
-                                                                ) [FactorConstVal]
-                                                              ) [TermFactor]
-                                                            ) [TermExpr]
-                                                          ) [AssignStatement]
-                                                        ) [AssignDesignatorStatement]
-                                                      ) [Assignment]
-                                                    ) [Statements]
-                                                    Assignment(
-                                                      IncrementStatement(
-                                                        DesignatorVar(
-                                                         bodovi
-                                                        ) [DesignatorVar]
-                                                      ) [IncrementStatement]
-                                                    ) [Assignment]
-                                                  ) [Statements]
-                                                  Assignment(
-                                                    AssignDesignatorStatement(
-                                                      AssignStatement(
-                                                        DesignatorVar(
-                                                         bodovi
-                                                        ) [DesignatorVar]
-                                                        Assignop(
-                                                        ) [Assignop]
-                                                        AddSubExpr(
-                                                          TermExpr(
-                                                            TermFactor(
-                                                              Var(
-                                                                DesignatorVar(
-                                                                 bodovi
-                                                                ) [DesignatorVar]
-                                                              ) [Var]
-                                                            ) [TermFactor]
-                                                          ) [TermExpr]
-                                                          AddLeft(
-                                                            Add(
-                                                            ) [Add]
-                                                          ) [AddLeft]
-                                                          TermFactor(
-                                                            Var(
-                                                              DesignatorVar(
-                                                               jedan
-                                                              ) [DesignatorVar]
-                                                            ) [Var]
-                                                          ) [TermFactor]
-                                                        ) [AddSubExpr]
-                                                      ) [AssignStatement]
-                                                    ) [AssignDesignatorStatement]
-                                                  ) [Assignment]
-                                                ) [Statements]
-                                                Assignment(
-                                                  AssignDesignatorStatement(
-                                                    AssignStatement(
-                                                      DesignatorVar(
-                                                       bodovi
-                                                      ) [DesignatorVar]
-                                                      Assignop(
-                                                      ) [Assignop]
-                                                      TermExpr(
-                                                        TermMulop(
-                                                          TermFactor(
-                                                            Var(
-                                                              DesignatorVar(
-                                                               bodovi
-                                                              ) [DesignatorVar]
-                                                            ) [Var]
-                                                          ) [TermFactor]
-                                                          MulLeft(
-                                                            Muloperation(
-                                                            ) [Muloperation]
-                                                          ) [MulLeft]
-                                                          Var(
-                                                            DesignatorVar(
-                                                             pet
-                                                            ) [DesignatorVar]
-                                                          ) [Var]
-                                                        ) [TermMulop]
-                                                      ) [TermExpr]
-                                                    ) [AssignStatement]
-                                                  ) [AssignDesignatorStatement]
-                                                ) [Assignment]
-                                              ) [Statements]
-                                              Assignment(
-                                                DecrementStatement(
-                                                  DesignatorVar(
-                                                   bodovi
-                                                  ) [DesignatorVar]
-                                                ) [DecrementStatement]
-                                              ) [Assignment]
-                                            ) [Statements]
-                                            PrintStmt(
-                                              TermExpr(
-                                                TermFactor(
-                                                  Var(
-                                                    DesignatorVar(
-                                                     bodovi
-                                                    ) [DesignatorVar]
-                                                  ) [Var]
-                                                ) [TermFactor]
-                                              ) [TermExpr]
-                                            ) [PrintStmt]
-                                          ) [Statements]
-                                          Assignment(
-                                            AssignDesignatorStatement(
-                                              AssignStatement(
-                                                DesignatorVar(
-                                                 niz
-                                                ) [DesignatorVar]
-                                                Assignop(
-                                                ) [Assignop]
-                                                TermExpr(
-                                                  TermFactor(
-                                                    DynamicArr(
-                                                      Type(
-                                                       int
-                                                      ) [Type]
-                                                      TermExpr(
-                                                        TermFactor(
-                                                          FactorConstVal(
-                                                            ConstValNum(
-                                                             3
-                                                            ) [ConstValNum]
-                                                          ) [FactorConstVal]
-                                                        ) [TermFactor]
-                                                      ) [TermExpr]
-                                                    ) [DynamicArr]
-                                                  ) [TermFactor]
-                                                ) [TermExpr]
-                                              ) [AssignStatement]
-                                            ) [AssignDesignatorStatement]
-                                          ) [Assignment]
-                                        ) [Statements]
-                                        Assignment(
-                                          AssignDesignatorStatement(
-                                            AssignStatement(
-                                              ArrayElemDesignator(
-                                                DesignatorVar(
-                                                 niz
-                                                ) [DesignatorVar]
-                                                PreArrIdxDummy(
-                                                ) [PreArrIdxDummy]
-                                                TermExpr(
-                                                  TermFactor(
-                                                    Var(
-                                                      DesignatorVar(
-                                                       nula
-                                                      ) [DesignatorVar]
-                                                    ) [Var]
-                                                  ) [TermFactor]
-                                                ) [TermExpr]
-                                              ) [ArrayElemDesignator]
-                                              Assignop(
-                                              ) [Assignop]
-                                              TermExpr(
-                                                TermFactor(
-                                                  Var(
-                                                    DesignatorVar(
-                                                     jedan
-                                                    ) [DesignatorVar]
-                                                  ) [Var]
-                                                ) [TermFactor]
-                                              ) [TermExpr]
-                                            ) [AssignStatement]
-                                          ) [AssignDesignatorStatement]
-                                        ) [Assignment]
-                                      ) [Statements]
-                                      Assignment(
-                                        AssignDesignatorStatement(
-                                          AssignStatement(
-                                            ArrayElemDesignator(
-                                              DesignatorVar(
-                                               niz
-                                              ) [DesignatorVar]
-                                              PreArrIdxDummy(
-                                              ) [PreArrIdxDummy]
-                                              TermExpr(
-                                                TermFactor(
-                                                  FactorConstVal(
-                                                    ConstValNum(
-                                                     1
-                                                    ) [ConstValNum]
-                                                  ) [FactorConstVal]
-                                                ) [TermFactor]
-                                              ) [TermExpr]
-                                            ) [ArrayElemDesignator]
-                                            Assignop(
-                                            ) [Assignop]
-                                            TermExpr(
-                                              TermFactor(
-                                                FactorConstVal(
-                                                  ConstValNum(
-                                                   2
-                                                  ) [ConstValNum]
-                                                ) [FactorConstVal]
-                                              ) [TermFactor]
-                                            ) [TermExpr]
-                                          ) [AssignStatement]
-                                        ) [AssignDesignatorStatement]
-                                      ) [Assignment]
-                                    ) [Statements]
-                                    Assignment(
-                                      AssignDesignatorStatement(
-                                        AssignStatement(
-                                          ArrayElemDesignator(
-                                            DesignatorVar(
-                                             niz
-                                            ) [DesignatorVar]
-                                            PreArrIdxDummy(
-                                            ) [PreArrIdxDummy]
-                                            TermExpr(
-                                              TermFactor(
-                                                Var(
-                                                  ArrayElemDesignator(
-                                                    DesignatorVar(
-                                                     niz
-                                                    ) [DesignatorVar]
-                                                    PreArrIdxDummy(
-                                                    ) [PreArrIdxDummy]
-                                                    TermExpr(
-                                                      TermFactor(
-                                                        Var(
-                                                          DesignatorVar(
-                                                           jedan
-                                                          ) [DesignatorVar]
-                                                        ) [Var]
-                                                      ) [TermFactor]
-                                                    ) [TermExpr]
-                                                  ) [ArrayElemDesignator]
-                                                ) [Var]
-                                              ) [TermFactor]
-                                            ) [TermExpr]
-                                          ) [ArrayElemDesignator]
-                                          Assignop(
-                                          ) [Assignop]
-                                          TermExpr(
-                                            TermMulop(
-                                              TermFactor(
-                                                Var(
-                                                  ArrayElemDesignator(
-                                                    DesignatorVar(
-                                                     niz
-                                                    ) [DesignatorVar]
-                                                    PreArrIdxDummy(
-                                                    ) [PreArrIdxDummy]
-                                                    TermExpr(
-                                                      TermFactor(
-                                                        Var(
-                                                          ArrayElemDesignator(
-                                                            DesignatorVar(
-                                                             niz
-                                                            ) [DesignatorVar]
-                                                            PreArrIdxDummy(
-                                                            ) [PreArrIdxDummy]
-                                                            TermExpr(
-                                                              TermFactor(
-                                                                FactorConstVal(
-                                                                  ConstValNum(
-                                                                   0
-                                                                  ) [ConstValNum]
-                                                                ) [FactorConstVal]
-                                                              ) [TermFactor]
-                                                            ) [TermExpr]
-                                                          ) [ArrayElemDesignator]
-                                                        ) [Var]
-                                                      ) [TermFactor]
-                                                    ) [TermExpr]
-                                                  ) [ArrayElemDesignator]
-                                                ) [Var]
-                                              ) [TermFactor]
-                                              MulLeft(
-                                                Muloperation(
-                                                ) [Muloperation]
-                                              ) [MulLeft]
-                                              FactorConstVal(
-                                                ConstValNum(
-                                                 3
-                                                ) [ConstValNum]
-                                              ) [FactorConstVal]
-                                            ) [TermMulop]
-                                          ) [TermExpr]
-                                        ) [AssignStatement]
-                                      ) [AssignDesignatorStatement]
-                                    ) [Assignment]
-                                  ) [Statements]
-                                  Assignment(
-                                    AssignDesignatorStatement(
-                                      AssignStatement(
-                                        DesignatorVar(
-                                         bodovi
-                                        ) [DesignatorVar]
-                                        Assignop(
-                                        ) [Assignop]
-                                        TermExpr(
-                                          TermMulop(
-                                            TermFactor(
-                                              Var(
-                                                ArrayElemDesignator(
-                                                  DesignatorVar(
-                                                   niz
-                                                  ) [DesignatorVar]
-                                                  PreArrIdxDummy(
-                                                  ) [PreArrIdxDummy]
-                                                  TermExpr(
-                                                    TermFactor(
-                                                      FactorConstVal(
-                                                        ConstValNum(
-                                                         2
-                                                        ) [ConstValNum]
-                                                      ) [FactorConstVal]
-                                                    ) [TermFactor]
-                                                  ) [TermExpr]
-                                                ) [ArrayElemDesignator]
-                                              ) [Var]
-                                            ) [TermFactor]
-                                            MulLeft(
-                                              Divoperation(
-                                              ) [Divoperation]
-                                            ) [MulLeft]
-                                            Var(
-                                              ArrayElemDesignator(
-                                                DesignatorVar(
-                                                 niz
-                                                ) [DesignatorVar]
-                                                PreArrIdxDummy(
-                                                ) [PreArrIdxDummy]
-                                                TermExpr(
-                                                  TermFactor(
-                                                    FactorConstVal(
-                                                      ConstValNum(
-                                                       0
-                                                      ) [ConstValNum]
-                                                    ) [FactorConstVal]
-                                                  ) [TermFactor]
-                                                ) [TermExpr]
-                                              ) [ArrayElemDesignator]
-                                            ) [Var]
-                                          ) [TermMulop]
-                                        ) [TermExpr]
-                                      ) [AssignStatement]
-                                    ) [AssignDesignatorStatement]
-                                  ) [Assignment]
-                                ) [Statements]
-                                PrintStmt(
-                                  TermExpr(
-                                    TermFactor(
-                                      Var(
-                                        DesignatorVar(
-                                         bodovi
-                                        ) [DesignatorVar]
-                                      ) [Var]
-                                    ) [TermFactor]
-                                  ) [TermExpr]
-                                ) [PrintStmt]
-                              ) [Statements]
-                              PrintStmt(
-                                TermExpr(
-                                  TermFactor(
-                                    Var(
-                                      ArrayElemDesignator(
-                                        DesignatorVar(
-                                         niz
-                                        ) [DesignatorVar]
-                                        PreArrIdxDummy(
-                                        ) [PreArrIdxDummy]
-                                        TermExpr(
-                                          TermFactor(
-                                            FactorConstVal(
-                                              ConstValNum(
-                                               2
-                                              ) [ConstValNum]
-                                            ) [FactorConstVal]
-                                          ) [TermFactor]
-                                        ) [TermExpr]
-                                      ) [ArrayElemDesignator]
-                                    ) [Var]
-                                  ) [TermFactor]
-                                ) [TermExpr]
-                              ) [PrintStmt]
-                            ) [Statements]
-                            Assignment(
-                              AssignDesignatorStatement(
-                                AssignStatement(
-                                  ArrayElemDesignator(
-                                    DesignatorVar(
-                                     niz
-                                    ) [DesignatorVar]
-                                    PreArrIdxDummy(
-                                    ) [PreArrIdxDummy]
-                                    TermExpr(
-                                      TermFactor(
-                                        FactorConstVal(
-                                          ConstValNum(
-                                           2
-                                          ) [ConstValNum]
-                                        ) [FactorConstVal]
-                                      ) [TermFactor]
-                                    ) [TermExpr]
-                                  ) [ArrayElemDesignator]
-                                  AddRightOp(
-                                    AddEqual(
-                                    ) [AddEqual]
-                                  ) [AddRightOp]
-                                  TermExpr(
-                                    TermMulop(
-                                      TermFactor(
-                                        Var(
-                                          DesignatorVar(
-                                           bodovi
-                                          ) [DesignatorVar]
-                                        ) [Var]
-                                      ) [TermFactor]
-                                      MulRight(
-                                        MullAddEqual(
-                                        ) [MullAddEqual]
-                                      ) [MulRight]
-                                      FactorConstVal(
-                                        ConstValNum(
-                                         2
-                                        ) [ConstValNum]
-                                      ) [FactorConstVal]
-                                    ) [TermMulop]
-                                  ) [TermExpr]
-                                ) [AssignStatement]
-                              ) [AssignDesignatorStatement]
-                            ) [Assignment]
-                          ) [Statements]
+                          NoStmt(
+                          ) [NoStmt]
                           Assignment(
-                            IncrementStatement(
-                              ArrayElemDesignator(
+                            AssignDesignatorStatement(
+                              AssignStatement(
                                 DesignatorVar(
-                                 niz
+                                 x
                                 ) [DesignatorVar]
-                                PreArrIdxDummy(
-                                ) [PreArrIdxDummy]
+                                Assignop(
+                                ) [Assignop]
                                 TermExpr(
                                   TermFactor(
                                     FactorConstVal(
@@ -835,40 +199,36 @@ INFO  09:08:45,508 - Program(
                                     ) [FactorConstVal]
                                   ) [TermFactor]
                                 ) [TermExpr]
-                              ) [ArrayElemDesignator]
-                            ) [IncrementStatement]
+                              ) [AssignStatement]
+                            ) [AssignDesignatorStatement]
                           ) [Assignment]
                         ) [Statements]
-                        PrintStmt(
-                          TermExpr(
-                            TermFactor(
-                              Var(
-                                ArrayElemDesignator(
-                                  DesignatorVar(
-                                   niz
-                                  ) [DesignatorVar]
-                                  PreArrIdxDummy(
-                                  ) [PreArrIdxDummy]
-                                  TermExpr(
-                                    TermFactor(
-                                      FactorConstVal(
-                                        ConstValNum(
-                                         2
-                                        ) [ConstValNum]
-                                      ) [FactorConstVal]
-                                    ) [TermFactor]
-                                  ) [TermExpr]
-                                ) [ArrayElemDesignator]
-                              ) [Var]
-                            ) [TermFactor]
-                          ) [TermExpr]
-                        ) [PrintStmt]
+                        Assignment(
+                          AssignDesignatorStatement(
+                            AssignStatement(
+                              DesignatorVar(
+                               y
+                              ) [DesignatorVar]
+                              Assignop(
+                              ) [Assignop]
+                              TermExpr(
+                                TermFactor(
+                                  FactorConstVal(
+                                    ConstValNum(
+                                     3
+                                    ) [ConstValNum]
+                                  ) [FactorConstVal]
+                                ) [TermFactor]
+                              ) [TermExpr]
+                            ) [AssignStatement]
+                          ) [AssignDesignatorStatement]
+                        ) [Assignment]
                       ) [Statements]
                       Assignment(
                         AssignDesignatorStatement(
                           AssignStatement(
                             DesignatorVar(
-                             nizch
+                             array
                             ) [DesignatorVar]
                             Assignop(
                             ) [Assignop]
@@ -876,7 +236,7 @@ INFO  09:08:45,508 - Program(
                               TermFactor(
                                 DynamicArr(
                                   Type(
-                                   char
+                                   int
                                   ) [Type]
                                   TermExpr(
                                     TermFactor(
@@ -899,7 +259,7 @@ INFO  09:08:45,508 - Program(
                         AssignStatement(
                           ArrayElemDesignator(
                             DesignatorVar(
-                             nizch
+                             array
                             ) [DesignatorVar]
                             PreArrIdxDummy(
                             ) [PreArrIdxDummy]
@@ -907,7 +267,7 @@ INFO  09:08:45,508 - Program(
                               TermFactor(
                                 FactorConstVal(
                                   ConstValNum(
-                                   0
+                                   1
                                   ) [ConstValNum]
                                 ) [FactorConstVal]
                               ) [TermFactor]
@@ -918,9 +278,9 @@ INFO  09:08:45,508 - Program(
                           TermExpr(
                             TermFactor(
                               FactorConstVal(
-                                ConstValChar(
-                                 a
-                                ) [ConstValChar]
+                                ConstValNum(
+                                 1
+                                ) [ConstValNum]
                               ) [FactorConstVal]
                             ) [TermFactor]
                           ) [TermExpr]
@@ -933,17 +293,17 @@ INFO  09:08:45,508 - Program(
                       AssignStatement(
                         ArrayElemDesignator(
                           DesignatorVar(
-                           nizch
+                           array
                           ) [DesignatorVar]
                           PreArrIdxDummy(
                           ) [PreArrIdxDummy]
                           TermExpr(
                             TermFactor(
-                              Var(
-                                DesignatorVar(
-                                 jedan
-                                ) [DesignatorVar]
-                              ) [Var]
+                              FactorConstVal(
+                                ConstValNum(
+                                 0
+                                ) [ConstValNum]
+                              ) [FactorConstVal]
                             ) [TermFactor]
                           ) [TermExpr]
                         ) [ArrayElemDesignator]
@@ -952,9 +312,9 @@ INFO  09:08:45,508 - Program(
                         TermExpr(
                           TermFactor(
                             FactorConstVal(
-                              ConstValChar(
-                               b
-                              ) [ConstValChar]
+                              ConstValNum(
+                               2
+                              ) [ConstValNum]
                             ) [FactorConstVal]
                           ) [TermFactor]
                         ) [TermExpr]
@@ -965,46 +325,48 @@ INFO  09:08:45,508 - Program(
                 Assignment(
                   AssignDesignatorStatement(
                     AssignStatement(
-                      ArrayElemDesignator(
-                        DesignatorVar(
-                         nizch
-                        ) [DesignatorVar]
-                        PreArrIdxDummy(
-                        ) [PreArrIdxDummy]
-                        AddSubExpr(
-                          TermExpr(
-                            TermFactor(
-                              Var(
-                                DesignatorVar(
-                                 pet
-                                ) [DesignatorVar]
-                              ) [Var]
-                            ) [TermFactor]
-                          ) [TermExpr]
-                          AddLeft(
-                            Sub(
-                            ) [Sub]
-                          ) [AddLeft]
+                      DesignatorVar(
+                       x
+                      ) [DesignatorVar]
+                      AddRightOp(
+                        AddEqual(
+                        ) [AddEqual]
+                      ) [AddRightOp]
+                      AddSubExpr(
+                        TermExpr(
                           TermFactor(
-                            FactorConstVal(
-                              ConstValNum(
-                               3
-                              ) [ConstValNum]
-                            ) [FactorConstVal]
+                            Var(
+                              ArrayElemDesignator(
+                                DesignatorVar(
+                                 array
+                                ) [DesignatorVar]
+                                PreArrIdxDummy(
+                                ) [PreArrIdxDummy]
+                                TermExpr(
+                                  TermFactor(
+                                    FactorConstVal(
+                                      ConstValNum(
+                                       0
+                                      ) [ConstValNum]
+                                    ) [FactorConstVal]
+                                  ) [TermFactor]
+                                ) [TermExpr]
+                              ) [ArrayElemDesignator]
+                            ) [Var]
                           ) [TermFactor]
-                        ) [AddSubExpr]
-                      ) [ArrayElemDesignator]
-                      Assignop(
-                      ) [Assignop]
-                      TermExpr(
+                        ) [TermExpr]
+                        AddRight(
+                          AddEqual(
+                          ) [AddEqual]
+                        ) [AddRight]
                         TermFactor(
-                          FactorConstVal(
-                            ConstValChar(
-                             c
-                            ) [ConstValChar]
-                          ) [FactorConstVal]
+                          Var(
+                            DesignatorVar(
+                             y
+                            ) [DesignatorVar]
+                          ) [Var]
                         ) [TermFactor]
-                      ) [TermExpr]
+                      ) [AddSubExpr]
                     ) [AssignStatement]
                   ) [AssignDesignatorStatement]
                 ) [Assignment]
@@ -1013,22 +375,9 @@ INFO  09:08:45,508 - Program(
                 TermExpr(
                   TermFactor(
                     Var(
-                      ArrayElemDesignator(
-                        DesignatorVar(
-                         nizch
-                        ) [DesignatorVar]
-                        PreArrIdxDummy(
-                        ) [PreArrIdxDummy]
-                        TermExpr(
-                          TermFactor(
-                            FactorConstVal(
-                              ConstValNum(
-                               1
-                              ) [ConstValNum]
-                            ) [FactorConstVal]
-                          ) [TermFactor]
-                        ) [TermExpr]
-                      ) [ArrayElemDesignator]
+                      DesignatorVar(
+                       x
+                      ) [DesignatorVar]
                     ) [Var]
                   ) [TermFactor]
                 ) [TermExpr]
@@ -1038,187 +387,59 @@ INFO  09:08:45,508 - Program(
               TermExpr(
                 TermFactor(
                   Var(
-                    ArrayElemDesignator(
-                      DesignatorVar(
-                       nizch
-                      ) [DesignatorVar]
-                      PreArrIdxDummy(
-                      ) [PreArrIdxDummy]
-                      TermExpr(
-                        TermMulop(
-                          TermFactor(
-                            Var(
-                              DesignatorVar(
-                               jedan
-                              ) [DesignatorVar]
-                            ) [Var]
-                          ) [TermFactor]
-                          MulLeft(
-                            Muloperation(
-                            ) [Muloperation]
-                          ) [MulLeft]
-                          FactorConstVal(
-                            ConstValNum(
-                             2
-                            ) [ConstValNum]
-                          ) [FactorConstVal]
-                        ) [TermMulop]
-                      ) [TermExpr]
-                    ) [ArrayElemDesignator]
+                    DesignatorVar(
+                     y
+                    ) [DesignatorVar]
                   ) [Var]
                 ) [TermFactor]
               ) [TermExpr]
             ) [PrintStmt]
           ) [Statements]
-          Assignment(
-            AssignDesignatorStatement(
-              AssignStatement(
-                DesignatorVar(
-                 bodovi
-                ) [DesignatorVar]
-                Assignop(
-                ) [Assignop]
-                AddSubExpr(
-                  AddSubExpr(
+          PrintStmt(
+            TermExpr(
+              TermFactor(
+                Var(
+                  ArrayElemDesignator(
+                    DesignatorVar(
+                     array
+                    ) [DesignatorVar]
+                    PreArrIdxDummy(
+                    ) [PreArrIdxDummy]
                     TermExpr(
                       TermFactor(
-                        Var(
-                          DesignatorVar(
-                           bodovi
-                          ) [DesignatorVar]
-                        ) [Var]
+                        FactorConstVal(
+                          ConstValNum(
+                           0
+                          ) [ConstValNum]
+                        ) [FactorConstVal]
                       ) [TermFactor]
                     ) [TermExpr]
-                    AddLeft(
-                      Add(
-                      ) [Add]
-                    ) [AddLeft]
-                    TermMulop(
-                      TermFactor(
-                        FactorParen(
-                          AddSubExpr(
-                            TermExpr(
-                              TermMulop(
-                                TermFactor(
-                                  Var(
-                                    DesignatorVar(
-                                     pet
-                                    ) [DesignatorVar]
-                                  ) [Var]
-                                ) [TermFactor]
-                                MulLeft(
-                                  Muloperation(
-                                  ) [Muloperation]
-                                ) [MulLeft]
-                                Var(
-                                  DesignatorVar(
-                                   jedan
-                                  ) [DesignatorVar]
-                                ) [Var]
-                              ) [TermMulop]
-                            ) [TermExpr]
-                            AddLeft(
-                              Sub(
-                              ) [Sub]
-                            ) [AddLeft]
-                            TermFactor(
-                              FactorConstVal(
-                                ConstValNum(
-                                 1
-                                ) [ConstValNum]
-                              ) [FactorConstVal]
-                            ) [TermFactor]
-                          ) [AddSubExpr]
-                        ) [FactorParen]
-                      ) [TermFactor]
-                      MulLeft(
-                        Muloperation(
-                        ) [Muloperation]
-                      ) [MulLeft]
-                      Var(
-                        DesignatorVar(
-                         bodovi
-                        ) [DesignatorVar]
-                      ) [Var]
-                    ) [TermMulop]
-                  ) [AddSubExpr]
-                  AddLeft(
-                    Sub(
-                    ) [Sub]
-                  ) [AddLeft]
-                  TermFactor(
-                    FactorParen(
-                      AddSubExpr(
-                        AddSubExpr(
-                          TermExpr(
-                            TermMulop(
-                              TermFactor(
-                                FactorConstVal(
-                                  ConstValNum(
-                                   3
-                                  ) [ConstValNum]
-                                ) [FactorConstVal]
-                              ) [TermFactor]
-                              MulLeft(
-                                Modoperation(
-                                ) [Modoperation]
-                              ) [MulLeft]
-                              FactorConstVal(
-                                ConstValNum(
-                                 2
-                                ) [ConstValNum]
-                              ) [FactorConstVal]
-                            ) [TermMulop]
-                          ) [TermExpr]
-                          AddLeft(
-                            Add(
-                            ) [Add]
-                          ) [AddLeft]
-                          TermMulop(
-                            TermFactor(
-                              FactorConstVal(
-                                ConstValNum(
-                                 3
-                                ) [ConstValNum]
-                              ) [FactorConstVal]
-                            ) [TermFactor]
-                            MulLeft(
-                              Muloperation(
-                              ) [Muloperation]
-                            ) [MulLeft]
-                            FactorConstVal(
-                              ConstValNum(
-                               2
-                              ) [ConstValNum]
-                            ) [FactorConstVal]
-                          ) [TermMulop]
-                        ) [AddSubExpr]
-                        AddLeft(
-                          Sub(
-                          ) [Sub]
-                        ) [AddLeft]
-                        TermFactor(
-                          FactorConstVal(
-                            ConstValNum(
-                             3
-                            ) [ConstValNum]
-                          ) [FactorConstVal]
-                        ) [TermFactor]
-                      ) [AddSubExpr]
-                    ) [FactorParen]
-                  ) [TermFactor]
-                ) [AddSubExpr]
-              ) [AssignStatement]
-            ) [AssignDesignatorStatement]
-          ) [Assignment]
+                  ) [ArrayElemDesignator]
+                ) [Var]
+              ) [TermFactor]
+            ) [TermExpr]
+          ) [PrintStmt]
         ) [Statements]
         PrintStmt(
           TermExpr(
             TermFactor(
               Var(
-                DesignatorVar(
-                 bodovi
-                ) [DesignatorVar]
+                ArrayElemDesignator(
+                  DesignatorVar(
+                   array
+                  ) [DesignatorVar]
+                  PreArrIdxDummy(
+                  ) [PreArrIdxDummy]
+                  TermExpr(
+                    TermFactor(
+                      FactorConstVal(
+                        ConstValNum(
+                         1
+                        ) [ConstValNum]
+                      ) [FactorConstVal]
+                    ) [TermFactor]
+                  ) [TermExpr]
+                ) [ArrayElemDesignator]
               ) [Var]
             ) [TermFactor]
           ) [TermExpr]
@@ -1227,11 +448,14 @@ INFO  09:08:45,508 - Program(
     ) [MethodDecl]
   ) [MethodDeclarations]
 ) [Program]
-INFO  09:08:45,518 - ===================================
-ERROR 09:08:45,538 - Declared array variable  nizwith type : 1on line9
-ERROR 09:08:45,538 - Declared array variable  nizchwith type : 2on line10
-ERROR 09:08:45,539 - Declared variable  bodoviwith type : 1on line14
-INFO  09:08:45,540 -  Print count calls = 7
-INFO  09:08:45,540 -  Deklarisanih promenljivih ima = 0
-INFO  09:08:45,541 - ===================================
-INFO  09:08:45,576 - Code parsing is successfully finished
+INFO  02:53:15,081 - ===================================
+ERROR 02:53:15,095 - Declared variable  xwith type : 1on line2
+ERROR 02:53:15,095 - Declared variable  ywith type : 1on line2
+ERROR 02:53:15,095 - list of variables
+ERROR 02:53:15,095 - Declared variable  zwith type : 1on line2
+ERROR 02:53:15,095 - list of variables
+ERROR 02:53:15,096 - Declared array variable  arraywith type : 1on line4
+INFO  02:53:15,097 -  Print count calls = 4
+INFO  02:53:15,097 -  Deklarisanih promenljivih ima = 0
+INFO  02:53:15,097 - ===================================
+INFO  02:53:15,144 - Code parsing is successfully finished

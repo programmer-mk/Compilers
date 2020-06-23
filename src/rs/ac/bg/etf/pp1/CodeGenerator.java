@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Stack;
 
 import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
@@ -19,6 +20,9 @@ public class CodeGenerator extends VisitorAdaptor {
 	private Stack<Integer> mulop = new Stack<>();
 	private Stack<Integer> equal = new Stack<>();
 	private Stack<Obj> nestedVariables = new Stack<>();
+	private HashSet<Obj> nestedVariablesArrays = new HashSet<>();
+	
+	boolean withoutArrayDesignator = false;
 	
 	Obj currentObject = null;
 	Obj previousObject = null;
@@ -182,6 +186,7 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	 public void visit(AddSubExpr addSubExpr) {
+		 
 		 if(addSubExpr.getParent().getClass() == AddSubExpr.class) {
 			//old version i can assume?
 			Code.put(addop.pop());
@@ -195,7 +200,7 @@ public class CodeGenerator extends VisitorAdaptor {
 				AssignStatement assignStatement = (AssignStatement) addSubExpr.getParent();
 				if(assignStatement != null && assignStatement.getDesignator().getClass() == ArrayElemDesignator.class) {
 					//skip
-				}else {
+				}else if(!withoutArrayDesignator){
 					 Code.put(addop.pop());
 					 Code.put(Code.dup);
 					 Code.store(nestedVariables.pop());	
@@ -204,20 +209,37 @@ public class CodeGenerator extends VisitorAdaptor {
 				// old version
 				Code.put(addop.pop());
 			}
-			 
-		   if(!equal.isEmpty()) {
-			    if(!addop.isEmpty()) {
+			
+		   if(!withoutArrayDesignator) {
+			   if(!equal.isEmpty()) {
+				    if(!addop.isEmpty()) {
+				    	Code.put(addop.pop());
+				    }else if(!mulop.isEmpty()) {
+				    	Code.put(mulop.pop());
+				    }
+				    Code.put(Code.dup);
+				    if(!nestedVariables.isEmpty()) {
+				    	Code.store(nestedVariables.pop());
+				    }
+				    
+				    //Code.put(Code.pop);
+			   }
+		   }else {
+			   withoutArrayDesignator = false;
+			   if(!addop.isEmpty()) {
 			    	Code.put(addop.pop());
-			    }else if(!mulop.isEmpty()) {
-			    	Code.put(mulop.pop());
-			    }
-			    Code.put(Code.dup);
-			    if(!nestedVariables.isEmpty()) {
-			    	Code.store(nestedVariables.pop());
-			    }
-			    
-			    //Code.put(Code.pop);
-		   }
+			   Code.put(Code.dup_x2);	
+			   if(!nestedVariables.isEmpty()) {
+				   Obj lastObj = nestedVariables.pop();
+				   if(!nestedVariablesArrays.contains(lastObj)) {
+					   Code.store(nestedVariables.pop());
+				   }else {
+					   Code.store(lastObj);
+				   }
+			    	
+			   }
+			   }
+		  }
 		 }
 	 }
 	 
@@ -315,6 +337,34 @@ public class CodeGenerator extends VisitorAdaptor {
 	public void visit(AddRight addRight) {
 		equal.add(1);
 		
+		if(addRight.getParent().getClass() == AddSubExpr.class) {
+			AssignStatement assignStatement = null;
+			try {
+				assignStatement	 = (AssignStatement) addRight.getParent().getParent();
+			}catch(Exception e) {
+				
+			}
+			
+			if(nestedVariablesArrays.contains(nestedVariables.peek())) {
+				Code.put(Code.dup2);
+				Code.load(nestedVariables.peek());
+			}else {
+				Code.load(assignStatement.getDesignator().obj);
+			}
+			
+			/*
+			if(assignStatement != null) {
+				if(assignStatement.getDesignator().getClass() != ArrayElemDesignator.class) {
+					Code.load(assignStatement.getDesignator().obj);
+				}else {
+					Code.put(Code.dup2);
+					Code.load(assignStatement.getDesignator().obj);
+				}
+			}
+			*/
+		}
+		
+		
 		/*  += in expression  */
 		//Code.load(currentObject);
 	}
@@ -349,11 +399,23 @@ public class CodeGenerator extends VisitorAdaptor {
 		if(!(arrayElemDesignator.getParent().getClass() == AssignStatement.class)
 				&& arrayElemDesignator.getParent().getClass() != IncrementStatement.class
 				&& arrayElemDesignator.getParent().getClass() != DecrementStatement.class) {
+		try {
+			AddSubExpr addSubExpr = (AddSubExpr) arrayElemDesignator.getParent().getParent().getParent().getParent();
+			if(addSubExpr.getAddop().getClass() != AddRight.class) {
+				Code.load(arrayElemDesignator.obj);
+			}else {
+				withoutArrayDesignator = true;
+			}
+		}catch(Exception e) {
 			Code.load(arrayElemDesignator.obj);	// bilo ovde
 		}
+			
+	
+        }
 		
 		currElemDesignator = arrayElemDesignator;
 		/* this is for += purposes */
+		nestedVariablesArrays.add(arrayElemDesignator.obj);
 		nestedVariables.add(arrayElemDesignator.obj);
 	}
 		
